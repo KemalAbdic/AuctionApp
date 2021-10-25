@@ -1,6 +1,6 @@
 package com.atlantbh.auctionapp.enumeration;
 
-public enum ProductSize {
+public enum Size {
     SMALL,
     MEDIUM,
     LARGE,

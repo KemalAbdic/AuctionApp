@@ -1,11 +1,10 @@
 package com.atlantbh.auctionapp.model;
 
 import com.atlantbh.auctionapp.enumeration.Color;
-import com.atlantbh.auctionapp.enumeration.ProductSize;
+import com.atlantbh.auctionapp.enumeration.Size;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -40,7 +39,7 @@ public class Product {
     private LocalDateTime auctionEnd;
 
     @Enumerated(EnumType.STRING)
-    private ProductSize size;
+    private Size size;
 
     @Enumerated(EnumType.STRING)
     private Color color;
@@ -58,10 +57,10 @@ public class Product {
     private String country;
 
     @NotNull
-    @Size(max = 16)
+    @javax.validation.constraints.Size(max = 16)
     private String zipCode;
 
-    @Size(max = 16)
+    @javax.validation.constraints.Size(max = 16)
     private String phoneNumber;
 
     public Product() {
@@ -74,7 +73,7 @@ public class Product {
                    Double startingPrice,
                    LocalDateTime auctionStart,
                    LocalDateTime auctionEnd,
-                   ProductSize size,
+                   Size size,
                    Color color,
                    Boolean shipping,
                    String street,
@@ -155,11 +154,11 @@ public class Product {
         this.color = color;
     }
 
-    public ProductSize getSize() {
+    public Size getSize() {
         return size;
     }
 
-    public void setSize(ProductSize size) {
+    public void setSize(Size size) {
         this.size = size;
     }
 
