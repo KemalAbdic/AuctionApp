@@ -1,21 +1,23 @@
 package com.atlantbh.auctionapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Table(name = "wishlist")
 @Entity
 public class Wishlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "wishlist_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "person_id")
+    @NotNull
     private Person person;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id")
+    @NotNull
     private Product product;
 
     public Wishlist() {
@@ -42,11 +44,11 @@ public class Wishlist {
         this.person = person;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

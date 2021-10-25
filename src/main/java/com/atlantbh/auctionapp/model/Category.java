@@ -1,16 +1,16 @@
 package com.atlantbh.auctionapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Table(name = "category")
 @Entity
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
-    @Column(name = "name", nullable = false)
+    @NotNull
     private String name;
 
     public Category() {
@@ -28,11 +28,11 @@ public class Category {
         this.name = name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

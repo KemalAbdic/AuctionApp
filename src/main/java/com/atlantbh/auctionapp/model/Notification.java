@@ -1,58 +1,63 @@
 package com.atlantbh.auctionapp.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
-@Table(name = "notification")
 @Entity
 public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "notification_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "person_id")
+    @NotNull
     private Person person;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id")
+    @NotNull
     private Product product;
 
-    @Lob
-    @Column(name = "report", nullable = false)
+    @NotNull
     private String report;
 
-    @Column(name = "\"time\"", nullable = false)
-    private LocalDate time;
+    @NotNull
+    private LocalDateTime time;
 
-    @Column(name = "recieved", nullable = false)
-    private Boolean recieved = false;
+    @NotNull
+    private Boolean received = false;
 
     public Notification() {
     }
 
-    public Notification(Person person, Product product, String report, LocalDate time, Boolean recieved) {
+    public Notification(Person person,
+                        Product product,
+                        String report,
+                        LocalDateTime time,
+                        Boolean received) {
         this.person = person;
         this.product = product;
         this.report = report;
         this.time = time;
-        this.recieved = recieved;
+        this.received = received;
     }
 
-    public Boolean getRecieved() {
-        return recieved;
+    public Boolean getReceived() {
+        return received;
     }
 
-    public void setRecieved(Boolean recieved) {
-        this.recieved = recieved;
+    public void setReceived(Boolean received) {
+        this.received = received;
     }
 
-    public LocalDate getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 
@@ -80,11 +85,11 @@ public class Notification {
         this.person = person;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

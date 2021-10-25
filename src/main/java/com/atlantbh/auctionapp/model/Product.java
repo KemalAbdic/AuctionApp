@@ -1,70 +1,70 @@
 package com.atlantbh.auctionapp.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.time.LocalDate;
+import com.atlantbh.auctionapp.enumeration.Color;
+import com.atlantbh.auctionapp.enumeration.ProductSize;
 
-@Table(name = "product")
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+
 @Entity
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "person_id")
+    @NotNull
     private Person person;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "subcategory_id", nullable = false)
+    @JoinColumn(name = "subcategory_id")
+    @NotNull
     private Subcategory subcategory;
 
-    @Column(name = "name", nullable = false)
+    @NotNull
     private String name;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "starting_price", nullable = false)
+    @NotNull
     private Double startingPrice;
 
-    @Column(name = "auction_start", nullable = false)
-    private LocalDate auctionStart;
+    @NotNull
+    private LocalDateTime auctionStart;
 
-    @Column(name = "auction_end", nullable = false)
-    private LocalDate auctionEnd;
+    @NotNull
+    private LocalDateTime auctionEnd;
 
-    // ask about enum
-    @Column(name = "size")
-    private String size;
+    @Enumerated(EnumType.STRING)
+    private ProductSize size;
 
-    // ask about enum
-    @Column(name = "color")
-    private String color;
+    @Enumerated(EnumType.STRING)
+    private Color color;
 
-    @Column(name = "shipping", nullable = false)
+    @NotNull
     private Boolean shipping = false;
 
-    @Column(name = "street", nullable = false)
+    @NotNull
     private String street;
 
-    @Column(name = "city", nullable = false)
+    @NotNull
     private String city;
 
-    @Column(name = "country", nullable = false)
+    @NotNull
     private String country;
 
-    @Column(name = "zip_code", nullable = false)
+    @NotNull
     @Size(max = 16)
     private String zipCode;
 
-    @Column(name = "phone_number")
     @Size(max = 16)
     private String phoneNumber;
 
     public Product() {
-
     }
 
     public Product(Person person,
@@ -72,10 +72,10 @@ public class Product {
                    String name,
                    String description,
                    Double startingPrice,
-                   LocalDate auctionStart,
-                   LocalDate auctionEnd,
-                   String size,
-                   String color,
+                   LocalDateTime auctionStart,
+                   LocalDateTime auctionEnd,
+                   ProductSize size,
+                   Color color,
                    Boolean shipping,
                    String street,
                    String city,
@@ -147,35 +147,35 @@ public class Product {
         this.shipping = shipping;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    public String getSize() {
+    public ProductSize getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(ProductSize size) {
         this.size = size;
     }
 
-    public LocalDate getAuctionEnd() {
+    public LocalDateTime getAuctionEnd() {
         return auctionEnd;
     }
 
-    public void setAuctionEnd(LocalDate auctionEnd) {
+    public void setAuctionEnd(LocalDateTime auctionEnd) {
         this.auctionEnd = auctionEnd;
     }
 
-    public LocalDate getAuctionStart() {
+    public LocalDateTime getAuctionStart() {
         return auctionStart;
     }
 
-    public void setAuctionStart(LocalDate auctionStart) {
+    public void setAuctionStart(LocalDateTime auctionStart) {
         this.auctionStart = auctionStart;
     }
 
@@ -219,11 +219,11 @@ public class Product {
         this.person = person;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

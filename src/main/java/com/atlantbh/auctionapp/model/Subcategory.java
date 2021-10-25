@@ -1,20 +1,21 @@
 package com.atlantbh.auctionapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Table(name = "subcategory")
 @Entity
 public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subcategory_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
+    @NotNull
     private Category category;
 
-    @Column(name = "name", nullable = false)
+    @NotNull
     private String name;
 
     public Subcategory() {
@@ -41,11 +42,11 @@ public class Subcategory {
         this.category = category;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

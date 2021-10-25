@@ -1,45 +1,47 @@
 package com.atlantbh.auctionapp.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
-@Table(name = "bid")
 @Entity
 public class Bid {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bid_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "person_id")
+    @NotNull
     private Person person;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id")
+    @NotNull
     private Product product;
 
-    @Column(name = "bid_amount", nullable = false)
+    @NotNull
     private Double bidAmount;
 
-    @Column(name = "bid_time", nullable = false)
-    private LocalDate bidTime;
+    @NotNull
+    private LocalDateTime bidTime;
 
     public Bid() {
     }
 
-    public Bid(Person person, Product product, Double bidAmount, LocalDate bidTime) {
+    public Bid(Person person, Product product, Double bidAmount, LocalDateTime bidTime) {
         this.person = person;
         this.product = product;
         this.bidAmount = bidAmount;
         this.bidTime = bidTime;
     }
 
-    public LocalDate getBidTime() {
+    public LocalDateTime getBidTime() {
         return bidTime;
     }
 
-    public void setBidTime(LocalDate bidTime) {
+    public void setBidTime(LocalDateTime bidTime) {
         this.bidTime = bidTime;
     }
 
@@ -67,11 +69,11 @@ public class Bid {
         this.person = person;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

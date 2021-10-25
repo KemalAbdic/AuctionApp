@@ -1,5 +1,5 @@
 package com.atlantbh.auctionapp.enumeration;
 
-public enum GenderEnum {
+public enum Gender {
    MALE, FEMALE, OTHER
 }

@@ -1,6 +1,6 @@
 package com.atlantbh.auctionapp.enumeration;
 
-public enum ColorEnum {
+public enum Color {
     BLACK,
     BLUE,
     WHITE,

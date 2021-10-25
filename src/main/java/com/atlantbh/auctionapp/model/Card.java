@@ -1,41 +1,47 @@
 package com.atlantbh.auctionapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Table(name = "card_info")
 @Entity
-public class CardInfo {
+public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "card_info_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "person_id")
+    @NotNull
     private Person person;
 
-    @Column(name = "card_name", nullable = false)
+    @NotNull
     private String cardName;
 
-    @Column(name = "card_number", nullable = false)
     @Size(min = 8, max = 19)
+    @NotNull
     private Integer cardNumber;
 
-    @Column(name = "expiration_year", nullable = false, length = 4)
+    @NotNull
     private String expirationYear;
 
-    @Column(name = "expiration_month", nullable = false, length = 4)
+    @NotNull
     private String expirationMonth;
 
-    @Column(name = "cvc_number", nullable = false)
     @Size(min = 100, max = 9999)
+    @NotNull
     private Integer cvcNumber;
 
-    public CardInfo() {
+    public Card() {
     }
 
-    public CardInfo(Person person, String cardName, Integer cardNumber, String expirationYear, String expirationMonth, Integer cvcNumber) {
+    public Card(Person person,
+                String cardName,
+                Integer cardNumber,
+                String expirationYear,
+                String expirationMonth,
+                Integer cvcNumber) {
         this.person = person;
         this.cardName = cardName;
         this.cardNumber = cardNumber;
@@ -92,11 +98,11 @@ public class CardInfo {
         this.person = person;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

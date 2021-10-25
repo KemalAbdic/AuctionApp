@@ -1,76 +1,63 @@
 package com.atlantbh.auctionapp.model;
 
-import com.atlantbh.auctionapp.enumeration.GenderEnum;
+import com.atlantbh.auctionapp.enumeration.Gender;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-@Table(name = "person")
 @Entity
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "person_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
-    @Column(name = "address_id", nullable = false)
-    private Integer addressId;
-
-    @Column(name = "email", nullable = false)
+    @NotNull
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @NotNull
     @Size(max = 128)
     private String password;
 
-    @Column(name = "gender", nullable = false)
     @Enumerated(EnumType.STRING)
-    private GenderEnum gender;
+    @NotNull
+    private Gender gender;
 
-    @Column(name = "birth_date", nullable = false)
-    private LocalDate birthDate;
+    @NotNull
+    private LocalDateTime birthDate;
 
-    @Column(name = "first_name", nullable = false)
     @Size(max = 50)
+    @NotNull
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
     @Size(max = 50)
+    @NotNull
     private String lastName;
 
-    @Column(name = "street", nullable = false)
+    @NotNull
     private String street;
 
-    @Column(name = "zip_code", nullable = false)
     @Size(max = 16)
+    @NotNull
     private String zipCode;
 
-    @Column(name = "city", nullable = false)
+    @NotNull
     private String city;
 
-    @Column(name = "state")
     private String state;
 
-    @Column(name = "country", nullable = false)
+    @NotNull
     private String country;
 
-    @Column(name = "phone_number")
     @Size(max = 16)
     private String phoneNumber;
 
-    public Person(Integer addressId,
-                  String email,
+    public Person(String email,
                   String password,
-                  GenderEnum gender,
-                  LocalDate birthDate,
+                  Gender gender,
+                  LocalDateTime birthDate,
                   String firstName,
                   String lastName,
                   String street,
@@ -79,7 +66,6 @@ public class Person {
                   String state,
                   String country,
                   String phoneNumber) {
-        this.addressId = addressId;
         this.email = email;
         this.password = password;
         this.gender = gender;
@@ -95,7 +81,6 @@ public class Person {
     }
 
     public Person() {
-
     }
 
     public String getPhoneNumber() {
@@ -162,19 +147,19 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public LocalDate getBirthDate() {
+    public LocalDateTime getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(LocalDateTime birthDate) {
         this.birthDate = birthDate;
     }
 
-    public GenderEnum getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(GenderEnum gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -194,19 +179,11 @@ public class Person {
         this.email = email;
     }
 
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

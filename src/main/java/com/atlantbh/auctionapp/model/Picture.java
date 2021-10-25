@@ -1,25 +1,27 @@
 package com.atlantbh.auctionapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Table(name = "picture")
 @Entity
 public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "picture_id", nullable = false)
-    private Integer id;
+    @NotNull
+    private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id")
+    @NotNull
     private Product product;
 
-    @Column(name = "url", nullable = false)
+    @NotNull
     private String url;
 
-    public Picture(){}
+    public Picture() {
+    }
 
-    public Picture (Product product, String url) {
+    public Picture(Product product, String url) {
         this.product = product;
         this.url = url;
     }
@@ -40,11 +42,11 @@ public class Picture {
         this.product = product;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }
