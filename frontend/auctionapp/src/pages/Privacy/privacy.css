@@ -1,0 +1,20 @@
+.privacy-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    margin: 140px 734px 147px 621px;
+}
+
+.privacy-text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #9B9B9B;
+}
+
+.privacy-cont h3 {
+    font-size: 32px;
+    line-height: 51px;
+}

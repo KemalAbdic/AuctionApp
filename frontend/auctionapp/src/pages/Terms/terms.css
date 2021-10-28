@@ -1,0 +1,26 @@
+.terms-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    margin: 140px 734px 147px 621px;
+}
+
+.terms-container h3 {
+    font-size: 32px;
+    line-height: 51px;
+}
+
+.terms-container h6 {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.84px;
+}
+
+.terms-text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #9B9B9B;
+}
