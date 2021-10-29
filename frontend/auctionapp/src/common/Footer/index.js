@@ -1,6 +1,8 @@
 import React from "react";
 import "./footer.css";
-import {FacebookFill, InstagramFill, TwitterFill} from "akar-icons";
+import {FacebookFill, InstagramFill} from "akar-icons";
+import {AiFillGooglePlusCircle, AiFillTwitterCircle} from "react-icons/all";
+import {Link} from "react-router-dom";
 
 function Footer() {
 
@@ -9,9 +11,9 @@ function Footer() {
             <div className="footer-content">
                 <div className="footer-content-text"> AUCTION</div>
                 <ul>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/terms">Terms and Conditions</a></li>
-                    <li><a href="/privacy">Privacy and Policy</a></li>
+                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/terms">Terms and Conditions</Link></li>
+                    <li><Link to="/privacy">Privacy and Policy</Link></li>
                 </ul>
 
             </div>
@@ -25,7 +27,9 @@ function Footer() {
                     <a href="https://www.instagram.com/atlantbh" rel="noreferrer" target="_blank">
                         <InstagramFill/></a>
                     <a href="https://www.twitter.com/atlantbh" rel="noreferrer" target="_blank">
-                        <TwitterFill/></a>
+                        <AiFillTwitterCircle/></a>
+                    <a href="https://www.twitter.com/atlantbh" rel="noreferrer" target="_blank">
+                        <AiFillGooglePlusCircle/></a>
                 </div>
             </div>
             <div className="footer-content">

@@ -78,4 +78,7 @@
 .social-networks a {
     color: #9B9B9B;
     padding-top: 12.5px;
+    display: flex;
+    align-items: center;
+    padding-right: 17px;
 }

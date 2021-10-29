@@ -5,7 +5,7 @@ function Privacy() {
 
     return (
         <div className="privacy-cont">
-            <h3>Terms and Conditions</h3>
+            <h3>Privacy and policy</h3>
             <p className="privacy-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae lacinia
                 mi,
                 nec pellentesque

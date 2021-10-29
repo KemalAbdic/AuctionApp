@@ -1,6 +1,7 @@
 import React from "react";
 import "./header.css";
-import {FacebookFill, InstagramFill, TwitterFill} from "akar-icons";
+import {FacebookFill, InstagramFill} from "akar-icons";
+import {AiFillGooglePlusCircle, AiFillTwitterCircle} from "react-icons/all";
 
 
 function Header() {
@@ -14,7 +15,9 @@ function Header() {
                     <a href="https://www.instagram.com/atlantbh" rel="noreferrer" target="_blank">
                         <InstagramFill/></a>
                     <a href="https://www.twitter.com/atlantbh" rel="noreferrer" target="_blank">
-                        <TwitterFill/></a>
+                        <AiFillTwitterCircle/></a>
+                    <a href="https://www.google.com/search?q=atlantbh" rel="noreferrer" target="_blank">
+                        <AiFillGooglePlusCircle/></a>
                 </div>
                 <div className="login">
                     <a href="#">Login</a>
@@ -23,7 +26,7 @@ function Header() {
                 </div>
             </div>
             <div className="white-header-container">
-                <img src="../images/logo.png" alt="logo"/>
+                <img src="/images/logo.png" alt="logo"/>
                 {/* <input type="text" placeholder="Try enter: Shoes" className="search-bar"/>*/}
                 <div className="links">
                     <a href="#">HOME</a>

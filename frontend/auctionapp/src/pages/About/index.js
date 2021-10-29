@@ -60,10 +60,10 @@ function About() {
                         </p>
                     </div>
                     <div className="about-grid-item">
-                        <div id="large-image"><img src="/images/about_0.png" alt="large-image"/></div>
+                        <div id="large-image"><img src="/images/about_0.png" alt=""/></div>
                         <div>
-                            <img id="small-image" src="/images/about_1.png" alt="small-image-1"/>
-                            <img id="small-image" src="/images/about_2.png" alt="small-image-2"/>
+                            <img id="small-image" src="/images/about_1.png" alt=""/>
+                            <img id="small-image" src="/images/about_2.png" alt=""/>
                             <div/>
                         </div>
                     </div>
