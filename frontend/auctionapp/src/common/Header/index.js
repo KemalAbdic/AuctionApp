@@ -2,6 +2,8 @@ import React from "react";
 import "./header.css";
 import {FacebookFill, InstagramFill} from "akar-icons";
 import {AiFillGooglePlusCircle, AiFillTwitterCircle} from "react-icons/all";
+import {Link} from "react-router-dom";
+import logo from "./../../Images/logo.png"
 
 
 function Header() {
@@ -20,22 +22,22 @@ function Header() {
                         <AiFillGooglePlusCircle/></a>
                 </div>
                 <div className="login">
-                    <a href="#">Login</a>
+                    <a href="/#">Login</a>
                     <span> or </span>
-                    <a href="#">Create an Account</a>
+                    <a href="/#">Create an Account</a>
                 </div>
             </div>
             <div className="white-header-container">
-                <img src="/images/logo.png" alt="logo"/>
-                {/* <input type="text" placeholder="Try enter: Shoes" className="search-bar"/>*/}
-                <div className="links">
-                    <a href="#">HOME</a>
-                    <a href="#">SHOP</a>
-                    <a href="#">MY ACCOUNT</a>
-                </div>
+                <Link to="/"><img src={logo} alt="logo"/></Link>
+            {/* <input type="text" placeholder="Try enter: Shoes" className="search-bar"/>*/}
+            <div className="links">
+                <a href="/#">HOME</a>
+                <a href="/#">SHOP</a>
+                <a href="/#">MY ACCOUNT</a>
             </div>
         </div>
-    )
+</div>
+)
 }
 
 export default Header;

@@ -4,43 +4,31 @@ import "./privacy.css";
 function Privacy() {
 
     return (
-        <div className="privacy-cont">
+        <div className="privacy-wrapper">
             <h3>Privacy and policy</h3>
-            <p className="privacy-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae lacinia
-                mi,
-                nec pellentesque
-                dolor.
-                Proin et ligula ornare, fringilla massa id, placerat velit. Sed dignissim cursus massa non luctus. Ut
-                consequat cursus magna, quis faucibus nisl sollicitudin ut. Vivamus luctus consequat nisi, nec tristique
-                mi tristique sed. Phasellus auctor ipsum nec nibh ultrices pulvinar. Integer tincidunt dictum quam at
-                cursus. Cras tellus neque, luctus commodo elit non, facilisis commodo ex. Praesent eu mauris ultricies,
-                malesuada eros vel, hendrerit dui. Nulla egestas urna nisi, vel faucibus ipsum semper ut.
-            </p>
-            <p className="privacy-text">Ut faucibus purus risus, sed blandit nisl porta vel. Maecenas urna nisl,
-                tincidunt id facilisis non,
-                semper vitae lacus. Praesent dolor mauris, tincidunt tincidunt aliquet a, sollicitudin vestibulum est.
-                Cras faucibus pulvinar ultricies. Fusce eu odio quis erat venenatis pellentesque sit amet vel purus.
-                Donec
-                rutrum neque sit amet neque egestas, sit amet porttitor sem fringilla. Ut ultrices augue nec porta
-                dictum. Duis dictum felis quis erat pretium efficitur. Vivamus laoreet, metus ut eleifend eleifend,
-                mauris velit
-                auctor ipsum, pellentesque dignissim ex urna eu felis. Donec venenatis dui condimentum tincidunt
-                posuere. Phasellus gravida orci turpis, id pellentesque risus fringilla nec. Donec sagittis faucibus
-                vehicula.
-                Praesent pulvinar, diam quis tincidunt sagittis, mauris est facilisis eros, id vehicula felis leo mattis
-                augue.
-                Nunc ut pharetra quam. Donec efficitur neque et nibh laoreet bibendum. Curabitur posuere ut felis eu
-                bibendum.
-            </p>
+            <div className="privacy-text">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat pretium
+                turpis, in eleifend mi laoreet sed. Donec ipsum mauris, venenatis sit amet porttitor id, laoreet eu
+                magna. In convallis diam volutpat libero tincidunt semper. Ut aliquet erat rutrum, venenatis lacus ut,
+                ornare lectus. Quisque congue ex sit amet diam malesuada, eget laoreet quam molestie. In id elementum
+                turpis. Curabitur quis tincidunt mauris. Duis pharetra a odio vitae consectetur. Nullam vitae lacinia
+                nisi, at porta sapien. Etiam vehicula augue at lacus tempus euismod. Nullam sit amet eros ut metus
+                pulvinar volutpat et elementum lacus. Cras mauris mi, vulputate ac justo vitae, fringilla vestibulum
+                sapien. Sed hendrerit nulla id luctus placerat. Sed venenatis ornare augue, et viverra dolor ullamcorper
+                id. Duis id quam hendrerit, mollis ex ut, varius ipsum.</p>
 
-            <p className="privacy-text">Sed vitae convallis ex. Sed a nulla a nibh malesuada iaculis. Aenean accumsan
-                at
-                dui eget blandit.
-                Nullam
-                fringilla nibh eget nisi pharetra ultricies. Donec ornare nibh id lorem luctus ullamcorper. Nam nec arcu
-                a massa finibus consequat. Ut volutpat semper arcu vitae feugiat. Suspendisse et est tempor, blandit
-                libero nec, efficitur tellus.
-            </p>
+                <p>Etiam bibendum viverra nulla, at cursus leo fringilla eget. In pellentesque viverra elit id vestibulum.
+                Sed eget leo suscipit, commodo urna vitae, efficitur ligula. Pellentesque non mauris blandit, ultrices
+                nibh consectetur, auctor velit. Nunc ac justo lacus. Vivamus et gravida ante. Quisque cursus augue
+                ligula, aliquam ullamcorper enim ultricies sit amet. In placerat sapien eu ligula commodo pharetra. Nunc
+                et facilisis dolor, ut condimentum metus. Phasellus lacinia efficitur diam sed pharetra. Nullam euismod
+                magna at mauris hendrerit scelerisque vitae vel leo. Cras interdum tellus in sapien fermentum consequat.</p>
+
+                <p>Sed sollicitudin non elit eu faucibus. Phasellus et enim ultricies, tincidunt velit eu, dictum dui.
+                Proin laoreet semper sapien vitae aliquet. Vestibulum accumsan nibh pharetra dui vulputate commodo.
+                Pellentesque a justo eu diam cursus auctor. Quisque sit amet maximus lacus, in mollis nunc. Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
         </div>
     )
 }

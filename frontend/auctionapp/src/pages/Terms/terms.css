@@ -6,21 +6,25 @@
     font-style: normal;
     font-weight: normal;
     margin: 140px 734px 147px 621px;
+    padding-bottom: 150px;
 }
 
 .terms-container h3 {
     font-size: 32px;
     line-height: 51px;
+    font-weight: normal;
 }
 
 .terms-container h6 {
     font-size: 20px;
     line-height: 24px;
     letter-spacing: 0.84px;
+    font-weight: normal;
 }
 
 .terms-text {
     font-size: 16px;
     line-height: 24px;
     color: #9B9B9B;
+    width: 560px;
 }

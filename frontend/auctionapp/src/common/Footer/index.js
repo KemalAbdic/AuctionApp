@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 function Footer() {
 
     return (
-        <div className="footer-container">
+        <footer className="footer-container">
             <div className="footer-content">
                 <div className="footer-content-text"> AUCTION</div>
                 <ul>
@@ -15,15 +15,14 @@ function Footer() {
                     <li><Link to="/terms">Terms and Conditions</Link></li>
                     <li><Link to="/privacy">Privacy and Policy</Link></li>
                 </ul>
-
             </div>
             <div className="footer-content">
                 <div className="footer-content-text"> GET IN TOUCH</div>
-                <a>Call Us at +123 797-567-2535</a>
-                <a>support@auction.com</a>
+                <span>Call&nbsp;Us&nbsp;at&nbsp;+123&nbsp;797-567-2535</span>
+                <span>support@auction.com</span>
                 <div className="social-networks">
                     <a href="https://www.facebook.com/AtlantBH" rel="noreferrer" target="_blank">
-                        <FacebookFill/></a>
+                        <FacebookFill /></a>
                     <a href="https://www.instagram.com/atlantbh" rel="noreferrer" target="_blank">
                         <InstagramFill/></a>
                     <a href="https://www.twitter.com/atlantbh" rel="noreferrer" target="_blank">
@@ -34,14 +33,13 @@ function Footer() {
             </div>
             <div className="footer-content">
                 <div className="footer-content-text">NEWSLETTER</div>
-                <label className="footer-contact">Enter your email address and get notified<br/>
-                    about new products. We hate spam!</label>
-                {/* <div className="footer-newsletter">
+                <label className="footer-contact">Enter your email address <br/> and get notified about new products. We hate spam!</label>
+                {/*<div className="footer-newsletter">
                     <input type="text" placeholder="Your Email address"/>
                     <button>GO <ChevronRight/></button>
                 </div>*/}
             </div>
-        </div>
+        </footer>
     )
 }
 

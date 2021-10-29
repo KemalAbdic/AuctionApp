@@ -6,6 +6,7 @@
     margin-right: 11.1%;
     margin-left: 11.1%;
     margin-top: 138px;
+    padding-bottom: 50px;
 }
 
 .about-container h3 {
@@ -20,14 +21,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 100px;
+    padding-bottom: 210px;
 }
 
-.about-container #about-grid .about-grid-item {
+.about-container #about-grid .about-grid-item p{
     color: #9B9B9B;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 0.63px;
-    line-height: 25px;
-    margin-bottom: 60px;
+    line-height: 24px;
+    margin-top: 32px;
 }
 
 .about-container #about-grid .about-grid-item img {
