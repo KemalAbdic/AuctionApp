@@ -3,12 +3,15 @@ import {BrowserRouter as Router} from "react-router-dom";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
 import Routes from "./routing/Routes";
+import Breadcrumbs from "./common/Breadcrumbs";
+
 
 function App() {
     return (
         <div>
             <Router>
                 <Header/>
+                <Breadcrumbs/>
                 <div>
                     <Routes/>
                 </div>

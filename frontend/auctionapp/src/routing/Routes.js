@@ -9,9 +9,9 @@ function Routes() {
     return (
         <div>
             <Switch>
-                <Route path="/about" component={About}/>
-                <Route path="/terms" component={Terms}/>
-                <Route path="/privacy" component={Privacy}/>
+                <Route exact path ="/about" render={props => <About {...props} />}/>
+                <Route exact path="/terms" render={props => <Terms {...props} />}/>
+                <Route exact path="/privacy" render={props => <Privacy {...props} />}/>
             </Switch>
         </div>
     )
