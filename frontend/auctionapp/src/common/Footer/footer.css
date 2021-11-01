@@ -7,10 +7,12 @@
     position: absolute;
     bottom: 0;
     min-height: 356px;
+    padding-left: 11%;
+    padding-right: 11%;
 }
 
 .footer-content {
-    font-family: 'Lato', sans-serif;
+    font-family: Lato, sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -21,16 +23,9 @@
     padding: 0;
     position: relative;
     margin-top: 33px;
-    margin-left: 11%;
-    margin-right: 11%;
     letter-spacing: 0.5px;
     flex-grow: 1;
     flex-wrap: wrap;
-}
-
-.footer-container .footer-content {
-    width: 250px;
-    flex-shrink: 1;
 }
 
 .footer-content span {
@@ -41,6 +36,8 @@
     color: #D8D8D8;
     opacity: 0.5;
     margin: 12px 0;
+    width: 250px;
+    flex-shrink: 1;
 }
 
 .footer-container ul {

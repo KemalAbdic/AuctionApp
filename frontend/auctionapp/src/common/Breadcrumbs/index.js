@@ -17,20 +17,17 @@ const Breadcrumbs = props => {
             })}
             </div>
             <div className="breadcrumb-right">
-                {pathnames.length > 0 ? (
-                    <Anchor onClick={() => history.push("/")}>Shop</Anchor>
-                ) : (
-                    <>Shop</>
+                {pathnames.length > 0 && (<Anchor onClick={() => history.push("/")}>Shop</Anchor>
                 )}
                 {pathnames.map((name, index) => {
                     const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
                     const isLast = index === pathnames.length - 1;
                     return isLast ? (
                         <span className="purple-text" key={name}>
-                                <span>
-                                <Icon icon="akar-icons:arrow-right" color="#9b9b9b" inline={true}/>
-                                </span>
-                            {pages[name]}</span>
+                                <span className="icon">
+                                    <Icon icon="akar-icons:arrow-right" color="#9b9b9b" width="16" height="16"/>
+                                </span> {pages[name]}
+                        </span>
                     ) : (
                         <Anchor key={name} onClick={() => history.push(routeTo)}>
                             {name}

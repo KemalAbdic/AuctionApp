@@ -39,6 +39,11 @@
 
 }
 
+.icon {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
 .page-title {
     font-family: Lato, sans-serif;
     font-style: normal;

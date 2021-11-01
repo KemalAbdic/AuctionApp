@@ -3,10 +3,10 @@
 }
 
 .about-container {
-    margin-right: 11.1%;
-    margin-left: 11.1%;
-    margin-top: 138px;
+    margin: auto;
     padding-bottom: 50px;
+    padding-left: 11.1%;
+
 }
 
 .about-container h3 {

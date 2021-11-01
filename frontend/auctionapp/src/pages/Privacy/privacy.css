@@ -4,8 +4,11 @@
     font-family: Lato, sans-serif;
     font-style: normal;
     font-weight: normal;
-    margin: 140px 734px 147px 621px;
-    padding-bottom: 200px;
+    padding-bottom: 17%;
+    width: 548px;
+    text-align: left;
+    margin: auto;
+
 }
 
 .privacy-text {
@@ -14,6 +17,8 @@
     color: #9B9B9B;
     width: 548px;
     height: 604px;
+    text-align: left;
+    margin: auto;
 }
 
 .privacy-wrapper h3 {

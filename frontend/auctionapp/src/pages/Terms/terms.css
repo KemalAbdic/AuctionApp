@@ -1,12 +1,14 @@
 .terms-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     font-family: Lato, sans-serif;
     font-style: normal;
     font-weight: normal;
-    margin: 140px 734px 147px 621px;
-    padding-bottom: 150px;
+    padding-bottom: 17%;
+    width: 548px;
+    text-align: left;
+    margin: auto;
+
 }
 
 .terms-container h3 {
@@ -27,4 +29,5 @@
     line-height: 24px;
     color: #9B9B9B;
     width: 560px;
+
 }

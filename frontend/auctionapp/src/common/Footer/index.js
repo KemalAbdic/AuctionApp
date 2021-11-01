@@ -22,7 +22,7 @@ function Footer() {
                 <span>support@auction.com</span>
                 <div className="social-networks">
                     <a href="https://www.facebook.com/AtlantBH" rel="noreferrer" target="_blank">
-                        <FacebookFill /></a>
+                        <FacebookFill/></a>
                     <a href="https://www.instagram.com/atlantbh" rel="noreferrer" target="_blank">
                         <InstagramFill/></a>
                     <a href="https://www.twitter.com/atlantbh" rel="noreferrer" target="_blank">
@@ -31,9 +31,10 @@ function Footer() {
                         <AiFillGooglePlusCircle/></a>
                 </div>
             </div>
-            <div className="footer-content">
+            <div className="footer-content" style={{"width": "41%"}}>
                 <div className="footer-content-text">NEWSLETTER</div>
-                <label className="footer-contact">Enter your email address <br/> and get notified about new products. We hate spam!</label>
+                <label className="footer-contact">Enter your email address and get notified about <br/> new products. We
+                    hate spam!</label>
                 {/*<div className="footer-newsletter">
                     <input type="text" placeholder="Your Email address"/>
                     <button>GO <ChevronRight/></button>
