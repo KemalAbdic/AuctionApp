@@ -1,0 +1,28 @@
+.privacy-wrapper {
+    display: flex;
+    flex-direction: column;
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    padding-bottom: 17%;
+    width: 548px;
+    text-align: left;
+    margin: auto;
+
+}
+
+.privacy-text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #9B9B9B;
+    width: 548px;
+    height: 604px;
+    text-align: left;
+    margin: auto;
+}
+
+.privacy-wrapper h3 {
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 51px;
+}

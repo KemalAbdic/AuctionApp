@@ -1,0 +1,55 @@
+
+.breadcrumb {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    color: #9B9B9B;
+    width: 100%;
+    height: 60px;
+    padding: 0;
+    background: #FCFCFC;
+
+}
+.breadcrumb ol {
+    padding-left: 11.1%;
+    padding-right: 11.1%;
+}
+
+.breadcrumb-right {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    letter-spacing: 0.63px;
+    color: #9B9B9B;
+    padding-right: 210px;
+}
+
+.purple-text {
+    size: 20px;
+    color: #8367D8;
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+}
+
+.icon {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.page-title {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    padding-left: 210px;
+}
