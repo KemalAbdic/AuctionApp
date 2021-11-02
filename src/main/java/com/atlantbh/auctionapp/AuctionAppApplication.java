@@ -9,5 +9,4 @@ public class AuctionAppApplication {
     public static void main(String[] args) {
         SpringApplication.run(AuctionAppApplication.class, args);
     }
-
 }

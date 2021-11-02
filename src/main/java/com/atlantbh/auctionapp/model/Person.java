@@ -15,6 +15,7 @@ public class Person {
     private Long id;
 
     @NotNull
+    @Column(unique = true)
     private String email;
 
     @NotNull
@@ -78,6 +79,13 @@ public class Person {
         this.state = state;
         this.country = country;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Person(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 
     public Person() {
