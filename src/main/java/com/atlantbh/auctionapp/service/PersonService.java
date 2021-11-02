@@ -19,7 +19,6 @@ public class PersonService {
     }
 
     public Person register(RegistrationRequest registerRequest) {
-
         if (personRepository.existsByEmail(registerRequest.getEmail()))
             throw new ValidationException("Email already in use");
 

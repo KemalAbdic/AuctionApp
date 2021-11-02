@@ -2,10 +2,10 @@ package com.atlantbh.auctionapp.request;
 
 public class RegistrationRequest {
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    private final String password;
 
     public RegistrationRequest(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
