@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
 
     @NotNull
@@ -19,14 +18,12 @@ public class Person {
     private String email;
 
     @NotNull
-    @Size(max = 128)
+    @Size(max = 255)
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @NotNull
     private Gender gender;
 
-    @NotNull
     private LocalDateTime birthDate;
 
     @Size(max = 50)
@@ -37,19 +34,15 @@ public class Person {
     @NotNull
     private String lastName;
 
-    @NotNull
     private String street;
 
     @Size(max = 16)
-    @NotNull
     private String zipCode;
 
-    @NotNull
     private String city;
 
     private String state;
 
-    @NotNull
     private String country;
 
     @Size(max = 16)
