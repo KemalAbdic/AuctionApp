@@ -1,8 +1,54 @@
-import React from "react";
+import React, {useState} from "react";
 import "./register.css";
-import {Link} from "react-router-dom";
+import {Button, Form} from "react-bootstrap";
+import axios from "axios";
+import {useHistory} from "react-router-dom";
 
-function Register() {
+
+const Register = () => {
+    let history = useHistory();
+
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+    });
+
+    const {firstName, lastName, email, password} = formData;
+
+    const onChange = (e) =>
+        setFormData({...formData, [e.target.name]: e.target.value});
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        console.log(formData);
+        const newUser = {
+            firstName,
+            lastName,
+            email,
+            password,
+        };
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+            };
+            const body = JSON.stringify(newUser);
+            console.log(body)
+            const res = await axios.post("http://localhost:8080" + "/auth/register", body, config);
+            if (res.data) {
+                return JSON.stringify(res.data);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+
+    };
+
 
     return (
         <div className="register-wrapper">
@@ -10,38 +56,68 @@ function Register() {
                 <div className="register-form-title">
                     <h5>REGISTER</h5>
                 </div>
-                <form>
+                <Form onSubmit={onSubmit}>
                     <div className="all-input-fields">
                         <div className="input-field">
-                            <label>First name</label>
-                            <input type="text" className="register-text-input" id="firstName"
-                                   placeholder="Enter first name"/>
+                            <Form.Label>First name</Form.Label>
+                            <Form.Control
+                                onChange={onChange}
+                                type="text"
+                                className="register-text-input"
+                                id="firstName"
+                                name="firstName"
+                                value={firstName}
+                                placeholder="Enter first name"
+                            />
                         </div>
                         <div className="input-field">
-                            <label>Last name</label>
-                            <input type="text" className="register-text-input" id="lastName"
-                                   placeholder="Enter last name"/>
+                            <Form.Label>Last name</Form.Label>
+                            <Form.Control
+                                onChange={onChange}
+                                type="text"
+                                className="register-text-input"
+                                id="lastName"
+                                name="lastName"
+                                value={lastName}
+                                placeholder="Enter last name"
+                            />
                         </div>
                         <div className="input-field">
-                            <label>Enter email</label>
-                            <input type="email" className="register-text-input" id="email"
-                                   placeholder="Enter email"/>
+                            <Form.Label>Enter email</Form.Label>
+                            <Form.Control
+                                onChange={onChange}
+                                type="email"
+                                className="register-text-input"
+                                id="email"
+                                name="email"
+                                value={email}
+                                placeholder="Enter email"
+                            />
                         </div>
                         <div className="input-field">
-                            <label>Password</label>
-                            <input type="password" className="register-text-input" id="password"
-                                   placeholder="Password"/>
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                onChange={onChange}
+                                type="password"
+                                className="register-text-input"
+                                id="password"
+                                name="password"
+                                value={password}
+                                placeholder="Password"
+                            />
                         </div>
                     </div>
                     <div className="register-button">
-                        <button type="submit" className="register-button">
+                        <Button type="submit"
+                                className="register-button">
                             REGISTER
-                        </button>
+                        </Button>
                     </div>
                     <div className="already-registered">
-                        <span>Already have an account? <Link to="/"> Login</Link></span>
+                        <span>Already have an account? <label
+                            onClick={() => history.push("/login", {from: 'register'})}> Login</label></span>
                     </div>
-                </form>
+                </Form>
             </div>
         </div>
     )

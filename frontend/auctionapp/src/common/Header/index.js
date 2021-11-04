@@ -24,7 +24,7 @@ function Header() {
                 <div className="login">
                     <a href="/#">Login</a>
                     <span> or </span>
-                    <a href="/#">Create an Account</a>
+                    <Link to="/register">Create an Account</Link>
                 </div>
             </div>
             <div className="white-header-container">
