@@ -11,21 +11,19 @@ import java.time.LocalDateTime;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
 
     @NotNull
+    @Column(unique = true)
     private String email;
 
     @NotNull
-    @Size(max = 128)
+    @Size(max = 255)
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @NotNull
     private Gender gender;
 
-    @NotNull
     private LocalDateTime birthDate;
 
     @Size(max = 50)
@@ -36,19 +34,15 @@ public class Person {
     @NotNull
     private String lastName;
 
-    @NotNull
     private String street;
 
     @Size(max = 16)
-    @NotNull
     private String zipCode;
 
-    @NotNull
     private String city;
 
     private String state;
 
-    @NotNull
     private String country;
 
     @Size(max = 16)
@@ -78,6 +72,13 @@ public class Person {
         this.state = state;
         this.country = country;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Person(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 
     public Person() {
