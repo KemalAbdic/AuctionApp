@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import "./register.css";
 import {Button, Form} from "react-bootstrap";
-import axios from "axios";
 import {useHistory} from "react-router-dom";
+import {register, setSession} from "../../services/AuthService";
+
 
 
 const Register = () => {
@@ -23,7 +24,6 @@ const Register = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(formData);
         const newUser = {
             firstName,
             lastName,
@@ -31,22 +31,11 @@ const Register = () => {
             password,
         };
         try {
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
-            };
-            const body = JSON.stringify(newUser);
-            console.log(body)
-            const res = await axios.post("http://localhost:8080" + "/auth/register", body, config);
-            if (res.data) {
-                return JSON.stringify(res.data);
-            }
+            const person = await register(newUser);
+            setSession(person, person.token);
         } catch (err) {
             console.error(err);
         }
-
     };
 
 

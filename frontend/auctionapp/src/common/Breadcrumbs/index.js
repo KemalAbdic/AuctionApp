@@ -8,7 +8,10 @@ import {Icon} from '@iconify/react';
 const Breadcrumbs = props => {
     const {history, location: {pathname}} = props;
     const pathnames = pathname.split("/").filter(x => x);
-    const pages = {'about': 'About Us', 'privacy': 'Privacy and policy', 'terms': 'Terms and Conditions', 'register' : "Register"};
+    const pages = {
+        'about': 'About Us', 'privacy': 'Privacy and policy',
+        'terms': 'Terms and Conditions', 'register' : 'Register',
+        'login' : 'Login'};
 
     return (
         <Breadcrumb aria-label="breadcrumb">

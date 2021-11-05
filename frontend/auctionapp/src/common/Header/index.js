@@ -22,7 +22,7 @@ function Header() {
                         <AiFillGooglePlusCircle/></a>
                 </div>
                 <div className="login">
-                    <a href="/#">Login</a>
+                    <Link to="/login">Login</Link>
                     <span> or </span>
                     <Link to="/register">Create an Account</Link>
                 </div>
