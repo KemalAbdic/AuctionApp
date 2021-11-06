@@ -27,9 +27,11 @@
     justify-content: center;
     align-items: center;
 }
+
 .all-input-fields {
     padding: 45px 95px 32px;
 }
+
 .input-field {
     padding-bottom: 32px;
 }
@@ -44,7 +46,13 @@
     padding-left: 16px;
     margin-top: 3%;
     font-size: 16px;
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 27px;
+    color: #252525;
 }
+
 .register-text-input label {
     font-family: Lato, sans-serif;
     font-style: normal;
@@ -55,7 +63,7 @@
 }
 
 .register-button {
-    width: 560px;
+    width: 568px;
     height: 60px;
     border: 3px solid #8367D8;
     background-color: #8367D8;
@@ -65,9 +73,10 @@
     font-style: normal;
     font-weight: bold;
     letter-spacing: 1px;
-    margin: auto auto 48px;
+    margin: 48px auto;
 
 }
+
 .already-registered {
     font-family: Lato, sans-serif;
     font-style: normal;
@@ -79,9 +88,17 @@
     justify-content: center;
     margin-left: 30%;
 }
-.already-registered a {
 
+.already-registered a {
     margin-left: 32px;
     text-decoration: none;
     color: #8367D8;
+}
+
+.invalid-feedback {
+    color: red;
+}
+
+.register-button:hover {
+    cursor:pointer;
 }

@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export const register = async (user) => {
-        return (await axios.post("http://localhost:8080/auth/register", user)).data;
-    };
+export const register = async (person) => {
+    return (await axios.post("http://localhost:8080/auth/register", person)).data;
+};
 
-export const login = async (user) => {
-        return (await axios.post("http://localhost:8080/auth/login", user)).data;
-    };
+export const login = async (person) => {
+    return (await axios.post("http://localhost:8080/auth/login", person)).data;
+};
 
 export const setSession = (person, token) => {
     localStorage.setItem('current-token', token);
@@ -18,3 +18,27 @@ export const removeSession = () => {
     localStorage.removeItem('current-user');
 };
 
+export const getToken = () => {
+    return localStorage.getItem('current-token') || null;
+}
+
+export const getPerson = () => {
+    const person = localStorage.getItem('current-user');
+    if (person) return JSON.parse(person);
+    else return null;
+}
+
+export const loggedIn = () => {
+    return getPerson() != null;
+}
+
+export const setPersonCredentials = (email, password) => {
+    localStorage.setItem('current-email', email);
+    localStorage.setItem('current-password', password);
+}
+
+export const getPersonCredentials = () => {
+    let email = localStorage.getItem('current-email');
+    let password = localStorage.getItem('current-password');
+    return {email, password};
+}

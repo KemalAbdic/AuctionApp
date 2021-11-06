@@ -11,8 +11,7 @@
     border: 1px solid #D8D8D8;
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    align-items: flex-start;
 }
 
 .login-form-title {
@@ -28,9 +27,11 @@
     justify-content: center;
     align-items: center;
 }
+
 .all-input-fields {
     padding: 45px 95px 32px;
 }
+
 .input-field {
     padding-bottom: 32px;
 }
@@ -45,18 +46,15 @@
     padding-left: 16px;
     margin-top: 3%;
     font-size: 16px;
-}
-.login-text-input label {
     font-family: Lato, sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
     line-height: 27px;
     color: #252525;
 }
 
 .login-button {
-    width: 560px;
+    width: 568px;
     height: 60px;
     border: 3px solid #8367D8;
     background-color: #8367D8;
@@ -66,7 +64,7 @@
     font-style: normal;
     font-weight: bold;
     letter-spacing: 1px;
-    margin: auto auto 48px;
+    margin: 48px auto;
 }
 
 .login-button:hover {
@@ -86,4 +84,8 @@
 .reset-password a {
     text-decoration: none;
     color: #8367D8;
+}
+
+.invalid-feedback {
+    color: red;
 }
