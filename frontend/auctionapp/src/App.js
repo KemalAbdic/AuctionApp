@@ -5,7 +5,6 @@ import Footer from "./common/Footer";
 import Routes from "./routing/Routes";
 import Breadcrumbs from "./common/Breadcrumbs";
 
-
 function App() {
     return (
         <div>

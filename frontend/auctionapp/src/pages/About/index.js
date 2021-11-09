@@ -1,12 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./about.css";
 import about_0 from "./../../Images/about_0.png"
 import about_1 from "./../../Images/about_1.png"
 import about_2 from "./../../Images/about_2.png"
+import {useBreadcrumbContext} from "../../BreadcrumbContext";
 
 
 function About() {
-
+    const {setBreadcrumb} = useBreadcrumbContext();
+    useEffect(() => {
+        setBreadcrumb("ABOUT US", [{text: "SHOP", href: "/shop"}, {text: "ABOUT US"}]);
+    }, [])
     return (
         <div className="container-wrapper">
             <div className="about-container">

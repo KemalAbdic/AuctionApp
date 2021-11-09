@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BreadcrumbProvider} from "./BreadcrumbContext";
 
 ReactDOM.render(
     <React.StrictMode>
-
-        <App/>
+        <BreadcrumbProvider>
+            <App/>
+        </BreadcrumbProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );

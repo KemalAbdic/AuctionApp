@@ -91,3 +91,11 @@
     color: #FFFFFF;
 }
 
+.user-name {
+    color: #FFFFFF;
+    max-width: 40vw;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 5px;
+    cursor: pointer;
+}

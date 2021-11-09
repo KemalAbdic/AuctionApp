@@ -1,12 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import "./header.css";
 import {FacebookFill, InstagramFill} from "akar-icons";
 import {AiFillGooglePlusCircle, AiFillTwitterCircle} from "react-icons/all";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import logo from "./../../Images/logo.png"
+import {getPerson, getToken} from "../../services/AuthService";
 
+let person = getPerson();
 
 function Header() {
+    const [loggedIn] = useState(getToken() != null);
+    const history = useHistory();
+
+    const logout = () => {
+        localStorage.clear();
+        window.location.reload();
+        history.push("/login");
+    }
 
     return (
         <div>
@@ -22,22 +32,33 @@ function Header() {
                         <AiFillGooglePlusCircle/></a>
                 </div>
                 <div className="login">
-                    <a href="/#">Login</a>
-                    <span> or </span>
-                    <a href="/#">Create an Account</a>
+                    {!loggedIn ?
+                        <div>
+                            <Link to="/login">Login</Link>
+                            <span> or </span>
+                            <Link to="/register">Create an Account</Link>
+                        </div>
+                        :
+                        <div>
+                            <span> {person.person.firstName + ' ' + person.person.lastName}</span>
+                            <Link onClick={logout} to='/'>
+                                Logout
+                            </Link>
+
+                        </div>
+                    }
                 </div>
             </div>
             <div className="white-header-container">
                 <Link to="/"><img src={logo} alt="logo"/></Link>
-            {/* <input type="text" placeholder="Try enter: Shoes" className="search-bar"/>*/}
-            <div className="links">
-                <a href="/#">HOME</a>
-                <a href="/#">SHOP</a>
-                <a href="/#">MY ACCOUNT</a>
+                <div className="links">
+                    <a href="/#">HOME</a>
+                    <a href="/#">SHOP</a>
+                    <a href="/#">MY ACCOUNT</a>
+                </div>
             </div>
         </div>
-</div>
-)
+    )
 }
 
 export default Header;
