@@ -4,7 +4,7 @@ import {FacebookFill, InstagramFill} from "akar-icons";
 import {AiFillGooglePlusCircle, AiFillTwitterCircle} from "react-icons/all";
 import {Link, useHistory} from "react-router-dom";
 import logo from "./../../Images/logo.png"
-import {getPerson, getToken} from "../../services/AuthService";
+import {getPerson, getToken, removeSession} from "../../services/AuthService";
 
 let person = getPerson();
 
@@ -13,7 +13,7 @@ function Header() {
     const history = useHistory();
 
     const logout = () => {
-        localStorage.clear();
+        removeSession();
         window.location.reload();
         history.push("/login");
     }
