@@ -55,23 +55,7 @@ const Login = () => {
             window.location.reload();
         } catch (e) {
             setTimeout(function () {
-                document.getElementById("e")
-                    .style.cssText = `
-                                     width: 100%;
-                                     height: 60px;
-                                     font-family: "Lato", sans-serif;
-                                     font-size: 24px;
-                                     font-weight: normal;
-                                     letter-spacing: 0.84px;
-                                     display: flex;
-                                     justify-content: center;
-                                     align-items: center;
-                                     opacity: 1;
-                                     margin-bottom: 24px;
-                                     border: 1px solid #f1a899;
-                                     background: #fddfdf;
-                                     color: #5f3f3f
-                                                            `;
+                document.getElementById("e").classList.add('login-error');
                 document.getElementById("e").innerHTML = "<span>Wrong username or password!</span>";
                 setTimeout(function () {
                     document.getElementById("e").style.display = "none";
@@ -84,10 +68,8 @@ const Login = () => {
 
 
     return (
-
         <div className="login-wrapper">
             <div id="e">
-
             </div>
             <div className="login-form-container">
                 <div className="login-form-title">
@@ -110,12 +92,13 @@ const Login = () => {
                           errors,
                       }) => (
                         <Form noValidate className="all-input-fields" onSubmit={handleSubmit}>
-                            <Form.Group className="input-field">
+                            <Form.Group className="input-field" controlId="email">
                                 <Form.Label>Enter Email</Form.Label>
                                 <Form.Control
                                     className="login-text-input"
                                     type="email"
                                     name="email"
+                                    id="email"
                                     onChange={handleChange}
                                     isInvalid={(touched.email && errors.email)}
                                 />
@@ -123,19 +106,16 @@ const Login = () => {
                                     {errors.email}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group controlId="password">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     className="login-text-input"
                                     type="password"
                                     name="password"
+                                    id="password"
                                     onChange={handleChange}
                                     defaultValue={personCredentials.password || ""}
-                                    isInvalid={(errors.email && touched.email) && <span style={{
-                                        color: 'red',
-                                        fontSize: '0.8rem',
-                                        marginLeft: '1.5rem'
-                                    }}>{errors.email}</span>}
+                                    isInvalid={(errors.email && touched.email)}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     {errors.password}

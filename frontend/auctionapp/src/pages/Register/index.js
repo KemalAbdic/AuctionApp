@@ -41,24 +41,35 @@ const Register = () => {
 
     const handleSubmit = async (newUser) => {
         setLoading(true);
-        const person = await register(newUser);
-        setSession(person, person.token);
-        setLoading(false);
-        history.push("/");
-        window.location.reload();
-        loggedIn(true);
+        try {
+            const person = await register(newUser);
+            setSession(person, person.token);
+            setLoading(false);
+            history.push("/");
+            window.location.reload();
+            loggedIn(true);
+        } catch (e) {
+            setTimeout(function () {
+                document.getElementById("e").classList.add('register-error');
+                document.getElementById("e").innerHTML = "<span>Email is already in use!</span>";
+                setTimeout(function () {
+                    document.getElementById("e").style.display = "none";
+                }, 2000);
+            }, 1000);
+        }
         setLoading(false);
     }
 
     return (
         <div className="register-wrapper">
+            <div id="e">
+            </div>
             <div className="register-form-container">
                 <div className="register-form-title">
                     <h5>REGISTER</h5>
                 </div>
                 <Formik validationSchema={validationSchema}
                         validateOnChange={false}
-
                         initialValues={{firstName: "", lastName: "", email: "", password: ""}}
                         onSubmit={handleSubmit}>
                     {({
@@ -68,12 +79,13 @@ const Register = () => {
                           errors,
                       }) => (
                         <Form noValidate className="all-input-fields" onSubmit={handleSubmit}>
-                            <Form.Group className="input-field">
+                            <Form.Group className="input-field" controlId="firstName">
                                 <Form.Label>First Name</Form.Label>
                                 <Form.Control
                                     className="register-text-input"
                                     type="text"
                                     name="firstName"
+                                    id="firstName"
                                     onChange={handleChange}
                                     isInvalid={(touched.firstName && errors.firstName)}
                                 />
@@ -81,12 +93,13 @@ const Register = () => {
                                     {errors.firstName}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group className="input-field">
+                            <Form.Group className="input-field" controlId="lastName">
                                 <Form.Label>Last Name</Form.Label>
                                 <Form.Control
                                     className="register-text-input"
                                     type="text"
                                     name="lastName"
+                                    id="lastName"
                                     onChange={handleChange}
                                     isInvalid={(touched.lastName && errors.lastName)}
                                 />
@@ -94,12 +107,13 @@ const Register = () => {
                                     {errors.lastName}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group className="input-field">
+                            <Form.Group className="input-field" controlId="email">
                                 <Form.Label>Enter Email</Form.Label>
                                 <Form.Control
                                     className="register-text-input"
                                     type="email"
                                     name="email"
+                                    id="email"
                                     onChange={handleChange}
                                     isInvalid={(touched.email && errors.email)}
                                 />
@@ -107,12 +121,13 @@ const Register = () => {
                                     {errors.email}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group controlId="password">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     className="register-text-input"
                                     type="password"
                                     name="password"
+                                    id="password"
                                     onChange={handleChange}
                                     isInvalid={(touched.password && errors.password)}
                                 />
