@@ -42,3 +42,8 @@ export const getPersonCredentials = () => {
     let password = localStorage.getItem('current-password');
     return {email, password};
 }
+
+export const removePersonCredentials = () => {
+    localStorage.removeItem('current-email');
+    localStorage.removeItem('current-password');
+}

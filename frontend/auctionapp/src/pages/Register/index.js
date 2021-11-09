@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./register.css";
 import {Button, Form} from "react-bootstrap";
 import {Link, useHistory} from "react-router-dom";
 import {loggedIn, register, setSession} from "../../services/AuthService";
 import {Formik} from "formik";
 import * as yup from 'yup';
+import {useBreadcrumbContext} from "../../BreadcrumbContext";
 
 
 const Register = () => {
+
+    const {setBreadcrumb} = useBreadcrumbContext();
+    useEffect(() => {
+        setBreadcrumb("REGISTER", []);
+    }, []);
+
     const history = useHistory();
     const [loading, setLoading] = React.useState(false);
 
@@ -34,15 +41,12 @@ const Register = () => {
 
     const handleSubmit = async (newUser) => {
         setLoading(true);
-        try {
-            const person = await register(newUser);
-            setSession(person, person.token);
-            setLoading(false);
-            history.push("/");
-            window.location.reload();
-            loggedIn(true);
-        } catch (e) {
-        }
+        const person = await register(newUser);
+        setSession(person, person.token);
+        setLoading(false);
+        history.push("/");
+        window.location.reload();
+        loggedIn(true);
         setLoading(false);
     }
 
@@ -53,6 +57,8 @@ const Register = () => {
                     <h5>REGISTER</h5>
                 </div>
                 <Formik validationSchema={validationSchema}
+                        validateOnChange={false}
+
                         initialValues={{firstName: "", lastName: "", email: "", password: ""}}
                         onSubmit={handleSubmit}>
                     {({
@@ -61,7 +67,7 @@ const Register = () => {
                           touched,
                           errors,
                       }) => (
-                        <Form className="all-input-fields" onSubmit={handleSubmit}>
+                        <Form noValidate className="all-input-fields" onSubmit={handleSubmit}>
                             <Form.Group className="input-field">
                                 <Form.Label>First Name</Form.Label>
                                 <Form.Control
@@ -118,8 +124,8 @@ const Register = () => {
                                 REGISTER
                             </Button>
                             <Form.Text className="already-registered">
-                                <Link to="/">
-                                    Forgot password?
+                                <Link to="/login">
+                                    Already registered?
                                 </Link>
                             </Form.Text>
                         </Form>
