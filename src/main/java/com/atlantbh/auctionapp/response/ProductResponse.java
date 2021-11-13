@@ -17,7 +17,7 @@ public class ProductResponse {
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
-        this.startingPrice = getStartingPrice();
+        this.startingPrice = product.getStartingPrice();
         this.auctionEnd = product.getAuctionEnd();
         this.pictures = productPictures;
     }

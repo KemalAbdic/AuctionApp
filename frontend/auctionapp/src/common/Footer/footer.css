@@ -93,3 +93,7 @@
     align-items: center;
     padding-right: 17px;
 }
+
+.social-networks a:hover {
+    color: #FFFFFF;
+}

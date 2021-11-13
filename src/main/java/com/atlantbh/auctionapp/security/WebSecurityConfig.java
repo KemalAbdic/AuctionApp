@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers().authenticated()
-                .antMatchers("/auth/**").permitAll();
+                .antMatchers("/**").permitAll();
     }
 
     @Bean
