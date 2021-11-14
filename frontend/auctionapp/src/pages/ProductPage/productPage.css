@@ -10,20 +10,22 @@
     position: static;
     display: flex;
     flex-wrap: wrap;
-    margin-right: 40px;
     width: 50%;
     padding-top: 32px;
+    margin-right: 117px;
 }
 
-.product-image {
+.product-picture {
     object-fit: fill;
     width: 100%;
-    height: 550px;
+    height: auto;
 }
-.product-image-small {
+
+.product-picture-small {
+    margin-top: 3%;
     width: 120px;
     height: 91px;
-    margin-right: 24.5px;
+    margin-right: 25px;
 }
 
 .product-page-title {
@@ -65,12 +67,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: normal;
-    padding: 30px 32px 16px;
+    padding: 30px 15px 16px 32px;
     position: static;
     width: 270px;
     height: 137px;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     border: 1px solid #E3E3E3;
     box-sizing: border-box;
     margin-bottom: 64px;
@@ -92,27 +94,26 @@ strong {
 .bid-entry input {
     width: 270px;
     height: 54px;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     border: 1px solid #E3E3E3;
     box-sizing: border-box;
     padding-left: 24px;
     color: #9B9B9B;
-    margin-right: 100px;
+    margin-right: 92px;
 }
 
-.bid-entry button {
+.bid-button {
     width: 192px;
     height: 51px;
     left: 355px;
-    top: 0px;
+    top: 0;
     background: #FFFFFF;
     color: #252525;
     font-weight: bold;
     border: 3px solid #8367D8;
     box-sizing: border-box;
     cursor: pointer;
-
 }
 
 .gray-line {
@@ -130,4 +131,16 @@ strong {
     line-height: 24px;
     color: #9B9B9B;
     padding-top: 32px;
+}
+
+.bid-button-text {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 27px;
+    letter-spacing: 0.63px;
+    color: #252525;
+    padding-right: 20px;
+    height: 27px;
 }
