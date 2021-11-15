@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getProduct} from "../../services/ProductService";
 import {useBreadcrumbContext} from "../../BreadcrumbContext";
-import {Button, Image} from "react-bootstrap";
+import {Button, Form, FormControl, Image} from "react-bootstrap";
 import "./productPage.css"
 import {getBidsForProduct} from "../../services/BidService";
 import {Icon} from "@iconify/react";
@@ -37,6 +37,10 @@ const ProductPage = ({match}) => {
         fetchData();
     }, [match.params.id])
 
+    const highestBid = bids[0] === undefined ? 0 : bids[0].bidAmount;
+    const currentHighestBid = highestBid +1;
+    const placeholderValue = "Enter $" + currentHighestBid + " or higher";
+
     return product != null ? (
         <div className="product-container">
             <div className="product-pictures-container">
@@ -61,18 +65,18 @@ const ProductPage = ({match}) => {
                 </h1>
                 <div className="bid-container">
                     <div className="bid-info">
-                        <span>Highest bid: <strong>{bids[0] === undefined ? 0 : bids[0].bidAmount}$</strong></span>
+                        <span>Highest bid: <strong>{highestBid}$</strong></span>
                         <span>Number of bids: <strong>{bids.length}</strong></span>
                         <span>Time left: <strong>{DateTime.fromISO(product.auctionEnd).diff(DateTime.fromISO(startDate),
                             ['days']).toFormat("d 'days' h'h' m'm' s's'")}</strong></span>
                     </div>
-                    <div className="bid-entry">
-                        <input type="text" placeholder="Enter $57.00 or higher"/>
+                    <Form className="bid-entry">
+                        <FormControl type="text" placeholder={placeholderValue}/>
                         <Button className="bid-button">
                             <span className="bid-button-text">PLACE BID</span>
                             <Icon icon={chevronRight} color="#252525" width="16" height="16" inline={true}/>
                         </Button>
-                    </div>
+                    </Form>
                 </div>
                 <div><strong>Details</strong></div>
                 <div className="gray-line"/>
