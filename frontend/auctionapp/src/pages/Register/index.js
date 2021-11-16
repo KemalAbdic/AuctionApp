@@ -20,10 +20,14 @@ const Register = () => {
 
     const validationSchema = yup.object().shape({
         firstName: yup.string()
+            .min(2, "*First name must have at least 2 characters")
+            .max(50, "*First name can't be longer than 50 characters")
             .required("*First name is required")
             .matches(/^[^\p{P}\p{S}\s\d]*$/u,
                 "*The first name can't contain special characters, numbers or whitespaces"),
         lastName: yup.string()
+            .min(2, "*Last name must have at least 2 characters")
+            .max(50, "*Last name can't be longer than 50 characters")
             .required("*Last name is required")
             .matches(/^([^\p{P}\p{S}\s\d]+[ -]?[^\p{P}\p{S}\s\d]+)*$/u,
                 "*The last name can only contain characters and space or dash"),

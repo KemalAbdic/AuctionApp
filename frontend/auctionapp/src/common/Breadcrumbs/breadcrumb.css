@@ -17,6 +17,7 @@
     list-style-type: none;
     float: left;
     text-align: center;
+    padding-right: 10px;
 }
 
 
@@ -35,6 +36,7 @@
     letter-spacing: 0.63px;
     color: #9B9B9B;
     margin-right: 22px;
+    text-transform: capitalize;
 }
 
 .purple-text {
