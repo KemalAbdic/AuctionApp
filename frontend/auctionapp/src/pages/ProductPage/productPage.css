@@ -18,7 +18,7 @@
 .product-picture {
     object-fit: fill;
     width: 100%;
-    height: auto;
+    height: 512px;
 }
 
 .product-picture-small {
@@ -89,6 +89,9 @@ strong {
 .bid-entry {
     background: #FFFFFF;
     margin-bottom: 64px;
+    display: inline;
+    overflow: hidden;
+
 }
 
 .bid-entry input {
@@ -100,20 +103,18 @@ strong {
     box-sizing: border-box;
     padding-left: 24px;
     color: #9B9B9B;
-    margin-right: 92px;
+    margin-right: 10%;
+
 }
 
 .bid-button {
     width: 192px;
     height: 51px;
-    left: 355px;
-    top: 0;
     background: #FFFFFF;
     color: #252525;
     font-weight: bold;
     border: 3px solid #8367D8;
     box-sizing: border-box;
-    cursor: pointer;
 }
 
 .gray-line {
@@ -130,7 +131,6 @@ strong {
     font-size: 16px;
     line-height: 24px;
     color: #9B9B9B;
-    padding-top: 32px;
 }
 
 .bid-button-text {
@@ -143,4 +143,26 @@ strong {
     color: #252525;
     padding-right: 20px;
     height: 27px;
+}
+
+.bid-container {
+    display: inline;
+    padding-bottom: 5%;
+}
+
+.not-logged-in-error {
+    width: 100%;
+    height: 60px;
+    font-family: "Lato", sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 0.84px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    margin-bottom: 24px;
+    border: 1px solid #f1a899;
+    background: #fddfdf;
+    color: #5f3f3f
 }

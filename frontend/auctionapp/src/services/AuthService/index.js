@@ -47,3 +47,8 @@ export const removePersonCredentials = () => {
     localStorage.removeItem('current-email');
     localStorage.removeItem('current-password');
 }
+
+export const getPersonId = () => {
+    const user = localStorage.getItem('current-user');
+    return user ? JSON.parse(user).id : null;
+};

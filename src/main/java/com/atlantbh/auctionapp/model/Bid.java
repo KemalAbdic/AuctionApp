@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 public class Bid {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
 
     @ManyToOne(optional = false)
@@ -21,7 +20,6 @@ public class Bid {
     @NotNull
     private Product product;
 
-    @NotNull
     private Double bidAmount;
 
     @NotNull
