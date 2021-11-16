@@ -64,8 +64,8 @@ const ProductPage = ({match}) => {
             const newBids = await getBidsForProduct(product.id);
             setBids(newBids);
             setBidAmount("");
-        } catch (err) {
-            console.log(err)
+        } catch (e) {
+            console.error(e)
         }
         setLoading(false);
     }
@@ -108,7 +108,7 @@ const ProductPage = ({match}) => {
                                 onChange={e => setBidAmount(e.target.value)}
                             />
                             <Button
-                                disabled={loading}
+                                disabled={loading  || bidAmount < currentHighestBid}
                                 className="bid-button"
                                 onClick={handleBid}
                             >
