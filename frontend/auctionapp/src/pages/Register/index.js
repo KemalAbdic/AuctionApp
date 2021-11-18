@@ -18,6 +18,7 @@ const Register = () => {
 
     const history = useHistory();
     const [loading, setLoading] = React.useState(false);
+    const options = {autoClose: true};
 
     const validationSchema = yup.object().shape({
         firstName: yup.string()
@@ -54,7 +55,7 @@ const Register = () => {
             window.location.reload();
             loggedIn(true);
         } catch (e) {
-            alertService.error('Error: Email is already in use!')
+            alertService.error('Error: Email is already in use!', options)
         }
         setLoading(false);
     }

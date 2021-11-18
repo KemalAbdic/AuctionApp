@@ -20,6 +20,7 @@ function Alert({id, fade}) {
     const [alerts, setAlerts] = useState([]);
 
     useEffect(() => {
+
         const subscription = alertService.onAlert(id)
             .subscribe(alert => {
                 if (!alert.message) {
@@ -79,7 +80,6 @@ function Alert({id, fade}) {
             <div className="m-3">
                 {alerts.map((alert, index) =>
                     <div key={index} className={cssClasses(alert)}>
-                        <a className="close" onClick={() => removeAlert(alert)}>&times;</a>
                         <span dangerouslySetInnerHTML={{__html: alert.message}}/>
                     </div>
                 )}

@@ -24,6 +24,7 @@ const Login = () => {
     const history = useHistory();
     const personCredentials = getPersonCredentials();
     const [loading, setLoading] = React.useState(false);
+    const options = {autoClose: true};
 
     const validationSchema = yup.object().shape({
         email: yup.string()
@@ -55,7 +56,7 @@ const Login = () => {
             loggedIn(true);
             window.location.reload();
         } catch (e) {
-            alertService.error('Error: Wrong email or password!')
+            alertService.error('Error: Wrong email or password!', options)
 
         }
         setLoading(false);

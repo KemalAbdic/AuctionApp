@@ -17,12 +17,13 @@ const ProductPage = ({match}) => {
     const startDate = DateTime.now();
     const [activePhoto, setActivePhoto] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [bidAmount, setBidAmount] = useState(null);
+    const [bidAmount, setBidAmount] = useState("");
     const personInfo = getPerson();
     const [ownProduct, setOwnProduct] = useState(false);
     const highestBid = bids[0] === undefined ? 0 : bids[0].bidAmount;
     const currentHighestBid = highestBid + 1;
     const placeholderValue = "Enter $" + currentHighestBid + " or higher";
+    const options = {autoClose: true};
 
 
     useEffect(() => {
@@ -52,23 +53,23 @@ const ProductPage = ({match}) => {
 
     const handleBid = async () => {
         if (personInfo === null) {
-            alertService.warning('Warning: You have to be logged in to place bid!')
+            alertService.warning('Warning: You have to be logged in to place bid!', options)
             return;
         }
         if (ownProduct) {
-            alertService.warning("Warning: You cannot bid on your own product!")
+            alertService.warning('Warning: You cannot bid on your own product!', options)
         }
         setLoading(true);
         try {
             if (personInfo.person.id === bids[0].person.id) {
-                alertService.warning("Warning: You cannot outbid yourself!")
+                alertService.warning('Warning: You cannot outbid yourself!', options)
                 setLoading(false)
                 return;
             }
             await postBidForProduct(bidAmount, product.id);
             const newBids = await getBidsForProduct(product.id);
             if (personInfo.person.id === newBids[0].person.id) {
-                alertService.success('Congrats! You are the highest bidder!')
+                alertService.success('Congrats! You are the highest bidder!', options)
                 setBids(newBids);
             }
         } catch
