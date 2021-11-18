@@ -6,6 +6,7 @@ import {loggedIn, register, setSession} from "../../services/AuthService";
 import {Formik} from "formik";
 import * as yup from 'yup';
 import {useBreadcrumbContext} from "../../BreadcrumbContext";
+import {alertService} from "../../services/AlertService";
 
 
 const Register = () => {
@@ -53,21 +54,13 @@ const Register = () => {
             window.location.reload();
             loggedIn(true);
         } catch (e) {
-            setTimeout(function () {
-                document.getElementById("e").classList.add('register-error');
-                document.getElementById("e").innerHTML = "<span>Email is already in use!</span>";
-                setTimeout(function () {
-                    document.getElementById("e").style.display = "none";
-                }, 2000);
-            }, 1000);
+            alertService.error('Warning: Email is already in use!')
         }
         setLoading(false);
     }
 
     return (
         <div className="register-wrapper">
-            <div id="e">
-            </div>
             <div className="register-form-container">
                 <div className="register-form-title">
                     <h5>REGISTER</h5>

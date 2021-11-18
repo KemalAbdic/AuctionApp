@@ -4,6 +4,7 @@ import Header from "./common/Header";
 import Footer from "./common/Footer";
 import Routes from "./routing/Routes";
 import Breadcrumbs from "./common/Breadcrumbs";
+import Alert from "./common/Alert"
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <Router>
                 <Header/>
                 <Breadcrumbs/>
+                <Alert/>
                 <div>
                     <Routes/>
                 </div>

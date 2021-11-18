@@ -1,0 +1,76 @@
+
+.alert-container {
+    display: inline;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.69px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.alert {
+    padding: 15px 11.1%;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+}
+.alert h4 {
+    margin-top: 0;
+    color: inherit;
+}
+.alert .alert-link {
+    font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+    margin-bottom: 0;
+}
+.alert > p + p {
+    margin-top: 5px;
+}
+.alert-dismissible,
+.alert-dismissible {
+    padding-right: 35px;
+}
+.alert-dismissible .close,
+.alert-dismissible .close {
+    margin-right: 11.1%;
+    position: absolute;
+    right: 0;
+    color: inherit;
+    cursor: pointer;
+}
+.close {
+    font-size: 25px;
+    font-weight: normal;
+    top: 219px;
+}
+.alert-success {
+    color: #417505;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.alert-success hr {
+    border-top-color: #c9e2b3;
+}
+
+.alert-warning {
+    color: #AB944E;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+.alert-warning hr {
+    border-top-color: #f7e1b5;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.alert-danger hr {
+    border-top-color: #e4b9c0;
+}
+.alert-danger .alert-link {
+    color: #843534;
+}

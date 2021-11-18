@@ -13,6 +13,7 @@ import {
 } from "../../services/AuthService";
 import {useHistory} from "react-router-dom";
 import {useBreadcrumbContext} from "../../BreadcrumbContext";
+import {alertService} from "../../services/AlertService";
 
 
 const Login = () => {
@@ -54,13 +55,7 @@ const Login = () => {
             loggedIn(true);
             window.location.reload();
         } catch (e) {
-            setTimeout(function () {
-                document.getElementById("e").classList.add('login-error');
-                document.getElementById("e").innerHTML = "<span>Wrong username or password!</span>";
-                setTimeout(function () {
-                    document.getElementById("e").style.display = "none";
-                }, 2000);
-            }, 1000);
+            alertService.error('Warning: Wrong email or password!')
 
         }
         setLoading(false);
@@ -69,8 +64,6 @@ const Login = () => {
 
     return (
         <div className="login-wrapper">
-            <div id="e">
-            </div>
             <div className="login-form-container">
                 <div className="login-form-title">
                     <h5>LOGIN</h5>

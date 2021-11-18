@@ -1,5 +1,6 @@
 package com.atlantbh.auctionapp.response;
 
+import com.atlantbh.auctionapp.model.Person;
 import com.atlantbh.auctionapp.model.Picture;
 import com.atlantbh.auctionapp.model.Product;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ public class ProductResponse {
     private Double startingPrice;
     private LocalDateTime auctionEnd;
     private List<Picture> pictures;
+    private Long personId;
 
     public ProductResponse(Product product, List<Picture> productPictures) {
         this.id = product.getId();
@@ -20,6 +22,7 @@ public class ProductResponse {
         this.startingPrice = product.getStartingPrice();
         this.auctionEnd = product.getAuctionEnd();
         this.pictures = productPictures;
+        this.personId = product.getPerson().getId();
     }
 
     public Long getId() {
@@ -68,5 +71,13 @@ public class ProductResponse {
 
     public void setPictures(List<Picture> pictures) {
         this.pictures = pictures;
+    }
+
+    public Long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Long personId) {
+        this.personId = personId;
     }
 }
