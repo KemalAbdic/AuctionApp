@@ -71,7 +71,6 @@ const ProductPage = ({match}) => {
                 alertService.success('Congrats! You are the highest bidder!')
                 setBids(newBids);
             }
-
         } catch
             (e) {
             console.error(e)

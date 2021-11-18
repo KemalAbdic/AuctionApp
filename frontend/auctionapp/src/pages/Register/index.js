@@ -54,7 +54,7 @@ const Register = () => {
             window.location.reload();
             loggedIn(true);
         } catch (e) {
-            alertService.error('Warning: Email is already in use!')
+            alertService.error('Error: Email is already in use!')
         }
         setLoading(false);
     }

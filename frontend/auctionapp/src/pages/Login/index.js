@@ -55,7 +55,7 @@ const Login = () => {
             loggedIn(true);
             window.location.reload();
         } catch (e) {
-            alertService.error('Warning: Wrong email or password!')
+            alertService.error('Error: Wrong email or password!')
 
         }
         setLoading(false);
