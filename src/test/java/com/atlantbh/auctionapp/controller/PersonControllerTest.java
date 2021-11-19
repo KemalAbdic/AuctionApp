@@ -29,7 +29,7 @@ class PersonControllerTest {
                 "\"firstName\":\"Zoro\"," +
                 "\"lastName\":\"Roronoa\"," +
                 "\"email\":\"pirate.hunter@gmail.com\"," +
-                "\"password\":\"STRONGESTpassword\"" +
+                "\"password\":\"STRONGESTpassword123\"" +
                 "}";
         mvc.perform(MockMvcRequestBuilders
                         .post("/auth/register")
@@ -46,7 +46,7 @@ class PersonControllerTest {
                 "\"firstName\":\"Zoro\"," +
                 "\"lastName\":\"Roronoa\"," +
                 "\"email\":\"pirate.hunter@gmail.com\"," +
-                "\"password\":\"STRONGESTpassword\"" +
+                "\"password\":\"STRONGESTpassword123\"" +
                 "}";
         mvc.perform(MockMvcRequestBuilders
                         .put("/auth/register")
@@ -61,7 +61,7 @@ class PersonControllerTest {
     void userLoginSuccess() throws Exception {
         String json = "{" +
                 "\"email\": \"pirate.hunter@gmail.com\", " +
-                "\"password\": \"STRONGESTpassword\"" +
+                "\"password\": \"STRONGESTpassword123\"" +
                 "}";
         mvc.perform(MockMvcRequestBuilders
                         .post("/auth/login")
