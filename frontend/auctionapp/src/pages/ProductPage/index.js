@@ -8,23 +8,22 @@ import {Icon} from "@iconify/react";
 import chevronRight from '@iconify/icons-akar-icons/chevron-right';
 import {getPerson} from "../../services/AuthService";
 import {alertService} from "../../services/AlertService";
+import moment from "moment";
+import 'moment-duration-format';
 
 const ProductPage = ({match}) => {
     const [product, setProduct] = useState(null);
     const {setBreadcrumb} = useBreadcrumbContext();
     const [bids, setBids] = useState([]);
-    const {DateTime} = require('luxon');
-    const startDate = DateTime.now();
     const [activePhoto, setActivePhoto] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [bidAmount, setBidAmount] = useState("");
+    const [bidAmount, setBidAmount] = useState(null);
     const personInfo = getPerson();
     const [ownProduct, setOwnProduct] = useState(false);
     const highestBid = bids[0] === undefined ? 0 : bids[0].bidAmount;
     const currentHighestBid = highestBid + 1;
     const placeholderValue = "Enter $" + currentHighestBid + " or higher";
     const options = {autoClose: true};
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -50,19 +49,23 @@ const ProductPage = ({match}) => {
         fetchData();
     }, [match.params.id])
 
-
     const handleBid = async () => {
-        if (personInfo === null) {
-            alertService.warning('Warning: You have to be logged in to place bid!', options)
-            return;
-        }
-        if (ownProduct) {
-            alertService.warning('Warning: You cannot bid on your own product!', options)
-        }
-        setLoading(true);
         try {
+            if (personInfo === null) {
+                alertService.warning('Warning: You have to be logged in to place bid!', options)
+                setBidAmount("")
+                return;
+            }
+
+            if (ownProduct) {
+                alertService.warning('Warning: You cannot bid on your own product!', options)
+                setBidAmount("")
+            }
+            setLoading(true);
+
             if (personInfo.person.id === bids[0].person.id) {
                 alertService.warning('Warning: You cannot outbid yourself!', options)
+                setBidAmount("")
                 setLoading(false)
                 return;
             }
@@ -71,9 +74,9 @@ const ProductPage = ({match}) => {
             if (personInfo.person.id === newBids[0].person.id) {
                 alertService.success('Congrats! You are the highest bidder!', options)
                 setBids(newBids);
+                setBidAmount("")
             }
-        } catch
-            (e) {
+        } catch (e) {
             console.error(e)
         }
         setLoading(false);
@@ -105,14 +108,17 @@ const ProductPage = ({match}) => {
                         <div className="bid-info">
                             <span>Highest bid: <strong>{highestBid}$</strong></span>
                             <span>Number of bids: <strong>{bids.length}</strong></span>
-                            <span>Time left: <strong>{DateTime.fromISO(product.auctionEnd).diff(DateTime.fromISO(startDate),
-                                ['days']).toFormat("d 'days' h'h' m'm'")}</strong></span>
+                            <span>Time left:<strong>{
+                                moment.duration(moment(product.auctionEnd).diff(moment())).format("D [days] h[h] m[m]")
+                            }</strong></span>
                         </div>
                         <Form className="bid-entry">
                             <Form.Control
+                                id="input"
                                 disabled={loading}
                                 type="text"
                                 placeholder={placeholderValue}
+                                value={bidAmount}
                                 onChange={e => setBidAmount(e.target.value)}
                             />
                             <Button
