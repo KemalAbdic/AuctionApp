@@ -3,7 +3,6 @@ package com.atlantbh.auctionapp.repository;
 import com.atlantbh.auctionapp.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
 
 @Repository

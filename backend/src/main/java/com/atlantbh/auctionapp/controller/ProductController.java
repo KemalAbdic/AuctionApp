@@ -1,12 +1,10 @@
 package com.atlantbh.auctionapp.controller;
 
-import com.atlantbh.auctionapp.model.Product;
 import com.atlantbh.auctionapp.response.ProductResponse;
 import com.atlantbh.auctionapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
 @RequestMapping("/product")

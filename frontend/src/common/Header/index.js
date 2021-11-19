@@ -3,7 +3,7 @@ import "./header.css";
 import {FacebookFill, InstagramFill} from "akar-icons";
 import {AiFillGooglePlusCircle, AiFillTwitterCircle} from "react-icons/all";
 import {Link, useHistory} from "react-router-dom";
-import logo from "./../../Images/logo.png"
+import logo from "../../Images/logo.png"
 import {getPerson, getToken, removeSession} from "../../services/AuthService";
 
 let person = getPerson();
