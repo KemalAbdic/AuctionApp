@@ -114,7 +114,6 @@ const ProductPage = ({match}) => {
                         </div>
                         <Form className="bid-entry">
                             <Form.Control
-                                id="input"
                                 disabled={loading}
                                 type="text"
                                 placeholder={placeholderValue}
