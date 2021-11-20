@@ -1,11 +1,12 @@
 import axios from "axios";
+import {host} from "../CommonService";
 
 export const register = async (person) => {
-    return (await axios.post("http://localhost:8080/auth/register", person)).data;
+    return (await axios.post(host + "/auth/register", person)).data;
 };
 
 export const login = async (person) => {
-    return (await axios.post("http://localhost:8080/auth/login", person)).data;
+    return (await axios.post(host + "/auth/login", person)).data;
 };
 
 export const setSession = (person, token) => {

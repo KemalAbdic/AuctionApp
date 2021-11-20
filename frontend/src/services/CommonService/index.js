@@ -5,3 +5,5 @@ export const getParams = (args) => {
         }
     };
 }
+
+export const host = "https://atlantbh-auction-app.herokuapp.com";

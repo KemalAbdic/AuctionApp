@@ -1,6 +1,6 @@
 import axios from "axios";
-import {getParams} from "../CommonService";
+import {getParams, host} from "../CommonService";
 
 export const getProduct = async (id) => {
-    return (await axios.get('http://localhost:8080' + '/product/', getParams({id}))).data;
+    return (await axios.get(host + '/product/', getParams({id}))).data;
 };

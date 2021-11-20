@@ -1,5 +1,7 @@
-package com.atlantbh.auctionapp.security;
+package com.atlantbh.auctionapp.configuration;
 
+import com.atlantbh.auctionapp.security.JwtAuthEntryPoint;
+import com.atlantbh.auctionapp.security.JwtRequestFilter;
 import com.atlantbh.auctionapp.service.PersonDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

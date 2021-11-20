@@ -1,5 +1,7 @@
 import axios from "axios";
 import {getToken} from "../AuthService";
+import {host} from "../CommonService";
+
 
 const config = {
     headers: {
@@ -8,9 +10,9 @@ const config = {
 };
 
 export const getBidsForProduct = async (id) => {
-    return (await axios.get('http://localhost:8080' + '/bids/product/?id=' + id)).data;
+    return (await axios.get(host + '/bids/product/?id=' + id)).data;
 };
 
 export const postBidForProduct = async (bidAmount, productId) => {
-    return (await axios.post('http://localhost:8080' + '/bids/add', {bidAmount, productId}, config)).data;
+    return (await axios.post(host + '/bids/add', {bidAmount, productId}, config)).data;
 };
