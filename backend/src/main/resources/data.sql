@@ -37,7 +37,7 @@ INSERT INTO public.product (id, auction_end, auction_start, city, color, country
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
 VALUES (1, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu auctor odio. Ut rutrum, metus in malesuada vehicula, tortor ex commodo mauris, eget porta libero risus eget dui. Phasellus eget nisi enim. Duis molestie quis orci nec congue. Etiam mi nibh, vestibulum et justo eget, sagittis molestie urna. Donec hendrerit mi lectus, quis laoreet turpis suscipit sagittis. Phasellus mi dolor, sodales eget massa eget, auctor venenatis massa. Quisque ut sapien ut ipsum consectetur laoreet. Pellentesque cursus ornare urna, vel tincidunt nisl commodo in.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Peugeot Ventoux PH501 Classic Road Bike 1986', '+389123412', false, 'LARGE', 49.99, 'Adema Buća 45', '71000', 1,
         1);
 
@@ -45,7 +45,7 @@ INSERT INTO public.product (id, auction_end, auction_start, city, color, country
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
 VALUES (2, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu auctor odio. Ut rutrum, metus in malesuada vehicula, tortor ex commodo mauris, eget porta libero risus eget dui. Phasellus eget nisi enim. Duis molestie quis orci nec congue. Etiam mi nibh, vestibulum et justo eget, sagittis molestie urna. Donec hendrerit mi lectus, quis laoreet turpis suscipit sagittis. Phasellus mi dolor, sodales eget massa eget, auctor venenatis massa. Quisque ut sapien ut ipsum consectetur laoreet. Pellentesque cursus ornare urna, vel tincidunt nisl commodo in.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         ' Pantera Logo Romper 24 Months Black ', '+333444555', false, 'SMALL', 43.99, 'Franje Račkog 3', '71000', 2,
         2);
 
@@ -53,7 +53,7 @@ INSERT INTO public.product (id, auction_end, auction_start, city, color, country
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
 VALUES (3, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu auctor odio. Ut rutrum, metus in malesuada vehicula, tortor ex commodo mauris, eget porta libero risus eget dui. Phasellus eget nisi enim. Duis molestie quis orci nec congue. Etiam mi nibh, vestibulum et justo eget, sagittis molestie urna. Donec hendrerit mi lectus, quis laoreet turpis suscipit sagittis. Phasellus mi dolor, sodales eget massa eget, auctor venenatis massa. Quisque ut sapien ut ipsum consectetur laoreet. Pellentesque cursus ornare urna, vel tincidunt nisl commodo in.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         '2020 BMW R 1250 GS Adventure Ice Grey Low Suspension', '+389123499', false, 'LARGE', 55.99, 'Adema Buća 45', '71000', 1,
         1);
 
