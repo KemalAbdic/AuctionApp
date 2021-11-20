@@ -27,7 +27,7 @@ function Footer() {
                         <InstagramFill/></a>
                     <a href="https://www.twitter.com/atlantbh" rel="noreferrer" target="_blank">
                         <AiFillTwitterCircle/></a>
-                    <a href="https://www.twitter.com/atlantbh" rel="noreferrer" target="_blank">
+                    <a href="https://www.google.com/search?q=atlantbh" rel="noreferrer" target="_blank">
                         <AiFillGooglePlusCircle/></a>
                 </div>
             </div>
