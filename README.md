@@ -12,6 +12,9 @@
 # AuctionApp
 
 AuctionApp is an application project for [Atlantbh](https://www.atlantbh.com/) internship.
+- Backend deployed on Heroku [https://atlantbh-auction-app.herokuapp.com/](https://atlantbh-auction-app.herokuapp.com/)
+- Swagger documentation [https://auction-app-atlantbh.herokuapp.com/swagger-ui/](https://auction-app-atlantbh.herokuapp.com/swagger-ui/)
+- Frontend deployed on Heroku [https://atlantbh-auction-app-frontend.herokuapp.com/](https://atlantbh-auction-app-frontend.herokuapp.com/)
 
 **Prerequisites:** [Java](https://www.oracle.com/java/technologies/downloads/), [Node.js](https://nodejs.org/), [Maven](https://maven.apache.org/) and [PostgreSQL](https://www.postgresql.org/).
 
@@ -57,17 +60,17 @@ $ npm install
 $ npm start
 ```
 
-[contributors-shield]: https://img.shields.io/github/contributors/KemalAbdic/AuctionApp?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/KemalAbdic/AuctionApp?style=flat-square
 [contributors-url]: https://github.com/KemalAbdic/AuctionApp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/KemalAbdic/AuctionApp?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/KemalAbdic/AuctionApp?style=flat-square
 [forks-url]: https://github.com/KemalAbdic/AuctionApp/network/members
-[stars-shield]: https://img.shields.io/github/stars/KemalAbdic/AuctionApp?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/KemalAbdic/AuctionApp?style=flat-square
 [stars-url]: https://github.com/KemalAbdic/AuctionApp/stargazers
-[issues-shield]: https://img.shields.io/github/issues/KemalAbdic/AuctionApp?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/KemalAbdic/AuctionApp?style=flat-square
 [issues-url]: https://github.com/KemalAbdic/AuctionApp/issues
-[pull-request-shield]: https://img.shields.io/github/issues-pr/KemalAbdic/AuctionApp?style=for-the-badge
+[pull-request-shield]: https://img.shields.io/github/issues-pr/KemalAbdic/AuctionApp?style=flat-square
 [pull-request-url]: https://github.com/KemalAbdic/AuctionApp/pulls
-[pull-request-closed-shield]: https://img.shields.io/github/issues-pr-closed/KemalAbdic/AuctionApp?style=for-the-badge
+[pull-request-closed-shield]: https://img.shields.io/github/issues-pr-closed/KemalAbdic/AuctionApp?style=flat-square
 [pull-request-closed-url]: https://github.com/KemalAbdic/AuctionApp/pulls?q=is%3Apr+is%3Aclosed
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/kemal-abdic/
