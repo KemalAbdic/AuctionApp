@@ -10,7 +10,7 @@ const config = {
 };
 
 export const getBidsForProduct = async (id) => {
-    return (await axios.get(host + '/bids/product/?id=' + id)).data;
+    return (await axios.get(host + '/bids/product?id=' + id)).data;
 };
 
 export const postBidForProduct = async (bidAmount, productId) => {

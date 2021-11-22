@@ -63,8 +63,6 @@ const ProductPage = ({match}) => {
                 setBidAmount("")
             }
             setLoading(true);
-
-            console.log(bids[0])
             if (personId === bids[0].person.id) {
                 alertService.warning('Warning: You cannot outbid yourself!', options)
                 setBidAmount("")
