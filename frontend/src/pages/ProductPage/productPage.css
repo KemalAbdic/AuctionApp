@@ -10,22 +10,21 @@
     position: static;
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
-    padding-top: 32px;
-    margin-right: 117px;
+    margin-right: 40px;
 }
 
 .product-picture {
-    object-fit: fill;
+    object-fit: scale-down;
     width: 100%;
-    height: 480px;
+    max-height:480px;
+    min-height: 300px;
 }
 
 .product-picture-small {
-    margin-top: 3%;
-    width: 120px;
-    height: 91px;
-    margin-right: 25px;
+    margin-top: 0;
+    width: 110px;
+    height: 71px;
+    margin-right: 15px;
 }
 
 .product-page-title {
@@ -59,6 +58,7 @@
     text-align: left;
     justify-content: space-around;
     width: 50%;
+    padding-left: 40px;
 
 }
 
