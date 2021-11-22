@@ -6,7 +6,7 @@ import "./productPage.css"
 import {getBidsForProduct, postBidForProduct} from "../../services/BidService";
 import {Icon} from "@iconify/react";
 import chevronRight from '@iconify/icons-akar-icons/chevron-right';
-import {getPerson} from "../../services/AuthService";
+import {getPersonId} from "../../services/AuthService";
 import {alertService} from "../../services/AlertService";
 import moment from "moment";
 import 'moment-duration-format';
@@ -17,8 +17,8 @@ const ProductPage = ({match}) => {
     const [bids, setBids] = useState([]);
     const [activePhoto, setActivePhoto] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [bidAmount, setBidAmount] = useState(null);
-    const personInfo = getPerson();
+    const [bidAmount, setBidAmount] = useState("");
+    const personId = getPersonId();
     const [ownProduct, setOwnProduct] = useState(false);
     const highestBid = bids[0] === undefined ? 0 : bids[0].bidAmount;
     const currentHighestBid = highestBid + 1;
@@ -40,18 +40,19 @@ const ProductPage = ({match}) => {
                     }
                 }), {text: "Single product"}]);
                 setBids(bidData);
-                const isOwnProduct = data.personId === personInfo.person.id;
+                const isOwnProduct = data.personId === personId;
                 setOwnProduct(isOwnProduct);
             } catch (e) {
                 console.error(e)
             }
         }
         fetchData();
+        // eslint-disable-next-line
     }, [match.params.id])
 
     const handleBid = async () => {
         try {
-            if (personInfo === null) {
+            if (personId === null) {
                 alertService.warning('Warning: You have to be logged in to place bid!', options)
                 setBidAmount("")
                 return;
@@ -63,7 +64,8 @@ const ProductPage = ({match}) => {
             }
             setLoading(true);
 
-            if (personInfo.person.id === bids[0].person.id) {
+            console.log(bids[0])
+            if (personId === bids[0].person.id) {
                 alertService.warning('Warning: You cannot outbid yourself!', options)
                 setBidAmount("")
                 setLoading(false)
@@ -71,7 +73,7 @@ const ProductPage = ({match}) => {
             }
             await postBidForProduct(bidAmount, product.id);
             const newBids = await getBidsForProduct(product.id);
-            if (personInfo.person.id === newBids[0].person.id) {
+            if (personId === newBids[0].person.id) {
                 alertService.success('Congrats! You are the highest bidder!', options)
                 setBids(newBids);
                 setBidAmount("")
@@ -108,7 +110,7 @@ const ProductPage = ({match}) => {
                         <div className="bid-info">
                             <span>Highest bid: <strong>{highestBid}$</strong></span>
                             <span>Number of bids: <strong>{bids.length}</strong></span>
-                            <span>Time left:<strong>{
+                            <span>Time left:<strong> {
                                 moment.duration(moment(product.auctionEnd).diff(moment())).format("D [days] h[h] m[m]")
                             }</strong></span>
                         </div>

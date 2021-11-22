@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Form} from "react-bootstrap";
 import {Formik} from 'formik';
 import * as yup from 'yup';
@@ -20,10 +20,11 @@ const Login = () => {
     const {setBreadcrumb} = useBreadcrumbContext();
     useEffect(() => {
         setBreadcrumb("LOGIN", []);
+        // eslint-disable-next-line
     }, []);
     const history = useHistory();
     const personCredentials = getPersonCredentials();
-    const [loading, setLoading] = React.useState(false);
+    const [loading, setLoading] = useState(false);
     const options = {autoClose: true};
 
     const validationSchema = yup.object().shape({
@@ -43,7 +44,6 @@ const Login = () => {
     const handleSubmit = async (user) => {
         setLoading(true);
         try {
-
             const person = await login(user);
             setSession(person, person.token);
             if (user.remember) {
@@ -57,7 +57,6 @@ const Login = () => {
             window.location.reload();
         } catch (e) {
             alertService.error('Error: Wrong email or password!', options)
-
         }
         setLoading(false);
     }

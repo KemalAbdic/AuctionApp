@@ -6,6 +6,7 @@ function Privacy() {
     const {setBreadcrumb} = useBreadcrumbContext();
     useEffect(() => {
         setBreadcrumb("PRIVACY AND POLICY", [{text: "SHOP", href: "/shop"}, {text: "PRIVACY AND POLICY"}]);
+        // eslint-disable-next-line
     }, [])
     return (
         <div className="privacy-wrapper">

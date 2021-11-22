@@ -18,7 +18,7 @@
 .product-picture {
     object-fit: fill;
     width: 100%;
-    height: 512px;
+    height: 480px;
 }
 
 .product-picture-small {
@@ -148,4 +148,8 @@ strong {
 .bid-container {
     display: inline;
     padding-bottom: 5%;
+}
+
+.form-control {
+    font-size: 16px;
 }

@@ -60,31 +60,31 @@ VALUES (3, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo
 
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (1, 'https://images.unsplash.com/photo-1485965120184-e220f721d03e', 1);
+VALUES (1, 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1);
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (2, 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7', 1);
+VALUES (2, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1);
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (3, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d', 1);
+VALUES (3, 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1);
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (4, 'https://m.media-amazon.com/images/I/51nEk3Bu0UL.jpg', 2);
+VALUES (4, 'https://images.unsplash.com/photo-1622290319146-7b63df48a635?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2);
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (5, 'https://m.media-amazon.com/images/I/51aMVMohGgL.jpg', 2);
+VALUES (5, 'https://images.unsplash.com/photo-1524275539700-cf51138f679b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2);
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (6, 'https://cdn.shopify.com/s/files/1/2396/7709/products/PANT_0001_-_Shopify_Store_Launch_POD-Mockups_Crawl_Onesie.png?v=1508441609', 2);
+VALUES (6, 'https://images.unsplash.com/photo-1529720317453-c8da503f2051?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2);
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (7, 'https://m.media-amazon.com/images/I/71eXH8lKwJL.jpg', 2);
+VALUES (7, 'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2);
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (8, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d', 3);
+VALUES (8, 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 3);
 
 INSERT INTO public.picture (id, url, product_id)
-VALUES (9, 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e', 3);
+VALUES (9, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 3);
 
 
 INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
@@ -110,4 +110,7 @@ VALUES (7, 56, '2021-11-15 11:56:29.000000', 2, 2);
 
 INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
 VALUES (8, 57, '2021-11-15 11:58:29.000000', 1, 2);
+
+INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
+VALUES (9, 57, '2021-11-15 11:58:29.000000', 2, 3);
 

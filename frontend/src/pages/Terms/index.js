@@ -6,6 +6,7 @@ const Terms = () => {
     const {setBreadcrumb} = useBreadcrumbContext();
     useEffect(() => {
         setBreadcrumb("TERMS AND CONDITIONS", [{text: "SHOP", href: "/shop"}, {text: "TERMS AND CONDITIONS"}]);
+        // eslint-disable-next-line
     }, [])
 
     return (

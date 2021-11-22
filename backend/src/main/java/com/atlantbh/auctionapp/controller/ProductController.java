@@ -21,18 +21,4 @@ public class ProductController {
     public ResponseEntity<ProductResponse> getProduct(@RequestParam(name = "id") Long id) {
         return ResponseEntity.ok(productService.getProduct(id));
     }
-
-   /* @GetMapping("/")
-    public List<Product> getAllProducts() {
-        return productService.getAllProducts();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getProductById(@PathVariable Long id) {
-        Product product = productService.findProductById(id);
-        if (product == null) {
-            return ResponseEntity.badRequest().body( new Exception("product with id " + id + " does not exist"));
-        }
-        return ResponseEntity.ok().body(product);
-    }*/
 }

@@ -10,6 +10,7 @@ function About() {
     const {setBreadcrumb} = useBreadcrumbContext();
     useEffect(() => {
         setBreadcrumb("ABOUT US", [{text: "SHOP", href: "/shop"}, {text: "ABOUT US"}]);
+        // eslint-disable-next-line
     }, [])
     return (
         <div className="container-wrapper">

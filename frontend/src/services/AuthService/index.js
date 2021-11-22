@@ -51,5 +51,5 @@ export const removePersonCredentials = () => {
 
 export const getPersonId = () => {
     const person = localStorage.getItem('current-user');
-    return person ? JSON.parse(person).id : null;
+    return person ? JSON.parse(person).person.id : null;
 };

@@ -45,6 +45,7 @@ function Alert({id, fade}) {
             subscription.unsubscribe();
             historyUnlisten();
         };
+        // eslint-disable-next-line
     }, []);
 
     function removeAlert(alert) {

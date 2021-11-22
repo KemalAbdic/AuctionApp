@@ -14,6 +14,7 @@ const Register = () => {
     const {setBreadcrumb} = useBreadcrumbContext();
     useEffect(() => {
         setBreadcrumb("REGISTER", []);
+        // eslint-disable-next-line
     }, []);
 
     const history = useHistory();
