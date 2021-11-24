@@ -52,7 +52,7 @@ function Header() {
             <div className="white-header-container">
                 <Link to="/"><img src={logo} alt="logo"/></Link>
                 <div className="links">
-                    <a href="/#">HOME</a>
+                    <Link to="/">HOME</Link>
                     <a href="/#">SHOP</a>
                     <a href="/#">MY ACCOUNT</a>
                 </div>

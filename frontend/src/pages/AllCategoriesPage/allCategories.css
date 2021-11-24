@@ -1,0 +1,20 @@
+.all-categories-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 24px;
+    padding-right: 11.1%;
+    padding-left: 11.1%;
+    margin-bottom: 17%;
+    padding-bottom: 120px;
+    text-align: center;
+}
+
+.categories-list {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.84px;
+    color: #252525;
+}

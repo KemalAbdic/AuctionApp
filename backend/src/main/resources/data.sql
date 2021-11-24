@@ -18,11 +18,15 @@ VALUES (3, '1984-04-09', 'Cazin', 'Bosnia and Herzegovina', 'test3@mail.com', 'M
 
 
 
-INSERT INTO public.category (id, name)
-VALUES (1, 'Sports');
-
-INSERT INTO public.category (id, name)
-VALUES (2, 'Fashion');
+INSERT INTO public.category (id, name) VALUES (1, 'Fashion');
+INSERT INTO public.category (id, name) VALUES (2, 'Accessories');
+INSERT INTO public.category (id, name) VALUES (3, 'Jewellery');
+INSERT INTO public.category (id, name) VALUES (4, 'Shoes');
+INSERT INTO public.category (id, name) VALUES (5, 'Sportswear');
+INSERT INTO public.category (id, name) VALUES (6, 'Home');
+INSERT INTO public.category (id, name) VALUES (7, 'Electronics');
+INSERT INTO public.category (id, name) VALUES (8, 'Mobile');
+INSERT INTO public.category (id, name) VALUES (9, 'Computer');
 
 
 INSERT INTO public.subcategory (id, name, category_id)
@@ -35,7 +39,7 @@ VALUES (2, 'Romper', 2);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (1, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (1, '2021-12-04 11:24:01.000000', '2021-11-10 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Peugeot Ventoux PH501 Classic Road Bike 1986', '+389123412', false, 'LARGE', 49.99, 'Adema Buća 45', '71000', 1,
@@ -43,7 +47,7 @@ VALUES (1, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (2, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (2, '2021-12-10 11:24:01.000000', '2021-11-12 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         ' Pantera Logo Romper 24 Months Black ', '+333444555', false, 'SMALL', 43.99, 'Franje Račkog 3', '71000', 2,
@@ -51,10 +55,26 @@ VALUES (2, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (3, '2021-12-09 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (3, '2021-12-11 11:24:01.000000', '2021-11-17 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         '2020 BMW R 1250 GS Adventure Ice Grey Low Suspension', '+389123499', false, 'LARGE', 55.99, 'Adema Buća 45', '71000', 1,
+        1);
+
+INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
+                            shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
+VALUES (4, '2021-12-23 11:24:01.000000', '2021-11-01 11:23:57.000000', 'Bihać', 'RED',
+        'Bosnia and Herzegovina',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
+        'Golden watch', '+389123499', false, 'LARGE', 399.99, 'Kulina bana 33', '77000', 3,
+        2);
+
+INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
+                            shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
+VALUES (5, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać', 'RED',
+        'Bosnia and Herzegovina',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
+        'Jacket', '+389123499', false, 'LARGE', 99.99, 'Kulina bana 33', '77000', 3,
         1);
 
 
@@ -86,6 +106,12 @@ VALUES (8, 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e?crop=en
 INSERT INTO public.picture (id, url, product_id)
 VALUES (9, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 3);
 
+INSERT INTO public.picture (id, url, product_id)
+VALUES (10, 'https://images.unsplash.com/photo-1618215649872-6e3143a716ec?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 4);
+
+INSERT INTO public.picture (id, url, product_id)
+VALUES (11, 'https://images.unsplash.com/photo-1551028719-00167b16eac5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 5);
+
 
 INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
 VALUES (1, 50, '2021-11-15 11:49:29.000000', 2, 1);
@@ -113,4 +139,12 @@ VALUES (8, 57, '2021-11-15 11:58:29.000000', 1, 2);
 
 INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
 VALUES (9, 57, '2021-11-15 11:58:29.000000', 2, 3);
+
+INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
+VALUES (10, 401, '2021-11-15 11:58:29.000000', 1, 4);
+
+INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
+VALUES (11, 101, '2021-11-15 11:58:29.000000', 2, 5);
+
+
 
