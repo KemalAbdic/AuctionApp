@@ -5,6 +5,10 @@ export const getCategories = async () => {
     return (await axios.get(host + '/categories/')).data;
 };
 
+export const getSubcategories = async () => {
+    return (await axios.get(host + '/subcategories/')).data;
+};
+
 export const getRandomProduct = async () => {
     return (await axios.get(host + '/product/random')).data;
 };

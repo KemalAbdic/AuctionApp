@@ -1,12 +1,17 @@
+.all-categories-wrapper {
+    margin-right: 11.1%;
+    margin-left: 11.1%;
+    margin-bottom: 17%;
+}
+
 .all-categories-container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     grid-gap: 24px;
-    padding-right: 11.1%;
-    padding-left: 11.1%;
-    margin-bottom: 17%;
     padding-bottom: 120px;
-    text-align: center;
+    text-align: left;
+    padding-left: 11.1%;
+    padding-right: 11.1%;
 }
 
 .categories-list {
@@ -15,6 +20,23 @@
     font-weight: bold;
     font-size: 24px;
     line-height: 29px;
-    letter-spacing: 0.84px;
+    letter-spacing: -1.16px;
     color: #252525;
+    margin-bottom: 0;
+}
+
+h3 {
+    margin-bottom: 0;
+}
+
+.subcategories {
+
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #252525;
+    padding-bottom: 16px;
 }

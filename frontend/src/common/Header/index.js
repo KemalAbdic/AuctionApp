@@ -53,8 +53,8 @@ function Header() {
                 <Link to="/"><img src={logo} alt="logo"/></Link>
                 <div className="links">
                     <Link to="/">HOME</Link>
-                    <a href="/#">SHOP</a>
-                    <a href="/#">MY ACCOUNT</a>
+                    <Link to="/">SHOP</Link>
+                    <Link to="/">MY ACCOUNT</Link>
                 </div>
             </div>
         </div>
