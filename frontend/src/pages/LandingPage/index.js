@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from "react";
 import {Button, Image, ListGroup} from "react-bootstrap";
-import {getCategories, getLastProducts, getNewProducts, getRandomProduct} from "../../services/LandingService";
+import {
+    categoriesRouting,
+    getCategories,
+    getLastProducts,
+    getNewProducts,
+    getRandomProduct
+} from "../../services/LandingService";
 import chevronRight from "@iconify/icons-akar-icons/chevron-right";
 import {Icon} from "@iconify/react";
 import './landingPage.css'
 import {useHistory} from "react-router-dom";
+import {useBreadcrumbContext} from "../../BreadcrumbContext";
 
 
 const LandingPage = () => {
@@ -14,8 +21,10 @@ const LandingPage = () => {
     const [newAndLastProducts, setNewAndLastProducts] = useState([]);
     const [activeTab, setActiveTab] = useState(0);
     const history = useHistory();
+    const {removeBreadcrumb} = useBreadcrumbContext();
 
     useEffect(() => {
+        removeBreadcrumb();
         const fetchData = async () => {
             try {
                 setCategories(await getCategories());
@@ -28,7 +37,7 @@ const LandingPage = () => {
             }
         }
         fetchData();
-    }, [])
+    }, [removeBreadcrumb])
 
     return (
         <div className="landing-page-wrapper">
@@ -39,10 +48,13 @@ const LandingPage = () => {
                         padding: '16',
                         color: '#8367D8',
                         paddingBottom: 0,
-                        paddingTop: 32
+                        paddingTop: 32,
+                        fontWeight: 'bold',
+                        marginBottom: -16
                     }}>CATEGORIES
                     </ListGroup.Item>
-                    {categories.map(category => (<ListGroup.Item key={category.name} action>{category.name}
+                    {categories.map(category => (<ListGroup.Item key={category.name} action
+                                                                 onClick={() => categoriesRouting(history, category)}>{category.name}
                     </ListGroup.Item>))}
                     <ListGroup.Item action onClick={() => history.push("/all")}>
                         All Categories
@@ -56,14 +68,14 @@ const LandingPage = () => {
                             </h1>
 
                             <div className="random-product-price">
-                                Start from - ${randomProduct[0].startingPrice}
+                                Start from ${randomProduct[0].startingPrice}
                             </div>
                             <div className="random-product-description">
                                 {randomProduct[0].description}
                             </div>
 
                             <Button className={'bid-now-button'}>
-                                BID NOW
+                                <span className="bid-now-text">BID NOW</span>
                                 <Icon icon={chevronRight} color="#252525" width="16" height="16" inline={true}/>
                             </Button>
                         </div>
@@ -75,13 +87,19 @@ const LandingPage = () => {
                 <div className="gray-line"/>
                 <div className="tab-container">
                     <div className="tab-item">
-                        <div style={activeTab === 0 ? {borderBottom: '3px solid #8367d8', fontWeight: '600'} : null} className="nav-link"
-                                onClick={() => {setActiveTab(0);}}>New Arrivals
+                        <div style={activeTab === 0 ? {borderBottom: '3px solid #8367d8', fontWeight: '600'} : null}
+                             className="nav-link"
+                             onClick={() => {
+                                 setActiveTab(0);
+                             }}>New Arrivals
                         </div>
                     </div>
                     <div className="tab-item">
-                        <div style={activeTab === 1 ? {borderBottom: '3px solid #8367d8', fontWeight: '600'} : null} className="nav-link"
-                                onClick={() => {setActiveTab(1);}}>Last Chance
+                        <div style={activeTab === 1 ? {borderBottom: '3px solid #8367d8', fontWeight: '600'} : null}
+                             className="nav-link"
+                             onClick={() => {
+                                 setActiveTab(1);
+                             }}>Last Chance
                         </div>
                     </div>
 
@@ -89,11 +107,13 @@ const LandingPage = () => {
                 <div className="tab-item-container">
                     {newAndLastProducts.length !== 0 ? newAndLastProducts[activeTab].map(product => (
                         <div className="tab-product">
-                            <Image  width="262"
-                                    height="196"
-                                    src={product.url} />
+                            <Image width="262"
+                                   height="196"
+                                   src={product.url}/>
                             <h5 className="product-title">{product.name}</h5>
-                            <span className="product-price">Start from <span style={{color: '#8367D8'}}>${product.startingPrice}</span></span>
+                            <span className="product-price">Start from
+                                <span style={{color: '#8367D8'}}>${product.startingPrice}</span>
+                            </span>
                         </div>
                     )) : null}
                 </div>

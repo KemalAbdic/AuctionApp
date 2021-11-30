@@ -20,3 +20,7 @@ export const getNewProducts = async () => {
 export const getLastProducts = async () => {
     return (await axios.get(host + '/product/last')).data;
 };
+
+export const categoriesRouting = (history, category) => {
+    history.push(`/shop/${category.name.split(' ').join('_').toLowerCase()}`);
+}

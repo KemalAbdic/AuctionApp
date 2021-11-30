@@ -53,7 +53,7 @@ function Header() {
                 <Link to="/"><img src={logo} alt="logo"/></Link>
                 <div className="links">
                     <Link to="/">HOME</Link>
-                    <Link to="/">SHOP</Link>
+                    <Link to="/shop">SHOP</Link>
                     <Link to="/">MY ACCOUNT</Link>
                 </div>
             </div>

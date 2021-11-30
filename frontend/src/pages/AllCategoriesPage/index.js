@@ -31,18 +31,19 @@ const AllCategories = () => {
         }
         this[categoryName].subcategories.push({id: a.id, name: a.name});
     }, {});
+
     return (
         <div className="all-categories-wrapper">
-        <div className="all-categories-container">
-            {result.map(item => (
-                <div className="categories-list">
-                    <h3 style={{paddingBottom: "32px"}} key={item.categoryId}>{item.categoryName}</h3>
-                    {item.subcategories.map(subcategory =>
-                        <div className="subcategories" key={subcategory.id}> {subcategory.name}</div>
-                    )}
-                </div>
-            ))}
-        </div>
+            <div className="all-categories-container">
+                {result.map(item => (
+                    <div className="categories-list">
+                        <h3 style={{paddingBottom: "32px"}} key={item.categoryId}>{item.categoryName}</h3>
+                        {item.subcategories.map(subcategory =>
+                            <div className="subcategories" key={subcategory.id}> {subcategory.name}</div>
+                        )}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 

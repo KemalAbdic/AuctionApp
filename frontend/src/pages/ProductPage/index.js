@@ -131,7 +131,7 @@ const ProductPage = ({match}) => {
                         </Form>
                     </div>
                     <div><strong>Details</strong></div>
-                    <div className="gray-line"/>
+                    <div className="product-gray-line"/>
                     <div className="product-description">
                         {product.description}
                     </div>

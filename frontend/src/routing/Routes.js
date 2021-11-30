@@ -7,6 +7,7 @@ import Login from "../pages/Login"
 import ProductPage from "../pages/ProductPage"
 import LandingPage from "../pages/LandingPage";
 import AllCategories from "../pages/AllCategoriesPage"
+import Shop from "../pages/ShopPage"
 
 
 function Routes() {
@@ -22,6 +23,7 @@ function Routes() {
                 <Route exact path="/register" render={props => <Register {...props} />}/>
                 <Route exact path="/login" render={props => <Login {...props} />}/>
                 <Route path="/shop/*/:id/" render={props => <ProductPage {...props} />}/>
+                <Route path="/shop*" render={props => <Shop {...props} />}/>
             </Switch>
         </div>
     )
