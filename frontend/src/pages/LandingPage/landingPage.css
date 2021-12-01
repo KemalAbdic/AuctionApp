@@ -39,10 +39,11 @@
     font-style: normal;
     font-weight: normal;
     font-size: 32px;
-    line-height: 51px;
     letter-spacing: 0.84px;
     color: #000000;
     margin-top: 0;
+    margin-bottom: 0;
+    line-height: 35px;
 }
 
 .random-product-price {
@@ -57,7 +58,7 @@
     font-size: 32px;
     letter-spacing: 0.84px;
     color: #8367D8;
-    padding-top: 16px;
+    padding-top: 0;
 }
 
 .random-product-description {
@@ -117,7 +118,7 @@
     background: #FFFFFF;
     border: 3px solid #8367D8;
     box-sizing: border-box;
-
+    cursor: pointer;
 }
 
 .bid-now-text {
@@ -163,7 +164,8 @@
 }
 
 .tab-product:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
+    cursor: pointer;
 }
 
 .product-title {
@@ -175,11 +177,15 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+.product-title:hover{
+    text-decoration: underline;
+}
 
 .product-price {
     margin-top: 8px;
     color: #9B9B9B;
     font-weight: 500;
+    cursor: default;
 }
 
 .gray-line {

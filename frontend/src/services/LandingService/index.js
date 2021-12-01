@@ -22,5 +22,5 @@ export const getLastProducts = async () => {
 };
 
 export const categoriesRouting = (history, category) => {
-    history.push(`/shop/${category.name.split(' ').join('_').toLowerCase()}`);
+    history.push(`/shop/${category.name.split(' ').join('_').toLowerCase()}/`);
 }

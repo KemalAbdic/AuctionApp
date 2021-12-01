@@ -31,9 +31,60 @@ INSERT INTO public.category (id, name) VALUES (9, 'Computer');
 
 INSERT INTO public.subcategory (id, name, category_id)
 VALUES (1, 'Bike', 1);
-
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (2, 'Romper', 2);
+VALUES (2, 'Subcategory', 1);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (3, 'Romper', 2);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (4, 'Subcategory', 1);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (5, 'Subcategory', 1);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (6, 'Subcategory', 1);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (7, 'Subcategory', 2);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (8, 'Subcategory', 2);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (9, 'Subcategory', 2);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (10, 'Subcategory', 2);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (11, 'Subcategory', 3);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (12, 'Subcategory', 3);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (13, 'Subcategory', 3);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (14, 'Subcategory', 4);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (15, 'Subcategory', 4);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (16, 'Subcategory', 4);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (17, 'Subcategory', 4);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (18, 'Subcategory', 5);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (19, 'Subcategory', 5);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (20, 'Subcategory', 6);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (21, 'Subcategory', 7);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (22, 'Subcategory', 7);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (23, 'Subcategory', 8);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (24, 'Subcategory', 8);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (25, 'Subcategory', 8);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (26, 'Subcategory', 9);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (27, 'Subcategory', 9);
+INSERT INTO public.subcategory (id, name, category_id)
+VALUES (28, 'Subcategory', 9);
 
 
 
@@ -77,40 +128,71 @@ VALUES (5, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać',
         'Jacket', '+389123499', false, 'LARGE', 99.99, 'Kulina bana 33', '77000', 3,
         1);
 
+INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
+                            shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
+VALUES (6, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Cazin', 'WHITE',
+        'Bosnia and Herzegovina',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
+        'White shirt', '+389123499', false, 'LARGE', 15.99, 'Kulina bana 33', '77220', 3,
+        1);
 
+INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
+                            shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
+VALUES (7, '2021-12-05 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać', 'RED',
+        'Bosnia and Herzegovina',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
+        'Various Pants', '+389123499', false, 'LARGE', 55.99, 'Kulina bana 33', '77000', 3,
+        1);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (1, 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1);
+INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
+                            shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
+VALUES (8, '2021-12-06 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Bužim', 'BLUE',
+        'Bosnia and Herzegovina',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
+        'Vintage Telephone', '+389123499', false, 'LARGE', 222.99, 'Kulina bana 33', '77000', 3,
+        1);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (2, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (1, 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1, true);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (3, 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (2, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1, false);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (4, 'https://images.unsplash.com/photo-1622290319146-7b63df48a635?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (3, 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 1, false);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (5, 'https://images.unsplash.com/photo-1524275539700-cf51138f679b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (4, 'https://images.unsplash.com/photo-1622290319146-7b63df48a635?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2, true);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (6, 'https://images.unsplash.com/photo-1529720317453-c8da503f2051?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (5, 'https://images.unsplash.com/photo-1524275539700-cf51138f679b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2, false);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (7, 'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (6, 'https://images.unsplash.com/photo-1529720317453-c8da503f2051?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2, false);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (8, 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 3);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (7, 'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 2, false);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (9, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 3);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (8, 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 3, true);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (10, 'https://images.unsplash.com/photo-1618215649872-6e3143a716ec?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 4);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (9, 'https://images.unsplash.com/photo-1580978611222-9898f853e74d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 3, false);
 
-INSERT INTO public.picture (id, url, product_id)
-VALUES (11, 'https://images.unsplash.com/photo-1551028719-00167b16eac5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 5);
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (10, 'https://images.unsplash.com/photo-1618215649872-6e3143a716ec?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 4, true);
+
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (11, 'https://images.unsplash.com/photo-1551028719-00167b16eac5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 5, true);
+
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (12, 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 6, true);
+
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (13, 'https://images.unsplash.com/photo-1525598912003-663126343e1f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 8, true);
+
+INSERT INTO public.picture (id, url, product_id, featured)
+VALUES (14, 'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=480&ixid=MnwxfDB8MXxyYW5kb218MHw0OTA1ODYyfHx8fHx8fDE2Mzc1NzA4Nzc&ixlib=rb-1.2.1&q=80&w=680', 7, true);
 
 
 INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
@@ -145,6 +227,15 @@ VALUES (10, 401, '2021-11-15 11:58:29.000000', 1, 4);
 
 INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
 VALUES (11, 101, '2021-11-15 11:58:29.000000', 2, 5);
+
+INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
+VALUES (12, 17, '2021-11-15 11:58:29.000000', 2, 6);
+
+INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
+VALUES (13, 57, '2021-11-15 11:58:29.000000', 2, 7);
+
+INSERT INTO public.bid (id, bid_amount, bid_time, person_id, product_id)
+VALUES (14, 225, '2021-11-15 11:58:29.000000', 2, 8);
 
 
 

@@ -16,29 +16,35 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Product findProductById(@Param("id") Long id);
 
-    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, p.url AS url " +
+    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, p.url AS url, c.name AS categoryName, s.name AS subcategoryName " +
             "FROM product pr " +
             "INNER JOIN picture p ON pr.id = p.product_id " +
-            "WHERE auction_start <= now() AND auction_end > now() " +
+            "INNER JOIN subcategory s ON s.id = pr.subcategory_id " +
+            "INNER JOIN category c ON c.id = s.category_id " +
+            "WHERE p.featured = TRUE AND auction_start <= now() AND auction_end > now() " +
             "ORDER BY auction_start DESC " +
             "LIMIT 8",
             nativeQuery = true)
     List<BasicProductResponse> findNewProducts();
 
-    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, p.url AS url " +
+    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, p.url AS url, c.name AS categoryName, s.name AS subcategoryName " +
             "FROM product pr " +
             "INNER JOIN picture p ON pr.id = p.product_id " +
-            "WHERE auction_start <= now() AND auction_end > now() " +
+            "INNER JOIN subcategory s ON s.id = pr.subcategory_id " +
+            "INNER JOIN category c ON c.id = s.category_id " +
+            "WHERE p.featured = TRUE AND auction_start <= now() AND auction_end > now() " +
             "ORDER BY auction_end " +
             "LIMIT 8",
             nativeQuery = true)
     List<BasicProductResponse> findLastProducts();
 
 
-    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, p.url AS url " +
+    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, p.url AS url, c.name AS categoryName, s.name AS subcategoryName " +
             "FROM product pr " +
             "INNER JOIN picture p ON pr.id = p.product_id " +
-            "WHERE auction_start <= now() AND auction_end > now() " +
+            "INNER JOIN subcategory s ON s.id = pr.subcategory_id " +
+            "INNER JOIN category c ON c.id = s.category_id " +
+            "WHERE p.featured = TRUE AND auction_start <= now() AND auction_end > now()" +
             "ORDER BY RANDOM()",
             nativeQuery = true)
     List<BasicProductResponse> findRandomProducts();

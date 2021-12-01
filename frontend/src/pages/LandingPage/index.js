@@ -68,13 +68,14 @@ const LandingPage = () => {
                             </h1>
 
                             <div className="random-product-price">
-                                Start from ${randomProduct[0].startingPrice}
+                                Start From ${randomProduct[0].startingPrice}
                             </div>
                             <div className="random-product-description">
                                 {randomProduct[0].description}
                             </div>
 
-                            <Button className={'bid-now-button'}>
+                            <Button className={'bid-now-button'}
+                                    onClick={() => history.push(`/shop/${randomProduct[0].categoryName}/${randomProduct[0].subcategoryName}/${randomProduct[0].id}`)}>
                                 <span className="bid-now-text">BID NOW</span>
                                 <Icon icon={chevronRight} color="#252525" width="16" height="16" inline={true}/>
                             </Button>
@@ -106,13 +107,15 @@ const LandingPage = () => {
                 </div>
                 <div className="tab-item-container">
                     {newAndLastProducts.length !== 0 ? newAndLastProducts[activeTab].map(product => (
-                        <div className="tab-product">
+                        <div className="tab-product"
+                             onClick={() => history.push(`/shop/${product.categoryName}/${product.subcategoryName}/${product.id}`)}>
                             <Image width="262"
                                    height="196"
-                                   src={product.url}/>
+                                   src={product.url}
+                            />
                             <h5 className="product-title">{product.name}</h5>
-                            <span className="product-price">Start from
-                                <span style={{color: '#8367D8'}}>${product.startingPrice}</span>
+                            <span className="product-price">Start From
+                                <span style={{color: '#8367D8'}}> ${product.startingPrice}</span>
                             </span>
                         </div>
                     )) : null}

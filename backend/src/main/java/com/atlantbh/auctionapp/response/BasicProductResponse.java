@@ -6,4 +6,6 @@ public interface BasicProductResponse {
     Double getStartingPrice();
     String getDescription();
     String getUrl();
+    String getCategoryName();
+    String getSubcategoryName();
 }
