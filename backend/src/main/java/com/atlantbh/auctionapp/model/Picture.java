@@ -18,6 +18,9 @@ public class Picture {
     @NotNull
     private String url;
 
+    @Column(nullable = false)
+    private Boolean featured = false;
+
     public Picture() {
     }
 
@@ -48,5 +51,13 @@ public class Picture {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Boolean getFeatured() {
+        return featured;
+    }
+
+    public void setFeatured(Boolean featured) {
+        this.featured = featured;
     }
 }

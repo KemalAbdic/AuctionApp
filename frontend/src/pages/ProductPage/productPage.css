@@ -16,7 +16,7 @@
 .product-picture {
     object-fit: scale-down;
     width: 100%;
-    max-height:480px;
+    max-height: 480px;
     min-height: 300px;
 }
 
@@ -117,7 +117,7 @@ strong {
     box-sizing: border-box;
 }
 
-.gray-line {
+.product-gray-line {
     color: #9B9B9B;
     width: 100%;
     border: 1px solid;

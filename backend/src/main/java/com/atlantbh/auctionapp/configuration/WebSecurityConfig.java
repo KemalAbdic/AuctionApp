@@ -70,6 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
         corsConfiguration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:8080",
                 "http://localhost:3000",
                 "https://atlantbh-auction-app.herokuapp.com",
                 "https://atlantbh-auction-app-frontend.herokuapp.com"));

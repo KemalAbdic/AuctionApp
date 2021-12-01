@@ -27,4 +27,34 @@ public class ProductControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
     }
+
+    @Test
+    public void getRandomProducts() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/random")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void getNewProducts() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/new")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void getLastProducts() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/last")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
 }

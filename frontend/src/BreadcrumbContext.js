@@ -13,8 +13,12 @@ export const BreadcrumbProvider = ({children}) => {
         setBreadcrumbItems(items);
     }
 
+    const removeBreadcrumb = () => {
+        setBreadcrumbTitle(null);
+    }
+
     return (
-        <BreadcrumbContext.Provider value={{breadcrumbTitle, breadcrumbItems, setBreadcrumb}}>
+        <BreadcrumbContext.Provider value={{breadcrumbTitle, breadcrumbItems, setBreadcrumb, removeBreadcrumb}}>
             {children}
         </BreadcrumbContext.Provider>
     );
