@@ -80,12 +80,11 @@ const LandingPage = () => {
                                 <Icon icon={chevronRight} color="#252525" width="16" height="16" inline={true}/>
                             </Button>
                         </div>
-                        <Image style={{width: 400, height: 300, marginLeft: 30}} src={randomProduct[0].url}/>
+                        <Image style={{width: 357, height: 267.75, marginLeft: 30}} src={randomProduct[0].url}/>
                     </div> : null}
             </div>
 
             <div className="new-last-container">
-                <div className="gray-line"/>
                 <div className="tab-container">
                     <div className="tab-item">
                         <div style={activeTab === 0 ? {borderBottom: '3px solid #8367d8', fontWeight: '600'} : null}
@@ -103,8 +102,8 @@ const LandingPage = () => {
                              }}>Last Chance
                         </div>
                     </div>
-
                 </div>
+                <div className="gray-line"/>
                 <div className="tab-item-container">
                     {newAndLastProducts.length !== 0 ? newAndLastProducts[activeTab].map(product => (
                         <div className="tab-product"
@@ -121,7 +120,6 @@ const LandingPage = () => {
                     )) : null}
                 </div>
             </div>
-
         </div>
     )
 }
