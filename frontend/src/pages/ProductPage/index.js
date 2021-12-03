@@ -36,7 +36,7 @@ const ProductPage = ({match}) => {
                 setBreadcrumb(data.name, [...url.map((breadcrumb, i) => {
                     return {
                         text: breadcrumb.toLowerCase(),
-                        href: "/" + url.slice(0, i + 1).join("/")
+                        href: "/" + url.slice(0, i + 1).join("/") + "/"
                     }
                 }), {text: "Single product"}]);
                 setBids(bidData);
