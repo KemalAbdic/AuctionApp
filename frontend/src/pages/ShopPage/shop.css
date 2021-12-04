@@ -30,7 +30,7 @@
     width: 180px;
 }
 
-.cate.list-group-item {
+.category.list-group-item {
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -87,7 +87,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 12px 24px;
+    padding: 10px 24px;
     position: static;
     width: 262px;
     height: 43px;
@@ -98,7 +98,6 @@
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
-    line-height: 19px;
     color: #252525;
 }
 
@@ -146,7 +145,7 @@ select {
 .arrow-icon {
     pointer-events: none;
     margin-left: 222px;
-    margin-top: -31px;
+    margin-top: -33px;
     width: 16px;
     height: 16px;
 }

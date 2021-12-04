@@ -41,8 +41,8 @@ public class ProductService {
         return productRepository.findRandomProducts();
     }
 
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public List<BasicProductResponse> findAllProducts() {
+        return productRepository.findAllProducts();
     }
 
 }

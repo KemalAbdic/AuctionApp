@@ -11,8 +11,11 @@ import java.util.List;
 @Repository
 public interface SubcategoryRepository extends JpaRepository<Subcategory, Long> {
 
-    @Query(value = "SELECT sc.id, sc.name, c.id as categoryId, c.name as categoryName " +
-            "FROM subcategory sc INNER JOIN category c on c.id = sc.category_id " +
-            "LEFT OUTER JOIN product p on sc.id = p.subcategory_id ", nativeQuery = true)
+    @Query(value = "SELECT sc.id, sc.name, c.id AS categoryId, c.name AS categoryName " +
+            "FROM subcategory sc INNER JOIN category c ON c.id = sc.category_id " +
+            "LEFT OUTER JOIN product p ON sc.id = p.subcategory_id ", nativeQuery = true)
     List<BasicSubcategoryResponse> getAll();
+
+    @Query(value = "SELECT * FROM subcategory INNER JOIN category c ON c.id = subcategory.category_id", nativeQuery = true)
+    List<Subcategory> getAllSubcategories();
 }

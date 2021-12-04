@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useBreadcrumbContext} from "../../BreadcrumbContext";
-import {getSubcategories} from "../../services/LandingService";
+import {getAllSubcategories} from "../../services/LandingService";
 
 import "./allCategories.css"
 import {useHistory} from "react-router-dom";
@@ -14,7 +14,7 @@ const AllCategories = () => {
         setBreadcrumb("All Categories", [{text: "Home", href: "/"}, {text: "All Categories"}]);
         const fetchData = async () => {
             try {
-                setSubcategories(await getSubcategories())
+                setSubcategories(await getAllSubcategories())
             } catch (e) {
                 console.error(e)
             }
@@ -23,12 +23,10 @@ const AllCategories = () => {
         // eslint-disable-next-line
     }, [])
 
-    console.log(subcategories)
-
     let result = [];
     subcategories.forEach(function (a) {
-        let categoryName = a.categoryName;
-        let categoryId = a.categoryId
+        let categoryName = a.category.name;
+        let categoryId = a.category.id
         if (!this[categoryName]) {
             this[categoryName] = {categoryName: categoryName, categoryId: categoryId, subcategories: []};
             result.push(this[categoryName]);
@@ -44,7 +42,7 @@ const AllCategories = () => {
                         <h3 style={{paddingBottom: "32px"}} key={item.categoryId}>
                             <span
                                 onClick={() =>
-                                    history.push(`/shop/${item.categoryName.split(' ').join('_').toLowerCase()}/`)}>
+                                    history.push(`/shop/${item.categoryName.toLowerCase()}/`)}>
                                 {item.categoryName}
                             </span>
                         </h3>
@@ -56,7 +54,6 @@ const AllCategories = () => {
             </div>
         </div>
     )
-
 }
 
 export default AllCategories;

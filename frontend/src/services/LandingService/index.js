@@ -9,6 +9,10 @@ export const getSubcategories = async () => {
     return (await axios.get(host + '/subcategories/')).data;
 };
 
+export const getAllSubcategories = async () => {
+    return (await axios.get(host + '/subcategories/all')).data;
+};
+
 export const getRandomProduct = async () => {
     return (await axios.get(host + '/product/random')).data;
 };
@@ -19,6 +23,10 @@ export const getNewProducts = async () => {
 
 export const getLastProducts = async () => {
     return (await axios.get(host + '/product/last')).data;
+};
+
+export const getAllProducts = async () => {
+    return (await axios.get(host + '/product/all')).data;
 };
 
 export const categoriesRouting = (history, category) => {
