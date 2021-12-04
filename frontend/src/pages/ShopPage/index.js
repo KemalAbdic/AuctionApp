@@ -31,8 +31,6 @@ const Shop = ({match}) => {
     let allProducts = [];
     products.map(product => ((url[0] === undefined || url[0] === product.categoryName.toLowerCase()) ? categoryProducts.push(product) : allProducts.push(product)))
 
-    console.log(url[0])
-
     const handleClick = () => {
         setMaxRange(prevMaxRange => prevMaxRange + 9)
     }
