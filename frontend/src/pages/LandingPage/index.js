@@ -53,9 +53,13 @@ const LandingPage = () => {
                         marginBottom: -16
                     }}>CATEGORIES
                     </ListGroup.Item>
-                    {categories.map(category => (<ListGroup.Item key={category.name} action
-                                                                 onClick={() => categoriesRouting(history, category)}>{category.name}
-                    </ListGroup.Item>))}
+                    {categories
+                        .map(category => (
+                            <ListGroup.Item
+                                key={category.name}
+                                action onClick={() => categoriesRouting(history, category)}>
+                                {category.name}
+                            </ListGroup.Item>))}
                     <ListGroup.Item action onClick={() => history.push("/all")}>
                         All Categories
                     </ListGroup.Item>
@@ -75,7 +79,7 @@ const LandingPage = () => {
                             </div>
 
                             <Button className={'bid-now-button'}
-                                    onClick={() => history.push(`/shop/${randomProduct[0].categoryName}/${randomProduct[0].subcategoryName}/${randomProduct[0].id}`)}>
+                                    onClick={() => history.push(`/shop/${randomProduct[0].categoryName.toLowerCase()}/${randomProduct[0].subcategoryName.toLowerCase()}/${randomProduct[0].id}`)}>
                                 <span className="bid-now-text">BID NOW</span>
                                 <Icon icon={chevronRight} color="#252525" width="16" height="16" inline={true}/>
                             </Button>
@@ -107,7 +111,7 @@ const LandingPage = () => {
                 <div className="tab-item-container">
                     {newAndLastProducts.length !== 0 ? newAndLastProducts[activeTab].map(product => (
                         <div className="tab-product"
-                             onClick={() => history.push(`/shop/${product.categoryName}/${product.subcategoryName}/${product.id}`)}>
+                             onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}>
                             <Image width="262"
                                    height="196"
                                    src={product.url}

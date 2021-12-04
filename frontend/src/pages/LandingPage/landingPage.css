@@ -192,6 +192,8 @@
     width: 100%;
     border: 1px solid #D8D8D8;
     margin-bottom: 32px;
+    background-color: #D8D8D8;
+    margin-top: -1px;
 }
 
 .nav-link {

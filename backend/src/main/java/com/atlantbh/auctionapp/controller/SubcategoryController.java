@@ -1,6 +1,7 @@
 package com.atlantbh.auctionapp.controller;
 
 import com.atlantbh.auctionapp.model.Subcategory;
+import com.atlantbh.auctionapp.response.BasicSubcategoryResponse;
 import com.atlantbh.auctionapp.service.SubcategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,12 @@ public class SubcategoryController {
 
 
     @GetMapping("/")
-    public ResponseEntity<List<Subcategory>> getSubcategories() {
+    public ResponseEntity<List<BasicSubcategoryResponse>> getSubcategories() {
         return ResponseEntity.ok(subcategoryService.getSubcategories());
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Subcategory>> getAllSubcategories() {
+        return ResponseEntity.ok(subcategoryService.getAllSubcategories());
     }
 }

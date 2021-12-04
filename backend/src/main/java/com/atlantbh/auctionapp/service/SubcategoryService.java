@@ -2,6 +2,7 @@ package com.atlantbh.auctionapp.service;
 
 import com.atlantbh.auctionapp.model.Subcategory;
 import com.atlantbh.auctionapp.repository.SubcategoryRepository;
+import com.atlantbh.auctionapp.response.BasicSubcategoryResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,11 @@ public class SubcategoryService {
         this.subcategoryRepository = subcategoryRepository;
     }
 
-    public List<Subcategory> getSubcategories(){
+    public List<BasicSubcategoryResponse> getSubcategories() {
         return subcategoryRepository.getAll();
+    }
+
+    public List<Subcategory> getAllSubcategories() {
+        return subcategoryRepository.getAllSubcategories();
     }
 }
