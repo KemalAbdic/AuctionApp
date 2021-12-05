@@ -42,10 +42,10 @@
 }
 
 .shop-product-container {
-    width: 80%;
+    width: 79%;
 }
 
-.shop-product-grid {
+.shop-grid {
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
     grid-gap: 24px;
@@ -148,4 +148,132 @@ select {
     margin-top: -33px;
     width: 16px;
     height: 16px;
+}
+
+.toggle-style {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 81px;
+    position: static;
+    width: 155px;
+    height: 34px;
+}
+
+.toggle-text {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    padding-left: 11px;
+    padding-bottom: 11px;
+}
+
+.sorting-grid-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.toggle-button {
+    padding: 0;
+    border: none;
+    background: none;
+    align-items: center;
+}
+
+.toggle-button:hover {
+    cursor: pointer;
+    color: #8367D8;
+}
+
+.shop-list-product {
+    display: flex;
+    padding-left: 24px;
+    pointer-events: none;
+}
+
+.shop-list-item {
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.shop-list-info {
+    display: flex;
+    flex-direction: column;
+    width: 534px;
+    padding-left: 24px;
+}
+
+.shop-list-title {
+    flex: 1;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.84px;
+    color: #252525;
+    margin-top: 0;
+    margin-bottom: 15px;
+    pointer-events: auto
+}
+
+.shop-list-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.shop-list-description {
+    flex: 2;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 24px;
+    color: #9B9B9B;
+    margin-bottom: 15px;
+}
+
+.shop-list-price {
+    flex: 3;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 51px;
+    letter-spacing: 0.84px;
+    color: #8367D8;
+}
+
+.shop-list-bid-button {
+    display: flex;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    position: static;
+    width: 71px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    cursor: pointer;
+    align-items: center;
+    padding-left: 10px;
+    pointer-events: auto;
+}
+
+.shop-list-bid-button-text {
+    padding-right: 8px;
+}
+
+.shop-list-bid-button:hover {
+    color: #8367D8;
+    border: 2px solid #8367D8;
+    pointer-events: auto;
 }
