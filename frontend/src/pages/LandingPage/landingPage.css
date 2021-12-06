@@ -113,6 +113,10 @@
     cursor: pointer;
 }
 
+.list-group-item-action:hover {
+    color: #8367D8;
+}
+
 .bid-now-button {
     width: 183px;
     height: 51px;

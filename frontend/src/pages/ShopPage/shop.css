@@ -41,6 +41,10 @@
     cursor: pointer;
 }
 
+.category.list-group-item:hover {
+    color: #8367D8;
+}
+
 .shop-product-container {
     width: 79%;
 }
@@ -80,6 +84,10 @@
     width: 262px;
     padding-bottom: 81px;
     padding-left: 24px;
+}
+
+.form-select:hover {
+    border: 2px solid #8367D8;
 }
 
 .form-select {

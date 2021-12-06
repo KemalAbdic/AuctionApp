@@ -46,6 +46,31 @@ const Shop = ({match}) => {
         setViewStyle(e);
     }
 
+    const handleSortProducts = (sortValue) => {
+        let sortedProducts = [...products]
+        switch (sortValue) {
+            case 'default':
+                sortedProducts.sort((a, b) => b.name < a.name ? 1 : (a.name > b.name ? -1 : 0));
+                break;
+            case 'new':
+                sortedProducts.sort((a, b) => b.auctionStart > a.auctionStart ? 1 : (b.auctionStart < a.auctionStart ? -1 : 0));
+                break;
+            case 'new_desc':
+                sortedProducts.sort((a, b) => b.auctionEnd < a.auctionEnd ? 1 : (a.auctionEnd > b.auctionEnd ? -1 : 0));
+                break;
+            case 'price':
+                sortedProducts.sort((a, b) => a.startingPrice - b.startingPrice);
+                break;
+            case 'price_desc':
+                sortedProducts.sort((a, b) => b.startingPrice - a.startingPrice);
+                break;
+            default:
+                sortedProducts.sort((a, b) => b.name < a.name ? 1 : (a.name > b.name ? -1 : 0));
+                break;
+        }
+        setProducts(sortedProducts)
+    }
+
     return (<div className="shop-page-wrapper">
         <div className="categories-shop-container">
             <ListGroup variant="flush">
@@ -58,12 +83,12 @@ const Shop = ({match}) => {
         <div className="shop-product-container">
             <div className="sorting-grid-list">
                 <div className="shop-sorting-bar">
-                    <Form.Select>
-                        <option value="1">Default Sorting</option>
-                        <option value="2">Sort by Popularity</option>
-                        <option value="3">Sort by Rating</option>
-                        <option value="4">Sort by Newness</option>
-                        <option value="5">Sort by Price</option>
+                    <Form.Select onClick={(e) => handleSortProducts(e.target.value)}>
+                        <option value="default">Default Sorting</option>
+                        <option value="new">Sort by New Products</option>
+                        <option value="new_desc">Sort by Last Chance</option>
+                        <option value="price">Sort by Price: Low to High</option>
+                        <option value="price_desc">Sort by Price: High to Low</option>
                     </Form.Select>
                     <div className="arrow-icon"><Icon icon="akar-icons:chevron-down"/></div>
                 </div>

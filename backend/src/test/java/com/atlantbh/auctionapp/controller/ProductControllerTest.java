@@ -57,4 +57,15 @@ public class ProductControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
     }
+
+    @Test
+    public void getAllProducts() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/all")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
 }

@@ -49,7 +49,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             nativeQuery = true)
     List<BasicProductResponse> findRandomProducts();
 
-    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, p.url AS url, c.name AS categoryName, s.name AS subcategoryName " +
+    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, pr.auction_start as auctionStart, " +
+            "pr.auction_end as auctionEnd, p.url AS url, c.name AS categoryName, s.name AS subcategoryName " +
             "FROM product pr " +
             "INNER JOIN picture p ON pr.id = p.product_id " +
             "INNER JOIN subcategory s ON s.id = pr.subcategory_id " +
