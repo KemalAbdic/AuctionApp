@@ -31,6 +31,8 @@
 }
 
 .category.list-group-item {
+    display: flex;
+    position: relative;
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -39,6 +41,9 @@
     color: #252525;
     margin-bottom: 24px;
     cursor: pointer;
+    border: none;
+    background-color: inherit;
+    justify-content: space-between;
 }
 
 .category.list-group-item:hover {

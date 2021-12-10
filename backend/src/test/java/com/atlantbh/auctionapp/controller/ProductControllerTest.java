@@ -61,7 +61,7 @@ public class ProductControllerTest {
     @Test
     public void getAllProducts() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders
-                .get("/product/all")
+                .get("/product/search")
                 .accept(MediaType.APPLICATION_JSON);
         mvc.perform(request)
                 .andExpect(status().isOk())

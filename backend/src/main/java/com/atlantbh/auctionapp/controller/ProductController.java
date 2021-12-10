@@ -1,6 +1,7 @@
 package com.atlantbh.auctionapp.controller;
 
 import com.atlantbh.auctionapp.response.BasicProductResponse;
+import com.atlantbh.auctionapp.response.ProductPageResponse;
 import com.atlantbh.auctionapp.response.ProductResponse;
 import com.atlantbh.auctionapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,17 @@ public class ProductController {
         return ResponseEntity.ok(productService.getRandomProduct());
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<BasicProductResponse>> getAllProducts() {
-        return ResponseEntity.ok(productService.findAllProducts());
+    @GetMapping("/search")
+    public ResponseEntity<ProductPageResponse> getAllProducts(@RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                              @RequestParam(name = "sort", defaultValue = "") String sort) {
+        return ResponseEntity.ok(productService.findAllProducts(page, sort));
+    }
+
+    @GetMapping("/category")
+    public ResponseEntity<ProductPageResponse> search(@RequestParam("id") Long id,
+                                                      @RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                      @RequestParam(name = "sort", defaultValue = "") String sort
+    ) {
+        return ResponseEntity.ok(productService.getItemsByCategoryId(id, page, sort));
     }
 }

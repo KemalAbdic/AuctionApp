@@ -1,41 +1,46 @@
 import React, {useEffect, useState} from 'react';
-import {categoriesRouting, getAllProducts, getCategories} from "../../services/LandingService";
-import {Button, Form, Image, ListGroup} from "react-bootstrap";
+import {getAllProducts, getAllProductsByCategory} from "../../services/LandingService";
+import {Button, Form, Image} from "react-bootstrap";
 import "./shop.css"
 import {useHistory} from "react-router-dom";
 import {useBreadcrumbContext} from "../../BreadcrumbContext";
 import {Icon} from "@iconify/react";
+import CategoryList from "../../common/CategoryList";
+import * as qs from 'query-string';
 
-const Shop = ({match}) => {
-    const [categories, setCategories] = useState([]);
+let page = 0;
+
+const Shop = ({match, handleClick}) => {
     const [products, setProducts] = useState([]);
     const history = useHistory();
     const {removeBreadcrumb} = useBreadcrumbContext();
-    const [maxRange, setMaxRange] = useState(9);
     const [viewStyle, setViewStyle] = useState("grid");
     const [activeButton, setActiveButton] = useState(0);
-    const url = match.url.split("/").slice(2, -1);
+    const [lastPage, setLastPage] = useState(true);
+    const urlParams = qs.parse(history.location.search);
 
     useEffect(() => {
+        page = 0;
         removeBreadcrumb();
         const fetchData = async () => {
             try {
-                setCategories(await getCategories());
-                setProducts(await getAllProducts())
+                if (urlParams.id === undefined) {
+                    const data = await getAllProducts(page, urlParams.sort);
+                    setProducts(data.products)
+                    setLastPage(data.lastPage)
+                } else {
+                    const data = await getAllProductsByCategory(urlParams.id, page, urlParams.sort)
+                    setProducts(data.products)
+                    setLastPage(data.lastPage)
+                }
             } catch (e) {
                 console.error(e)
             }
         }
         fetchData();
-    }, [removeBreadcrumb]);
+        // eslint-disable-next-line
+    }, [removeBreadcrumb, match.url, history.location.search]);
 
-    let categoryProducts = [];
-    let allProducts = [];
-    products.map(product => ((url[0] === undefined || url[0] === product.categoryName.toLowerCase()) ? categoryProducts.push(product) : allProducts.push(product)))
-
-    const handleClick = () => {
-        setMaxRange(prevMaxRange => prevMaxRange + 9)
-    }
 
     const handleGridChange = (e) => {
         setActiveButton(0)
@@ -46,44 +51,32 @@ const Shop = ({match}) => {
         setViewStyle(e);
     }
 
-    const handleSortProducts = (sortValue) => {
-        let sortedProducts = [...products]
-        switch (sortValue) {
-            case 'default':
-                sortedProducts.sort((a, b) => b.name < a.name ? 1 : (a.name > b.name ? -1 : 0));
-                break;
-            case 'new':
-                sortedProducts.sort((a, b) => b.auctionStart > a.auctionStart ? 1 : (b.auctionStart < a.auctionStart ? -1 : 0));
-                break;
-            case 'new_desc':
-                sortedProducts.sort((a, b) => b.auctionEnd < a.auctionEnd ? 1 : (a.auctionEnd > b.auctionEnd ? -1 : 0));
-                break;
-            case 'price':
-                sortedProducts.sort((a, b) => a.startingPrice - b.startingPrice);
-                break;
-            case 'price_desc':
-                sortedProducts.sort((a, b) => b.startingPrice - a.startingPrice);
-                break;
-            default:
-                sortedProducts.sort((a, b) => b.name < a.name ? 1 : (a.name > b.name ? -1 : 0));
-                break;
-        }
-        setProducts(sortedProducts)
+    const handleSortProducts = async (sort) => {
+        page = 0;
+        urlParams.sort = sort;
+        history.push({search: qs.stringify(urlParams)});
     }
 
+    const handleExploreMore = async () => {
+        page++;
+        if (urlParams.id === undefined) {
+            const data = await getAllProducts(page, urlParams.sort);
+            setProducts([...products, ...data.products])
+            setLastPage(data.lastPage)
+        } else {
+            const data = await getAllProductsByCategory(urlParams.id, page, urlParams.sort)
+            setProducts([...products, ...data.products])
+            setLastPage(data.lastPage)
+        }
+    };
+
     return (<div className="shop-page-wrapper">
-        <div className="categories-shop-container">
-            <ListGroup variant="flush">
-                <div className="product-categories">PRODUCT CATEGORIES</div>
-                {categories.map(category => (<ListGroup.Item className="category" key={category.id}
-                                                             onClick={() => categoriesRouting(history, category)}>{category.name}
-                </ListGroup.Item>))}
-            </ListGroup>
-        </div>
+        <CategoryList handleClick={handleClick}/>
         <div className="shop-product-container">
             <div className="sorting-grid-list">
                 <div className="shop-sorting-bar">
-                    <Form.Select onClick={(e) => handleSortProducts(e.target.value)}>
+                    <Form.Select defaultValue={urlParams.sort}
+                                 onChange={(e) => handleSortProducts(e.target.value)}>
                         <option value="default">Default Sorting</option>
                         <option value="new">Sort by New Products</option>
                         <option value="new_desc">Sort by Last Chance</option>
@@ -94,12 +87,14 @@ const Shop = ({match}) => {
                 </div>
                 <div className="toggle-style">
                     <Button style={activeButton === 0 ? {color: '#8367d8'} : null}
-                            aria-pressed={activeButton ? '0' : '1'} className="toggle-button"
+                            aria-pressed={activeButton ? '0' : '1'}
+                            className="toggle-button"
                             onClick={() => handleGridChange("grid")}>
-                        <Icon icon="mdi-light:grid" width="24" height="24" inline={true}/><span className="toggle-text"
-                                                                                                style={{paddingRight: '27px'}}>Grid</span></Button>
+                        <Icon icon="mdi-light:grid" width="24" height="24" inline={true}/>
+                        <span className="toggle-text" style={{paddingRight: '27px'}}>Grid</span></Button>
                     <Button style={activeButton !== 0 ? {color: '#8367d8'} : null}
-                            aria-pressed={activeButton ? '0' : '1'} className="toggle-button"
+                            aria-pressed={activeButton ? '0' : '1'}
+                            className="toggle-button"
                             onClick={() => handleListChange("list")}>
                         <Icon icon="mdi-light:menu" width="24" height="24" inline={true}/><span
                         className="toggle-text">List</span></Button>
@@ -107,8 +102,7 @@ const Shop = ({match}) => {
             </div>
             {viewStyle === "grid" ?
                 <div className="shop-grid">
-                    {categoryProducts
-                        .filter((product, i) => i < maxRange)
+                    {products
                         .map(product => (
                             <div className="shop-product"
                                  onClick={() =>
@@ -126,8 +120,7 @@ const Shop = ({match}) => {
                             </div>))}
                 </div>
                 :
-                <div className="shop-list">{categoryProducts
-                    .filter((product, i) => i < maxRange)
+                <div className="shop-list">{products
                     .map(product => (
                         <div className="shop-list-product"
                              onClick={() =>
@@ -153,8 +146,8 @@ const Shop = ({match}) => {
                         </div>))}
                 </div>}
 
-            {categoryProducts.length > maxRange ? <div className="explore-more-div">
-                <Button className="explore-more-button" onClick={handleClick}>EXPLORE MORE </Button>
+            {!lastPage ? <div className="explore-more-div">
+                <Button className="explore-more-button" onClick={handleExploreMore}>EXPLORE MORE </Button>
             </div> : null}
         </div>
     </div>)
