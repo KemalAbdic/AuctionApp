@@ -2,12 +2,10 @@ import React, {useEffect, useState} from "react";
 import {getAllSubcategories} from "../../services/LandingService";
 import {ListGroup} from "react-bootstrap";
 import {Icon} from "@iconify/react";
-import {useHistory} from "react-router-dom";
 
-const CategoryList = () => {
+const CategoryList = ({handleClick}) => {
     const [subcategories, setSubcategories] = useState([]);
     const [activeCategory, setActiveCategory] = useState(false);
-    const history = useHistory();
     let result = [];
 
     useEffect(() => {
@@ -43,14 +41,8 @@ const CategoryList = () => {
         }
     }
 
-    const handleClick = (selected) => {
-        let categoryPath = "";
-        if (selected.category !== null)
-            categoryPath = "?id=" + selected.category;
-        history.push('/shop' + categoryPath);
-    }
     return (
-        <ListGroup variant="flush">
+        <ListGroup className="categories-shop-container" variant="flush">
             <ListGroup.Item className="product-categories">PRODUCT CATEGORIES</ListGroup.Item>
             {categories.map(category => (
                 <React.Fragment key={category.categoryId}>
@@ -61,8 +53,10 @@ const CategoryList = () => {
                     >
                         {category.categoryName}
                         {category.categoryId === activeCategory ?
-                            <Icon icon="akar-icons:minus" width="16" height="16"/> :
-                            <Icon icon="akar-icons:plus" width="16" height="16"/>}
+                            <Icon icon="akar-icons:minus" width="16" height="16"
+                                  style={{left: 125, position: "absolute"}}/> :
+                            <Icon icon="akar-icons:plus" width="16" height="16"
+                                  style={{left: 125, position: "absolute"}}/>}
                     </ListGroup.Item>
                 </React.Fragment>
             ))}

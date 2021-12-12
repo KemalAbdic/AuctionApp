@@ -68,4 +68,24 @@ public class ProductControllerTest {
                 .andReturn();
     }
 
+    @Test
+    public void getAllProductsSecondPage() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/search?page=1")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void getProductsByCategory() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/category?id=1")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
 }

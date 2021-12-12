@@ -8,10 +8,10 @@
 }
 
 .categories-shop-container {
-    width: 21%;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px 24px 0;
+    padding-top: 24px;
+    padding-right: 33px;
+    padding-left: 24px;
+    padding-bottom: 0;
     background: #FFFFFF;
     border: 1px solid #D8D8D8;
     box-sizing: border-box;
@@ -27,7 +27,7 @@
 }
 
 .list-group-flush {
-    width: 180px;
+    width: 190px;
 }
 
 .category.list-group-item {
@@ -48,6 +48,12 @@
 
 .category.list-group-item:hover {
     color: #8367D8;
+}
+.category.list-group-item:focus {
+    outline: 0;
+}
+.category.list-group-item:active {
+    outline: none;
 }
 
 .shop-product-container {

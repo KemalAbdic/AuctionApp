@@ -10,7 +10,7 @@ import * as qs from 'query-string';
 
 let page = 0;
 
-const Shop = ({match, handleClick}) => {
+const Shop = ({match}) => {
     const [products, setProducts] = useState([]);
     const history = useHistory();
     const {removeBreadcrumb} = useBreadcrumbContext();
@@ -18,8 +18,9 @@ const Shop = ({match, handleClick}) => {
     const [activeButton, setActiveButton] = useState(0);
     const [lastPage, setLastPage] = useState(true);
     const urlParams = qs.parse(history.location.search);
-
+    const [activeParam, setActiveParam] = useState("default");
     useEffect(() => {
+
         page = 0;
         removeBreadcrumb();
         const fetchData = async () => {
@@ -54,6 +55,7 @@ const Shop = ({match, handleClick}) => {
     const handleSortProducts = async (sort) => {
         page = 0;
         urlParams.sort = sort;
+        setActiveParam(sort)
         history.push({search: qs.stringify(urlParams)});
     }
 
@@ -70,8 +72,15 @@ const Shop = ({match, handleClick}) => {
         }
     };
 
+    function handleClick(selected) {
+        let categoryPath = "";
+        if (selected.category !== null)
+            categoryPath = "?id=" + selected.category + "&sort=" +activeParam;
+        history.push('/shop' + categoryPath);
+    }
+
     return (<div className="shop-page-wrapper">
-        <CategoryList handleClick={handleClick}/>
+        <CategoryList handleClick={handleClick}  />
         <div className="shop-product-container">
             <div className="sorting-grid-list">
                 <div className="shop-sorting-bar">
