@@ -63,7 +63,7 @@ public class ProductService {
         return new ProductPageResponse(allProducts.getContent(), !allProducts.hasNext());
     }
 
-    public ProductPageResponse getItemsByCategoryId(Long id, Integer page, String sort) {
+    public ProductPageResponse getItemsByCategoryId(String query, Integer page, String sort) {
         PageRequest pageRequest;
         if ("new".equals(sort)) {
             pageRequest = PageRequest.of(page, 9, Sort.by("auctionStart").ascending());
@@ -77,7 +77,7 @@ public class ProductService {
             pageRequest = PageRequest.of(page, 9, Sort.by("name"));
         }
 
-        Page<BasicProductResponse> categoryResult = productRepository.findProductsByCategoryId(id, pageRequest);
+        Page<BasicProductResponse> categoryResult = productRepository.findProductsByCategoryName(query, pageRequest);
         return new ProductPageResponse(categoryResult.getContent(), !categoryResult.hasNext());
     }
 }

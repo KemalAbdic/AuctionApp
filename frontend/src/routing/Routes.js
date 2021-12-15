@@ -23,7 +23,7 @@ function Routes() {
                 <Route exact path="/register" render={props => <Register {...props} />}/>
                 <Route exact path="/login" render={props => <Login {...props} />}/>
                 <Route path="/shop/*/:id/" render={props => <ProductPage {...props} />}/>
-                <Route path="/shop*" render={props => <Shop {...props} />}/>
+                <Route path="/shop/*" render={props => <Shop {...props} />}/>
             </Switch>
         </div>
     )

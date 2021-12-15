@@ -5,7 +5,7 @@ import {Icon} from "@iconify/react";
 
 const CategoryList = ({handleClick}) => {
     const [subcategories, setSubcategories] = useState([]);
-    const [activeCategory, setActiveCategory] = useState(false);
+    const [activeCategory, setActiveCategory] = useState("");
     let result = [];
 
     useEffect(() => {
@@ -31,13 +31,13 @@ const CategoryList = ({handleClick}) => {
     }, {});
     let categories = JSON.parse(JSON.stringify(result));
 
-    const handleCategoryClick = (categoryId) => {
-        if (activeCategory === categoryId) {
+    function handleCategoryClick(categoryName) {
+        if (activeCategory === categoryName) {
             setActiveCategory("");
             handleClick({category: null, subcategory: null});
         } else {
-            setActiveCategory(categoryId);
-            handleClick({category: categoryId, subcategory: null});
+            setActiveCategory(categoryName);
+            handleClick({category: categoryName, subcategory: null});
         }
     }
 
@@ -45,14 +45,14 @@ const CategoryList = ({handleClick}) => {
         <ListGroup className="categories-shop-container" variant="flush">
             <ListGroup.Item className="product-categories">PRODUCT CATEGORIES</ListGroup.Item>
             {categories.map(category => (
-                <React.Fragment key={category.categoryId}>
+                <React.Fragment key={category.categoryName}>
                     <ListGroup.Item
                         className="category"
-                        action
-                        onClick={() => handleCategoryClick(category.categoryId)}
+                        action onClick={() => handleCategoryClick(category.categoryName)}
+                        style={category.categoryName === activeCategory ? {fontWeight: "bold"} : {fontWeight: "normal"}}
                     >
                         {category.categoryName}
-                        {category.categoryId === activeCategory ?
+                        {category.categoryName === activeCategory ?
                             <Icon icon="akar-icons:minus" width="16" height="16"
                                   style={{left: 125, position: "absolute"}}/> :
                             <Icon icon="akar-icons:plus" width="16" height="16"

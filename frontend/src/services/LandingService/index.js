@@ -28,9 +28,9 @@ export const getLastProducts = async () => {
 export const getAllProducts = async (page, sort) => {
     return (await axios.get(host + '/product/search?page=' + page + '&sort=' + sort)).data;
 };
-export const getAllProductsByCategory = async (id, page, sort) => {
-    return (await axios.get(host + '/product/category?id=' + id + '&page=' + page + '&sort=' + sort)).data;
+export const getAllProductsByCategory = async (query, page, sort) => {
+    return (await axios.get(host + '/product/category/' + query + '?page=' + page + '&sort=' + sort)).data;
 };
 export const categoriesRouting = (history, category) => {
-    history.push(`/shop?id=${category.id}`);
+    history.push(`/shop/${category.name.toLowerCase()}`);
 }

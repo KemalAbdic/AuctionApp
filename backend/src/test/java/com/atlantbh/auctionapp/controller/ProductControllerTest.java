@@ -81,7 +81,7 @@ public class ProductControllerTest {
     @Test
     public void getProductsByCategory() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders
-                .get("/product/category?id=1")
+                .get("/product/category/fashion")
                 .accept(MediaType.APPLICATION_JSON);
         mvc.perform(request)
                 .andExpect(status().isOk())

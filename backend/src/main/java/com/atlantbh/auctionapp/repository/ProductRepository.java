@@ -4,7 +4,6 @@ import com.atlantbh.auctionapp.model.Product;
 import com.atlantbh.auctionapp.response.BasicProductResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,9 +14,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("select p from Product p where p.id = :id and p.person.id = :person_id")
-    Product getProductByIdAndPersonId(@Param("id") Long id, @Param("person_id") Long personId);
-
+    @Query("select p from Product p where p.id = :id")
     Product findProductById(@Param("id") Long id);
 
     @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, p.url AS url, c.name AS categoryName, s.name AS subcategoryName " +
@@ -70,8 +67,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "INNER JOIN picture p ON pr.id = p.product_id " +
             "INNER JOIN subcategory s ON s.id = pr.subcategory_id " +
             "INNER JOIN category c ON c.id = s.category_id " +
-            "WHERE c.id = :categoryId and p.featured = TRUE AND auction_start <= now() AND auction_end > now()",
+            "WHERE LOWER(c.name) = :query AND p.featured = TRUE AND auction_start <= now() AND auction_end > now()",
             nativeQuery = true)
-    Page<BasicProductResponse> findProductsByCategoryId(Long categoryId, Pageable pageable);
+    Page<BasicProductResponse> findProductsByCategoryName(@Param("query")String query, Pageable pageable);
 
 }

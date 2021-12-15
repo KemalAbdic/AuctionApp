@@ -19,18 +19,20 @@ const Shop = ({match}) => {
     const [lastPage, setLastPage] = useState(true);
     const urlParams = qs.parse(history.location.search);
     const [activeParam, setActiveParam] = useState("default");
-    useEffect(() => {
+    const url = match.url.split("/");
+    let categoryName = url[2];
 
+    useEffect(() => {
         page = 0;
         removeBreadcrumb();
         const fetchData = async () => {
             try {
-                if (urlParams.id === undefined) {
+                if (categoryName === "") {
                     const data = await getAllProducts(page, urlParams.sort);
                     setProducts(data.products)
                     setLastPage(data.lastPage)
                 } else {
-                    const data = await getAllProductsByCategory(urlParams.id, page, urlParams.sort)
+                    const data = await getAllProductsByCategory(categoryName, page, urlParams.sort)
                     setProducts(data.products)
                     setLastPage(data.lastPage)
                 }
@@ -41,7 +43,6 @@ const Shop = ({match}) => {
         fetchData();
         // eslint-disable-next-line
     }, [removeBreadcrumb, match.url, history.location.search]);
-
 
     const handleGridChange = (e) => {
         setActiveButton(0)
@@ -61,12 +62,12 @@ const Shop = ({match}) => {
 
     const handleExploreMore = async () => {
         page++;
-        if (urlParams.id === undefined) {
+        if (categoryName === "") {
             const data = await getAllProducts(page, urlParams.sort);
             setProducts([...products, ...data.products])
             setLastPage(data.lastPage)
         } else {
-            const data = await getAllProductsByCategory(urlParams.id, page, urlParams.sort)
+            const data = await getAllProductsByCategory(categoryName, page, urlParams.sort)
             setProducts([...products, ...data.products])
             setLastPage(data.lastPage)
         }
@@ -75,12 +76,12 @@ const Shop = ({match}) => {
     function handleClick(selected) {
         let categoryPath = "";
         if (selected.category !== null)
-            categoryPath = "?id=" + selected.category + "&sort=" +activeParam;
-        history.push('/shop' + categoryPath);
+            categoryPath = selected.category.toLowerCase() + '?sort=' + activeParam;
+        history.push('/shop/' + categoryPath);
     }
 
     return (<div className="shop-page-wrapper">
-        <CategoryList handleClick={handleClick}  />
+        <CategoryList handleClick={handleClick}/>
         <div className="shop-product-container">
             <div className="sorting-grid-list">
                 <div className="shop-sorting-bar">

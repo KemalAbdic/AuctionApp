@@ -8,10 +8,7 @@
 }
 
 .categories-shop-container {
-    padding-top: 24px;
-    padding-right: 33px;
-    padding-left: 24px;
-    padding-bottom: 0;
+    padding: 24px 33px 0 24px;
     background: #FFFFFF;
     border: 1px solid #D8D8D8;
     box-sizing: border-box;

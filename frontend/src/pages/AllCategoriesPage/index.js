@@ -42,7 +42,7 @@ const AllCategories = () => {
                         <h3 style={{paddingBottom: "32px"}} key={item.categoryId}>
                             <span
                                 onClick={() =>
-                                    history.push(`/shop?id=${item.categoryId}`)}>
+                                    history.push(`/shop/${item.categoryName.toLowerCase()}`)}>
                                 {item.categoryName}
                             </span>
                         </h3>
