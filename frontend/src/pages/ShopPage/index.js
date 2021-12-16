@@ -1,41 +1,48 @@
 import React, {useEffect, useState} from 'react';
-import {categoriesRouting, getAllProducts, getCategories} from "../../services/LandingService";
-import {Button, Form, Image, ListGroup} from "react-bootstrap";
+import {getAllProducts, getAllProductsByCategory} from "../../services/LandingService";
+import {Button, Form, Image} from "react-bootstrap";
 import "./shop.css"
 import {useHistory} from "react-router-dom";
 import {useBreadcrumbContext} from "../../BreadcrumbContext";
 import {Icon} from "@iconify/react";
+import CategoryList from "../../common/CategoryList";
+import * as qs from 'query-string';
+
+let page = 0;
 
 const Shop = ({match}) => {
-    const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
     const history = useHistory();
     const {removeBreadcrumb} = useBreadcrumbContext();
-    const [maxRange, setMaxRange] = useState(9);
     const [viewStyle, setViewStyle] = useState("grid");
     const [activeButton, setActiveButton] = useState(0);
-    const url = match.url.split("/").slice(2, -1);
+    const [lastPage, setLastPage] = useState(true);
+    const urlParams = qs.parse(history.location.search);
+    const [activeParam, setActiveParam] = useState("default");
+    const url = match.url.split("/");
+    let categoryName = url[2];
 
     useEffect(() => {
+        page = 0;
         removeBreadcrumb();
         const fetchData = async () => {
             try {
-                setCategories(await getCategories());
-                setProducts(await getAllProducts())
+                if (categoryName === "") {
+                    const data = await getAllProducts(page, urlParams.sort);
+                    setProducts(data.products)
+                    setLastPage(data.lastPage)
+                } else {
+                    const data = await getAllProductsByCategory(categoryName, page, urlParams.sort)
+                    setProducts(data.products)
+                    setLastPage(data.lastPage)
+                }
             } catch (e) {
                 console.error(e)
             }
         }
         fetchData();
-    }, [removeBreadcrumb]);
-
-    let categoryProducts = [];
-    let allProducts = [];
-    products.map(product => ((url[0] === undefined || url[0] === product.categoryName.toLowerCase()) ? categoryProducts.push(product) : allProducts.push(product)))
-
-    const handleClick = () => {
-        setMaxRange(prevMaxRange => prevMaxRange + 9)
-    }
+        // eslint-disable-next-line
+    }, [removeBreadcrumb, match.url, history.location.search]);
 
     const handleGridChange = (e) => {
         setActiveButton(0)
@@ -46,35 +53,58 @@ const Shop = ({match}) => {
         setViewStyle(e);
     }
 
+    const handleSortProducts = async (sort) => {
+        page = 0;
+        urlParams.sort = sort;
+        setActiveParam(sort)
+        history.push({search: qs.stringify(urlParams)});
+    }
+
+    const handleExploreMore = async () => {
+        page++;
+        if (categoryName === "") {
+            const data = await getAllProducts(page, urlParams.sort);
+            setProducts([...products, ...data.products])
+            setLastPage(data.lastPage)
+        } else {
+            const data = await getAllProductsByCategory(categoryName, page, urlParams.sort)
+            setProducts([...products, ...data.products])
+            setLastPage(data.lastPage)
+        }
+    };
+
+    function handleClick(selected) {
+        let categoryPath = "";
+        if (selected.category !== null)
+            categoryPath = selected.category.toLowerCase() + '?sort=' + activeParam;
+        history.push('/shop/' + categoryPath);
+    }
+
     return (<div className="shop-page-wrapper">
-        <div className="categories-shop-container">
-            <ListGroup variant="flush">
-                <div className="product-categories">PRODUCT CATEGORIES</div>
-                {categories.map(category => (<ListGroup.Item className="category" key={category.id}
-                                                             onClick={() => categoriesRouting(history, category)}>{category.name}
-                </ListGroup.Item>))}
-            </ListGroup>
-        </div>
+        <CategoryList handleClick={handleClick}/>
         <div className="shop-product-container">
             <div className="sorting-grid-list">
                 <div className="shop-sorting-bar">
-                    <Form.Select>
-                        <option value="1">Default Sorting</option>
-                        <option value="2">Sort by Popularity</option>
-                        <option value="3">Sort by Rating</option>
-                        <option value="4">Sort by Newness</option>
-                        <option value="5">Sort by Price</option>
+                    <Form.Select defaultValue={urlParams.sort}
+                                 onChange={(e) => handleSortProducts(e.target.value)}>
+                        <option value="default">Default Sorting</option>
+                        <option value="new">Sort by New Products</option>
+                        <option value="new_desc">Sort by Last Chance</option>
+                        <option value="price">Sort by Price: Low to High</option>
+                        <option value="price_desc">Sort by Price: High to Low</option>
                     </Form.Select>
                     <div className="arrow-icon"><Icon icon="akar-icons:chevron-down"/></div>
                 </div>
                 <div className="toggle-style">
                     <Button style={activeButton === 0 ? {color: '#8367d8'} : null}
-                            aria-pressed={activeButton ? '0' : '1'} className="toggle-button"
+                            aria-pressed={activeButton ? '0' : '1'}
+                            className="toggle-button"
                             onClick={() => handleGridChange("grid")}>
-                        <Icon icon="mdi-light:grid" width="24" height="24" inline={true}/><span className="toggle-text"
-                                                                                                style={{paddingRight: '27px'}}>Grid</span></Button>
+                        <Icon icon="mdi-light:grid" width="24" height="24" inline={true}/>
+                        <span className="toggle-text" style={{paddingRight: '27px'}}>Grid</span></Button>
                     <Button style={activeButton !== 0 ? {color: '#8367d8'} : null}
-                            aria-pressed={activeButton ? '0' : '1'} className="toggle-button"
+                            aria-pressed={activeButton ? '0' : '1'}
+                            className="toggle-button"
                             onClick={() => handleListChange("list")}>
                         <Icon icon="mdi-light:menu" width="24" height="24" inline={true}/><span
                         className="toggle-text">List</span></Button>
@@ -82,8 +112,7 @@ const Shop = ({match}) => {
             </div>
             {viewStyle === "grid" ?
                 <div className="shop-grid">
-                    {categoryProducts
-                        .filter((product, i) => i < maxRange)
+                    {products
                         .map(product => (
                             <div className="shop-product"
                                  onClick={() =>
@@ -101,8 +130,7 @@ const Shop = ({match}) => {
                             </div>))}
                 </div>
                 :
-                <div className="shop-list">{categoryProducts
-                    .filter((product, i) => i < maxRange)
+                <div className="shop-list">{products
                     .map(product => (
                         <div className="shop-list-product"
                              onClick={() =>
@@ -128,8 +156,8 @@ const Shop = ({match}) => {
                         </div>))}
                 </div>}
 
-            {categoryProducts.length > maxRange ? <div className="explore-more-div">
-                <Button className="explore-more-button" onClick={handleClick}>EXPLORE MORE </Button>
+            {!lastPage ? <div className="explore-more-div">
+                <Button className="explore-more-button" onClick={handleExploreMore}>EXPLORE MORE </Button>
             </div> : null}
         </div>
     </div>)

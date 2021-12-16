@@ -100,7 +100,7 @@ const ProductPage = ({match}) => {
                 <div className="product-details-container">
                     <h1 className="product-page-title">
                         {product.name}
-                        <div className="product-price">
+                        <div className="product-page-price">
                             Starts from <strong>${product.startingPrice}</strong>
                         </div>
                     </h1>

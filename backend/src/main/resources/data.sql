@@ -99,33 +99,33 @@ VALUES (28, 'Subcategory', 9);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (1, '2021-12-04 11:24:01.000000', '2021-11-10 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (1, '2021-12-31 11:24:01.000000', '2021-11-10 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        'Peugeot Ventoux PH501 Classic Road Bike 1986', '+389123412', false, 'LARGE', 49.99, 'Adema Buća 45', '71000',
+        'Peugeot Ventoux PH501 Classic Road Bike 1986', '+389123412', false, 'LARGE', 48.99, 'Adema Buća 45', '71000',
         1,
         1);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (2, '2021-12-10 11:24:01.000000', '2021-11-12 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (2, '2021-12-30 11:24:01.000000', '2021-11-12 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        ' Pantera Logo Romper 24 Months Black ', '+333444555', false, 'SMALL', 43.99, 'Franje Račkog 3', '71000', 2,
+        'Pantera Logo Romper 24 Months Black ', '+333444555', false, 'SMALL', 42.99, 'Franje Račkog 3', '71000', 2,
         2);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (3, '2021-12-11 11:24:01.000000', '2021-11-17 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (3, '2021-12-29 11:24:01.000000', '2021-11-01 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        '2020 BMW R 1250 GS Adventure Ice Grey Low Suspension', '+389123499', false, 'LARGE', 55.99, 'Adema Buća 45',
+        '2020 BMW R 1250 GS Adventure Ice Grey Low Suspension', '+389123499', false, 'LARGE', 54.99, 'Adema Buća 45',
         '71000', 1,
         1);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (4, '2021-12-23 11:24:01.000000', '2021-11-01 11:23:57.000000', 'Bihać', 'RED',
+VALUES (4, '2021-12-28 11:24:01.000000', '2021-11-01 11:23:57.000000', 'Bihać', 'RED',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Golden watch', '+389123499', false, 'LARGE', 399.99, 'Kulina bana 33', '77000', 3,
@@ -133,64 +133,64 @@ VALUES (4, '2021-12-23 11:24:01.000000', '2021-11-01 11:23:57.000000', 'Bihać',
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (5, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać', 'RED',
+VALUES (5, '2021-12-27 11:24:01.000000', '2021-10-16 11:23:57.000000', 'Bihać', 'RED',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        'Jacket', '+389123499', false, 'LARGE', 99.99, 'Kulina bana 33', '77000', 3,
+        'Jacket - Leather', '+389123499', false, 'LARGE', 98.99, 'Kulina bana 33', '77000', 3,
         1);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (6, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Cazin', 'WHITE',
+VALUES (6, '2021-12-26 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Cazin', 'WHITE',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        'White shirt', '+389123499', false, 'LARGE', 15.99, 'Kulina bana 33', '77220', 3,
+        'White shirt - Large', '+389123499', false, 'LARGE', 14.99, 'Kulina bana 33', '77220', 3,
         1);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (7, '2021-12-05 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać', 'RED',
+VALUES (7, '2021-12-25 11:24:01.000000', '2021-10-14 11:23:57.000000', 'Bihać', 'RED',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        'Various Pants', '+389123499', false, 'LARGE', 55.99, 'Kulina bana 33', '77000', 3,
+        'Various Pants - Blue', '+389123499', false, 'LARGE', 53.99, 'Kulina bana 33', '77000', 3,
         1);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (8, '2021-12-06 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Bužim', 'BLUE',
+VALUES (8, '2021-12-24 11:24:01.000000', '2021-11-13 11:23:57.000000', 'Bužim', 'BLUE',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        'Vintage Telephone', '+389123499', false, 'LARGE', 222.99, 'Kulina bana 33', '77000', 3,
+        'Vintage Telephone - Rotary', '+389123499', false, 'LARGE', 221.99, 'Kulina bana 33', '77000', 3,
         1);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (9, '2021-12-04 11:24:01.000000', '2021-11-10 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (9, '2021-12-23 11:24:01.000000', '2021-11-10 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        'Peugeot Ventoux PH501 Classic Road Bike 1986', '+389123412', false, 'LARGE', 49.99, 'Adema Buća 45', '71000',
+        'Peugeot Ventoux PH501 1986', '+389123412', false, 'LARGE', 49.99, 'Adema Buća 45', '71000',
         1,
         11);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (10, '2021-12-10 11:24:01.000000', '2021-11-12 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (10, '2021-12-22 11:24:01.000000', '2021-11-12 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        ' Pantera Logo Romper 24 Months Black ', '+333444555', false, 'SMALL', 43.99, 'Franje Račkog 3', '71000', 1,
+        'Pantera Logo Romper 12 Months Black ', '+333444555', false, 'SMALL', 43.99, 'Franje Račkog 3', '71000', 1,
         12);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (11, '2021-12-11 11:24:01.000000', '2021-11-17 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (11, '2021-12-18 11:24:01.000000', '2021-11-18 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
-        '2020 BMW R 1250 GS Adventure Ice Grey Low Suspension', '+389123499', false, 'LARGE', 55.99, 'Adema Buća 45',
+        '2020 BMW R 1250 GS Adventure', '+389123499', false, 'LARGE', 55.99, 'Adema Buća 45',
         '71000', 1, 1);
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (13, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać', 'RED',
+VALUES (13, '2021-12-16 11:24:01.000000', '2021-10-16 11:23:57.000000', 'Bihać', 'RED',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Jacket', '+389123499', false, 'LARGE', 99.99, 'Kulina bana 33', '77000', 1,
@@ -198,7 +198,7 @@ VALUES (13, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać'
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (14, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Cazin', 'WHITE',
+VALUES (14, '2021-12-19 11:24:01.000000', '2021-10-11 11:23:57.000000', 'Cazin', 'WHITE',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'White shirt', '+389123499', false, 'LARGE', 15.99, 'Kulina bana 33', '77220', 1,
@@ -206,7 +206,7 @@ VALUES (14, '2021-12-19 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Cazin',
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (15, '2021-12-05 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać', 'RED',
+VALUES (15, '2021-12-20 11:24:01.000000', '2021-10-12 11:23:57.000000', 'Bihać', 'RED',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Various Pants', '+389123499', false, 'LARGE', 55.99, 'Kulina bana 33', '77000', 2,
@@ -214,7 +214,7 @@ VALUES (15, '2021-12-05 11:24:01.000000', '2021-10-15 11:23:57.000000', 'Bihać'
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (16, '2021-12-06 11:24:01.000000', '2021-11-15 11:23:57.000000', 'Bužim', 'BLUE',
+VALUES (16, '2021-12-21 11:24:01.000000', '2021-11-11 11:23:57.000000', 'Bužim', 'BLUE',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Vintage Telephone', '+389123499', false, 'LARGE', 222.99, 'Kulina bana 33', '77000', 3,
