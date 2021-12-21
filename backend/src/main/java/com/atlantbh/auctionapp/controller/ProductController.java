@@ -48,10 +48,21 @@ public class ProductController {
     }
 
     @GetMapping("/category/{query}")
-    public ResponseEntity<ProductPageResponse> getProductsByCategory(@PathVariable(name = "query") String query,
-                                                      @RequestParam(name = "page", defaultValue = "0") Integer page,
-                                                      @RequestParam(name = "sort", defaultValue = "") String sort
+    public ResponseEntity<ProductPageResponse> getProductsByCategory(@PathVariable(name = "query", required = false) String query,
+                                                                     @RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                                     @RequestParam(name = "sort", defaultValue = "") String sort
     ) {
-        return ResponseEntity.ok(productService.getItemsByCategoryId(query, page, sort));
+        return ResponseEntity.ok(productService.getItemsByCategory(query, page, sort));
+    }
+
+    @GetMapping("/category/")
+    public ResponseEntity<ProductPageResponse> getProductsByCategory(@RequestParam(name = "query", defaultValue = "") String query,
+                                                                     @RequestParam(name = "subcategory", defaultValue = "") String subcategory,
+                                                                     @RequestParam(name = "minPrice", defaultValue = "0") Integer minPrice,
+                                                                     @RequestParam(name = "maxPrice", defaultValue = "999999") Integer maxPrice,
+                                                                     @RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                                     @RequestParam(name = "sort", defaultValue = "") String sort
+    ) {
+        return ResponseEntity.ok(productService.getItemsByCategoryAndSubcategory(query, subcategory, minPrice, maxPrice, page, sort));
     }
 }

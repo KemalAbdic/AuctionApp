@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getAllProducts, getAllProductsByCategory} from "../../services/LandingService";
+import {getAllProducts, getAllProductsByCategoryAndSubcategory} from "../../services/LandingService";
 import {Button, Form, Image} from "react-bootstrap";
 import "./shop.css"
 import {useHistory} from "react-router-dom";
@@ -7,6 +7,7 @@ import {useBreadcrumbContext} from "../../BreadcrumbContext";
 import {Icon} from "@iconify/react";
 import CategoryList from "../../common/CategoryList";
 import * as qs from 'query-string';
+import PriceFilter from "../../common/PriceFilter";
 
 let page = 0;
 
@@ -21,18 +22,25 @@ const Shop = ({match}) => {
     const [activeParam, setActiveParam] = useState("default");
     const url = match.url.split("/");
     let categoryName = url[2];
+    let subcategoryName = url[3];
+    const [filter, setFilter] = useState({category: null, subcategory: null, minPrice: null, maxPrice: null});
 
     useEffect(() => {
         page = 0;
         removeBreadcrumb();
+        const filtered = {
+            category: categoryName,
+            subcategory: subcategoryName,
+        };
+        setFilter(filtered);
         const fetchData = async () => {
             try {
-                if (categoryName === "") {
+                if (filtered.category === "") {
                     const data = await getAllProducts(page, urlParams.sort);
                     setProducts(data.products)
                     setLastPage(data.lastPage)
                 } else {
-                    const data = await getAllProductsByCategory(categoryName, page, urlParams.sort)
+                    const data = await getAllProductsByCategoryAndSubcategory(filtered.category, filtered.subcategory, filtered.minPrice, filtered.maxPrice, page, urlParams.sort)
                     setProducts(data.products)
                     setLastPage(data.lastPage)
                 }
@@ -62,12 +70,16 @@ const Shop = ({match}) => {
 
     const handleExploreMore = async () => {
         page++;
+        const filtered = {
+            category: categoryName,
+            subcategory: subcategoryName,
+        };
         if (categoryName === "") {
             const data = await getAllProducts(page, urlParams.sort);
             setProducts([...products, ...data.products])
             setLastPage(data.lastPage)
         } else {
-            const data = await getAllProductsByCategory(categoryName, page, urlParams.sort)
+            const data = await getAllProductsByCategoryAndSubcategory(filtered.category, filtered.subcategory, filtered.minPrice, filtered.maxPrice, page, urlParams.sort)
             setProducts([...products, ...data.products])
             setLastPage(data.lastPage)
         }
@@ -75,92 +87,105 @@ const Shop = ({match}) => {
 
     function handleClick(selected) {
         let categoryPath = "";
+        let subcategoryPath = "";
         if (selected.category !== null)
-            categoryPath = selected.category.toLowerCase() + '?sort=' + activeParam;
-        history.push('/shop/' + categoryPath);
+            categoryPath = selected.category.toLowerCase();
+        if (selected.subcategory !== null)
+            subcategoryPath = '/' + selected.subcategory.toLowerCase();
+        history.push('/shop/' + categoryPath + subcategoryPath + '?sort=' + activeParam);
     }
 
-    return (<div className="shop-page-wrapper">
-        <CategoryList handleClick={handleClick}/>
-        <div className="shop-product-container">
-            <div className="sorting-grid-list">
-                <div className="shop-sorting-bar">
-                    <Form.Select defaultValue={urlParams.sort}
-                                 onChange={(e) => handleSortProducts(e.target.value)}>
-                        <option value="default">Default Sorting</option>
-                        <option value="new">Sort by New Products</option>
-                        <option value="new_desc">Sort by Last Chance</option>
-                        <option value="price">Sort by Price: Low to High</option>
-                        <option value="price_desc">Sort by Price: High to Low</option>
-                    </Form.Select>
-                    <div className="arrow-icon"><Icon icon="akar-icons:chevron-down"/></div>
-                </div>
-                <div className="toggle-style">
-                    <Button style={activeButton === 0 ? {color: '#8367d8'} : null}
-                            aria-pressed={activeButton ? '0' : '1'}
-                            className="toggle-button"
-                            onClick={() => handleGridChange("grid")}>
-                        <Icon icon="mdi-light:grid" width="24" height="24" inline={true}/>
-                        <span className="toggle-text" style={{paddingRight: '27px'}}>Grid</span></Button>
-                    <Button style={activeButton !== 0 ? {color: '#8367d8'} : null}
-                            aria-pressed={activeButton ? '0' : '1'}
-                            className="toggle-button"
-                            onClick={() => handleListChange("list")}>
-                        <Icon icon="mdi-light:menu" width="24" height="24" inline={true}/><span
-                        className="toggle-text">List</span></Button>
-                </div>
+    return (
+        <div className="shop-page-wrapper">
+            <div className="categories-container">
+                <CategoryList handleClick={handleClick}/>
+                <PriceFilter minPrice={Math.min.apply(Math, products.map(function (o) {
+                    return o.startingPrice.toFixed(2)
+                }))}
+                             maxPrice={Math.max.apply(Math, products.map(function (o) {
+                                 return o.startingPrice.toFixed(2)
+                             }))}
+                />
             </div>
-            {viewStyle === "grid" ?
-                <div className="shop-grid">
-                    {products
+
+            <div className="shop-product-container">
+                <div className="sorting-grid-list">
+                    <div className="shop-sorting-bar">
+                        <Form.Select defaultValue={urlParams.sort}
+                                     onChange={(e) => handleSortProducts(e.target.value)}>
+                            <option value="default">Default Sorting</option>
+                            <option value="new">Sort by New Products</option>
+                            <option value="new_desc">Sort by Last Chance</option>
+                            <option value="price">Sort by Price: Low to High</option>
+                            <option value="price_desc">Sort by Price: High to Low</option>
+                        </Form.Select>
+                        <div className="arrow-icon"><Icon icon="akar-icons:chevron-down"/></div>
+                    </div>
+                    <div className="toggle-style">
+                        <Button style={activeButton === 0 ? {color: '#8367d8'} : null}
+                                aria-pressed={activeButton ? '0' : '1'}
+                                className="toggle-button"
+                                onClick={() => handleGridChange("grid")}>
+                            <Icon icon="mdi-light:grid" width="24" height="24" inline={true}/>
+                            <span className="toggle-text" style={{paddingRight: '27px'}}>Grid</span></Button>
+                        <Button style={activeButton !== 0 ? {color: '#8367d8'} : null}
+                                aria-pressed={activeButton ? '0' : '1'}
+                                className="toggle-button"
+                                onClick={() => handleListChange("list")}>
+                            <Icon icon="mdi-light:menu" width="24" height="24" inline={true}/><span
+                            className="toggle-text">List</span></Button>
+                    </div>
+                </div>
+                {viewStyle === "grid" ?
+                    <div className="shop-grid">
+                        {products
+                            .map(product => (
+                                <div className="shop-product"
+                                     onClick={() =>
+                                         history
+                                             .push(`/shop/${product.categoryName
+                                                 .toLowerCase()}/${product.subcategoryName
+                                                 .toLowerCase()}/${product.id}`)}>
+                                    <div className="shop-product-item"><Image width="262"
+                                                                              height="196"
+                                                                              src={product.url}
+                                    />
+                                        <h5 className="shop-product-title">{product.name}</h5>
+                                        <span className="shop-product-price">Start From
+                                <span style={{color: '#8367D8'}}> ${product.startingPrice}</span></span></div>
+                                </div>))}
+                    </div>
+                    :
+                    <div className="shop-list">{products
                         .map(product => (
-                            <div className="shop-product"
+                            <div className="shop-list-product"
                                  onClick={() =>
                                      history
                                          .push(`/shop/${product.categoryName
                                              .toLowerCase()}/${product.subcategoryName
                                              .toLowerCase()}/${product.id}`)}>
-                                <div className="shop-product-item"><Image width="262"
-                                                                          height="196"
-                                                                          src={product.url}
-                                />
-                                    <h5 className="shop-product-title">{product.name}</h5>
-                                    <span className="shop-product-price">Start From
-                                <span style={{color: '#8367D8'}}> ${product.startingPrice}</span></span></div>
-                            </div>))}
-                </div>
-                :
-                <div className="shop-list">{products
-                    .map(product => (
-                        <div className="shop-list-product"
-                             onClick={() =>
-                                 history
-                                     .push(`/shop/${product.categoryName
-                                         .toLowerCase()}/${product.subcategoryName
-                                         .toLowerCase()}/${product.id}`)}>
-                            <div className="shop-list-item">
-                                <Image width="306" height="230" src={product.url}/>
-                                <div className="shop-list-info">
-                                    <h5 className="shop-list-title">{product.name}</h5>
-                                    <span className="shop-list-description"> {product.description}</span>
-                                    <span className="shop-list-price">Start From
+                                <div className="shop-list-item">
+                                    <Image width="306" height="230" src={product.url}/>
+                                    <div className="shop-list-info">
+                                        <h5 className="shop-list-title">{product.name}</h5>
+                                        <span className="shop-list-description"> {product.description}</span>
+                                        <span className="shop-list-price">Start From
                                 <span style={{color: '#8367D8'}}> ${product.startingPrice}</span>
                                 </span>
-                                    <Button className="shop-list-bid-button"><span
-                                        className="shop-list-bid-button-text">Bid</span>
-                                        <Icon icon="ic:outline-gavel" color="#c4c4c4" width="24" height="24"
-                                              hFlip={true} inline={true}/>
-                                    </Button>
+                                        <Button className="shop-list-bid-button"><span
+                                            className="shop-list-bid-button-text">Bid</span>
+                                            <Icon icon="ic:outline-gavel" color="#c4c4c4" width="24" height="24"
+                                                  hFlip={true} inline={true}/>
+                                        </Button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>))}
-                </div>}
-
-            {!lastPage ? <div className="explore-more-div">
-                <Button className="explore-more-button" onClick={handleExploreMore}>EXPLORE MORE </Button>
-            </div> : null}
-        </div>
-    </div>)
+                            </div>))}
+                    </div>}
+                {!lastPage ? <div className="explore-more-div">
+                    <Button className="explore-more-button" onClick={handleExploreMore}>EXPLORE MORE </Button>
+                </div> : null}
+            </div>
+        </div>)
 }
 
 export default Shop;

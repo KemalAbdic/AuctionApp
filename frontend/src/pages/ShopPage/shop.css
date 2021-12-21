@@ -7,12 +7,18 @@
     padding-top: 32px;
 }
 
+.categories-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .categories-shop-container {
     padding: 24px 33px 0 24px;
     background: #FFFFFF;
     border: 1px solid #D8D8D8;
     box-sizing: border-box;
-    height: 20%;
+    min-height: 20%;
+    margin-bottom: 32px;
 }
 
 .product-categories {
@@ -24,7 +30,7 @@
 }
 
 .list-group-flush {
-    width: 190px;
+    min-width: 17%;
 }
 
 .category.list-group-item {
@@ -46,14 +52,21 @@
 .category.list-group-item:hover {
     color: #8367D8;
 }
+
 .category.list-group-item:focus {
     outline: 0;
 }
+
 .category.list-group-item:active {
     outline: none;
 }
 
+.product-categories{
+    width: 178px;
+}
+
 .shop-product-container {
+    display: inline;
     width: 79%;
 }
 
@@ -105,7 +118,6 @@
     align-items: center;
     padding: 10px 24px;
     position: static;
-    width: 262px;
     height: 43px;
     background: #FFFFFF;
     border: 2px solid #D8D8D8;
@@ -161,7 +173,7 @@ select {
 .arrow-icon {
     pointer-events: none;
     margin-left: 222px;
-    margin-top: -33px;
+    margin-top: -28px;
     width: 16px;
     height: 16px;
 }
@@ -292,4 +304,32 @@ select {
     color: #8367D8;
     border: 2px solid #8367D8;
     pointer-events: auto;
+}
+
+
+
+.subcategory .form-check-label {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 17px;
+    color: #9B9B9B;
+}
+
+.form-check-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-clip: content-box;
+    border: 2px solid #8367D8;
+    border-radius: 3px;
+    margin-bottom: 0;
+    margin-left: 5px;
+  }
+
+.form-check-input:checked {
+    background: #8367D8 url('https://api.iconify.design/akar-icons/check.svg?color=white&width=12&height=12') no-repeat center center;
 }

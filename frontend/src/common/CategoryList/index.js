@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {getAllSubcategories} from "../../services/LandingService";
-import {ListGroup} from "react-bootstrap";
+import {Form, ListGroup} from "react-bootstrap";
 import {Icon} from "@iconify/react";
 
 const CategoryList = ({handleClick}) => {
     const [subcategories, setSubcategories] = useState([]);
     const [activeCategory, setActiveCategory] = useState("");
     let result = [];
+    const [activeSubcategory, setActiveSubcategory] = useState("");
+   const [checked, setChecked] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,12 +34,26 @@ const CategoryList = ({handleClick}) => {
     let categories = JSON.parse(JSON.stringify(result));
 
     function handleCategoryClick(categoryName) {
+        setActiveSubcategory("");
         if (activeCategory === categoryName) {
             setActiveCategory("");
             handleClick({category: null, subcategory: null});
         } else {
             setActiveCategory(categoryName);
             handleClick({category: categoryName, subcategory: null});
+        }
+    }
+
+    function handleSubcategoryClick(subcategoryName) {
+        setActiveSubcategory(subcategoryName);
+        if (activeSubcategory === subcategoryName) {
+            setActiveSubcategory("")
+            handleClick({category: activeCategory, subcategory: null})
+            setChecked(false)
+        } else {
+            setActiveSubcategory(subcategoryName)
+            handleClick({category: activeCategory, subcategory: subcategoryName})
+            setChecked(true)
         }
     }
 
@@ -49,15 +65,30 @@ const CategoryList = ({handleClick}) => {
                     <ListGroup.Item
                         className="category"
                         action onClick={() => handleCategoryClick(category.categoryName)}
-                        style={category.categoryName === activeCategory ? {fontWeight: "bold"} : {fontWeight: "normal"}}
+                        style={category.categoryName === activeCategory ? {
+                            fontWeight: "bold",
+                            marginBottom: 0
+                        } : {fontWeight: "normal", marginTop: 12}}
                     >
                         {category.categoryName}
                         {category.categoryName === activeCategory ?
                             <Icon icon="akar-icons:minus" width="16" height="16"
-                                  style={{left: 125, position: "absolute"}}/> :
+                                  style={{left: 160, position: "absolute", color: "#8367D8"}}/> :
                             <Icon icon="akar-icons:plus" width="16" height="16"
-                                  style={{left: 125, position: "absolute"}}/>}
+                                  style={{left: 160, position: "absolute"}}/>}
                     </ListGroup.Item>
+                    {category.categoryName === activeCategory ? category.subcategories.map(subcategory => (
+                        <Form.Check
+                            type="checkbox"
+                            label={subcategory.name}
+                            className="subcategory"
+                            key={subcategory.name}
+                            action
+                            onClick={() => handleSubcategoryClick(subcategory.name)}
+                            aria-checked={checked}
+                        >
+                        </Form.Check>
+                    )) : null}
                 </React.Fragment>
             ))}
         </ListGroup>
