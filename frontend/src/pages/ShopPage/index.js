@@ -7,7 +7,6 @@ import {useBreadcrumbContext} from "../../BreadcrumbContext";
 import {Icon} from "@iconify/react";
 import CategoryList from "../../common/CategoryList";
 import * as qs from 'query-string';
-import PriceFilter from "../../common/PriceFilter";
 
 let page = 0;
 
@@ -99,13 +98,13 @@ const Shop = ({match}) => {
         <div className="shop-page-wrapper">
             <div className="categories-container">
                 <CategoryList handleClick={handleClick}/>
-                <PriceFilter minPrice={Math.min.apply(Math, products.map(function (o) {
+                {/*<PriceFilter minPrice={Math.min.apply(Math, products.map(function (o) {
                     return o.startingPrice.toFixed(2)
                 }))}
                              maxPrice={Math.max.apply(Math, products.map(function (o) {
                                  return o.startingPrice.toFixed(2)
                              }))}
-                />
+                */}
             </div>
 
             <div className="shop-product-container">
