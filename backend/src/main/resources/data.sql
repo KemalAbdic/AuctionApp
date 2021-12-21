@@ -41,57 +41,57 @@ VALUES (9, 'Computer');
 INSERT INTO public.subcategory (id, name, category_id)
 VALUES (1, 'Bike', 1);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (2, 'Subcategory', 1);
+VALUES (2, 'Pants', 1);
 INSERT INTO public.subcategory (id, name, category_id)
 VALUES (3, 'Romper', 2);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (4, 'Subcategory', 1);
+VALUES (4, 'Bags', 1);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (5, 'Subcategory', 1);
+VALUES (5, 'Phones', 1);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (6, 'Subcategory', 1);
+VALUES (6, 'Shirts', 1);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (7, 'Subcategory', 2);
+VALUES (7, 'Shoes', 2);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (8, 'Subcategory', 2);
+VALUES (8, 'Laptops', 2);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (9, 'Subcategory', 2);
+VALUES (9, 'Undershirts', 2);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (10, 'Subcategory', 2);
+VALUES (10, 'Watches', 2);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (11, 'Subcategory', 3);
+VALUES (11, 'Skateboards', 3);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (12, 'Subcategory', 3);
+VALUES (12, 'Chargers', 3);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (13, 'Subcategory', 3);
+VALUES (13, 'Moueses', 3);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (14, 'Subcategory', 4);
+VALUES (14, 'Keyboards', 4);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (15, 'Subcategory', 4);
+VALUES (15, 'Monitors', 4);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (16, 'Subcategory', 4);
+VALUES (16, 'Television', 4);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (17, 'Subcategory', 4);
+VALUES (17, 'Diapers', 4);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (18, 'Subcategory', 5);
+VALUES (18, 'Blankets', 5);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (19, 'Subcategory', 5);
+VALUES (19, 'Remotes', 5);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (20, 'Subcategory', 6);
+VALUES (20, 'Utensils', 6);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (21, 'Subcategory', 7);
+VALUES (21, 'Fridges', 7);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (22, 'Subcategory', 7);
+VALUES (22, 'Chairs', 7);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (23, 'Subcategory', 8);
+VALUES (23, 'Tables', 8);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (24, 'Subcategory', 8);
+VALUES (24, 'Toys', 8);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (25, 'Subcategory', 8);
+VALUES (25, 'Boxes', 8);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (26, 'Subcategory', 9);
+VALUES (26, 'Coffee', 9);
 INSERT INTO public.subcategory (id, name, category_id)
-VALUES (27, 'Subcategory', 9);
+VALUES (27, 'Batteries', 9);
 INSERT INTO public.subcategory (id, name, category_id)
 VALUES (28, 'Subcategory', 9);
 
@@ -182,7 +182,7 @@ VALUES (10, '2021-12-22 11:24:01.000000', '2021-11-12 11:23:57.000000', 'Sarajev
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (11, '2021-12-18 11:24:01.000000', '2021-11-18 11:23:57.000000', 'Sarajevo', 'BLACK',
+VALUES (11, '2021-12-22 11:24:01.000000', '2021-11-18 11:23:57.000000', 'Sarajevo', 'BLACK',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         '2020 BMW R 1250 GS Adventure', '+389123499', false, 'LARGE', 55.99, 'Adema Buća 45',
@@ -190,7 +190,7 @@ VALUES (11, '2021-12-18 11:24:01.000000', '2021-11-18 11:23:57.000000', 'Sarajev
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (13, '2021-12-16 11:24:01.000000', '2021-10-16 11:23:57.000000', 'Bihać', 'RED',
+VALUES (13, '2021-12-22 11:24:01.000000', '2021-10-16 11:23:57.000000', 'Bihać', 'RED',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Jacket', '+389123499', false, 'LARGE', 99.99, 'Kulina bana 33', '77000', 1,
@@ -198,7 +198,7 @@ VALUES (13, '2021-12-16 11:24:01.000000', '2021-10-16 11:23:57.000000', 'Bihać'
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (14, '2021-12-19 11:24:01.000000', '2021-10-11 11:23:57.000000', 'Cazin', 'WHITE',
+VALUES (14, '2021-12-22 11:24:01.000000', '2021-10-11 11:23:57.000000', 'Cazin', 'WHITE',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'White shirt', '+389123499', false, 'LARGE', 15.99, 'Kulina bana 33', '77220', 1,
@@ -206,7 +206,7 @@ VALUES (14, '2021-12-19 11:24:01.000000', '2021-10-11 11:23:57.000000', 'Cazin',
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (15, '2021-12-20 11:24:01.000000', '2021-10-12 11:23:57.000000', 'Bihać', 'RED',
+VALUES (15, '2021-12-22 11:24:01.000000', '2021-10-12 11:23:57.000000', 'Bihać', 'RED',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Various Pants', '+389123499', false, 'LARGE', 55.99, 'Kulina bana 33', '77000', 2,
@@ -214,7 +214,7 @@ VALUES (15, '2021-12-20 11:24:01.000000', '2021-10-12 11:23:57.000000', 'Bihać'
 
 INSERT INTO public.product (id, auction_end, auction_start, city, color, country, description, name, phone_number,
                             shipping, size, starting_price, street, zip_code, person_id, subcategory_id)
-VALUES (16, '2021-12-21 11:24:01.000000', '2021-11-11 11:23:57.000000', 'Bužim', 'BLUE',
+VALUES (16, '2021-12-22 11:24:01.000000', '2021-11-11 11:23:57.000000', 'Bužim', 'BLUE',
         'Bosnia and Herzegovina',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales condimentum luctus. Morbi varius efficitur nunc, quis blandit eros vulputate sed. Suspendisse consectetur dui tellus, in hendrerit ante iaculis et.',
         'Vintage Telephone', '+389123499', false, 'LARGE', 222.99, 'Kulina bana 33', '77000', 3,

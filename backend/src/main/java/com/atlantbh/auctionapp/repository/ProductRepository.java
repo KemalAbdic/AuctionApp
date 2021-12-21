@@ -69,6 +69,19 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "INNER JOIN category c ON c.id = s.category_id " +
             "WHERE LOWER(c.name) = :query AND p.featured = TRUE AND auction_start <= now() AND auction_end > now()",
             nativeQuery = true)
-    Page<BasicProductResponse> findProductsByCategoryName(@Param("query")String query, Pageable pageable);
+    Page<BasicProductResponse> findProductsByCategoryName(@Param("query") String query, Pageable pageable);
 
+    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, pr.auction_start as auctionStart, " +
+            "pr.auction_end AS auctionEnd, p.url AS url, c.name AS categoryName, s.name AS subcategoryName " +
+            "FROM product pr " +
+            "INNER JOIN picture p ON pr.id = p.product_id " +
+            "INNER JOIN subcategory s ON s.id = pr.subcategory_id " +
+            "INNER JOIN category c ON c.id = s.category_id " +
+            "WHERE LOWER(c.name) = :query " +
+            "AND (case when :subcategory = '' then true else lower(s.name) = :subcategory end) " +
+            "AND (case when :min_price <= 0 then true else starting_price >= :min_price end) " +
+            "AND (case when :max_price >= 999999 then true else starting_price <= :max_price end) " +
+            "AND p.featured = TRUE AND auction_start <= now() AND auction_end > now()",
+            nativeQuery = true)
+    Page<BasicProductResponse> findProductsByCategoryAndSubcategory(@Param("query") String query, @Param("subcategory") String subcategory,  @Param("min_price") Integer minPrice, @Param("max_price") Integer maxPrice, Pageable pageable);
 }

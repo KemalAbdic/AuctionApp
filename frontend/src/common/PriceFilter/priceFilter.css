@@ -1,0 +1,75 @@
+.price-filter-container {
+    padding: 24px 24px 0;
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    min-width: 17%;
+    height: 300px;
+    float: left;
+}
+
+.price-range-filter-title {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #8367D8;
+
+}
+
+.input-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.first-input-box {
+    margin-top: 32px;
+    display: inline-block;
+    width: 80px;
+    height: 43px;
+    background: #FFFFFF;
+    border: 2px solid #D8D8D8;
+    box-sizing: border-box;
+    margin-right: 22px;
+    padding-left: 21px;
+}
+
+.second-input-box {
+    display: inline-block;
+    width: 80px;
+    height: 43px;
+    background: #FFFFFF;
+    border: 2px solid #D8D8D8;
+    box-sizing: border-box;
+    padding-left: 16px;
+}
+
+.rs-slider {
+    margin-top: 66px;
+    margin-bottom: 44px;
+}
+
+.rs-slider-bar {
+    background-color: #8367D8;
+}
+
+.price-range-average {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 19px;
+    color: #9B9B9B;
+}
+
+.price-range {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #252525;
+}

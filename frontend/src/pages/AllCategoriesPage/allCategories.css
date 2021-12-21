@@ -8,10 +8,8 @@
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-gap: 24px;
-    padding-bottom: 120px;
     text-align: left;
-    padding-left: 11.1%;
-    padding-right: 11.1%;
+    padding: 80px 11.1% 120px;
 }
 
 .categories-list {
@@ -43,4 +41,14 @@ h3 {
 
 span:hover {
     cursor: pointer;
+}
+
+.all-category-title {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.84px;
+    color: #252525;
 }

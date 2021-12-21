@@ -10,6 +10,7 @@ import com.atlantbh.auctionapp.response.ProductResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -63,7 +64,7 @@ public class ProductService {
         return new ProductPageResponse(allProducts.getContent(), !allProducts.hasNext());
     }
 
-    public ProductPageResponse getItemsByCategoryId(String query, Integer page, String sort) {
+    public ProductPageResponse getItemsByCategory(String query, Integer page, String sort) {
         PageRequest pageRequest;
         if ("new".equals(sort)) {
             pageRequest = PageRequest.of(page, 9, Sort.by("auctionStart").ascending());
@@ -77,7 +78,25 @@ public class ProductService {
             pageRequest = PageRequest.of(page, 9, Sort.by("name"));
         }
 
-        Page<BasicProductResponse> categoryResult = productRepository.findProductsByCategoryName(query, pageRequest);
+        Slice<BasicProductResponse> categoryResult = productRepository.findProductsByCategoryName(query, pageRequest);
+        return new ProductPageResponse(categoryResult.getContent(), !categoryResult.hasNext());
+    }
+
+    public ProductPageResponse getItemsByCategoryAndSubcategory(String query, String subcategory, Integer minPrice, Integer maxPrice, Integer page, String sort) {
+        PageRequest pageRequest;
+        if ("new".equals(sort)) {
+            pageRequest = PageRequest.of(page, 9, Sort.by("auctionStart").ascending());
+        } else if ("new_desc".equals(sort)) {
+            pageRequest = PageRequest.of(page, 9, Sort.by("auctionEnd").descending());
+        } else if ("price".equals(sort)) {
+            pageRequest = PageRequest.of(page, 9, Sort.by("startingPrice").ascending());
+        } else if ("price_desc".equals(sort)) {
+            pageRequest = PageRequest.of(page, 9, Sort.by("startingPrice").descending());
+        } else {
+            pageRequest = PageRequest.of(page, 9, Sort.by("name"));
+        }
+
+        Slice<BasicProductResponse> categoryResult = productRepository.findProductsByCategoryAndSubcategory(query.toLowerCase(), subcategory.toLowerCase(), minPrice, maxPrice, pageRequest);
         return new ProductPageResponse(categoryResult.getContent(), !categoryResult.hasNext());
     }
 }

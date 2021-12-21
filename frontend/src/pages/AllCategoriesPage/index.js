@@ -39,7 +39,7 @@ const AllCategories = () => {
             <div className="all-categories-container">
                 {result.map(item => (
                     <div className="categories-list">
-                        <h3 style={{paddingBottom: "32px"}} key={item.categoryId}>
+                        <h3 className="all-category-title" style={{paddingBottom: "32px"}} key={item.categoryId}>
                             <span
                                 onClick={() =>
                                     history.push(`/shop/${item.categoryName.toLowerCase()}`)}>
@@ -47,7 +47,8 @@ const AllCategories = () => {
                             </span>
                         </h3>
                         {item.subcategories.map(subcategory =>
-                            <div className="subcategories" key={subcategory.id}> {subcategory.name}</div>
+                            <div className="subcategories" key={subcategory.id} onClick={() =>
+                                history.push(`/shop/${item.categoryName.toLowerCase()}/${subcategory.name.toLowerCase()}`)}> <span>{subcategory.name}</span></div>
                         )}
                     </div>
                 ))}

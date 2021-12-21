@@ -50,7 +50,7 @@ const LandingPage = () => {
                         paddingBottom: 0,
                         paddingTop: 32,
                         fontWeight: 'bold',
-                        marginBottom: -16
+                        marginBottom: 16
                     }}>CATEGORIES
                     </ListGroup.Item>
                     {categories

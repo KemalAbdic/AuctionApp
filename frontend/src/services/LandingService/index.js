@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {host} from "../CommonService";
+import {getParams, host} from "../CommonService";
 
 export const getCategories = async () => {
     return (await axios.get(host + '/categories/')).data;
@@ -28,8 +28,9 @@ export const getLastProducts = async () => {
 export const getAllProducts = async (page, sort) => {
     return (await axios.get(host + '/product/search?page=' + page + '&sort=' + sort)).data;
 };
-export const getAllProductsByCategory = async (query, page, sort) => {
-    return (await axios.get(host + '/product/category/' + query + '?page=' + page + '&sort=' + sort)).data;
+
+export const getAllProductsByCategoryAndSubcategory = async (query, subcategory, minPrice, maxPrice, page, sort) => {
+    return (await axios.get(host + '/product/category/', getParams({query, subcategory, minPrice, maxPrice, page, sort}))).data;
 };
 export const categoriesRouting = (history, category) => {
     history.push(`/shop/${category.name.toLowerCase()}`);
