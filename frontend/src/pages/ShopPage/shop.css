@@ -306,8 +306,6 @@ select {
     pointer-events: auto;
 }
 
-
-
 .subcategory .form-check-label {
     font-family: 'Lato', sans-serif;
     font-style: normal;
@@ -332,4 +330,52 @@ select {
 
 .form-check-input:checked {
     background: #8367D8 url('https://api.iconify.design/akar-icons/check.svg?color=white&width=12&height=12') no-repeat center center;
+}
+
+.image {
+    width: 262px;
+    height: 196px;
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.shop-product {
+    position: relative;
+    width:262px;
+    max-width:262px;
+}
+.shop-product:before {
+    content:"";
+    position:absolute;
+    width:262px;
+    height:196px;
+    top:0;
+    left:0;
+    right:0;
+    background-color:rgba(0,0,0,0);
+}
+.shop-product:hover::before {
+    background-color:rgba(0,0,0,0.5);
+}
+.shop-product img {
+    display:block;
+}
+.shop-product .hidden-button {
+    border-radius: 5%;
+    width: 71px;
+    height: 40px;
+    position: absolute;
+    margin-left: 133px;
+    margin-top: -95px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    opacity:0;
+}
+.shop-product:hover .hidden-button {
+    opacity: 1;
+    color: #8367D8;
+    border: 2px solid #8367D8;
+    pointer-events: auto;
 }
