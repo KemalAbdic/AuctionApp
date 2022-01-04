@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {getAllProductsByCategoryAndSubcategory, getAllProductsByPrice} from "../../services/LandingService";
 import {Button, Form, Image} from "react-bootstrap";
 import "./shop.css"
@@ -20,6 +20,8 @@ const Shop = ({match}) => {
     const [lastPage, setLastPage] = useState(true);
     const urlParams = qs.parse(history.location.search);
     const [activeParam, setActiveParam] = useState("default");
+    const [activeMinPrice, setActiveMinPrice] = useState(0);
+    const [activeMaxPrice, setActiveMaxPrice] = useState(400);
     const url = match.url.split("/");
     const [filter, setFilter] = useState({category: null, subcategory: null, minPrice: null, maxPrice: null});
     const [priceRange, setPriceRange] = useState({min: null, max: null});
@@ -34,10 +36,6 @@ const Shop = ({match}) => {
             maxPrice: urlParams.maxPrice || 400
         };
         setFilter(filtered);
-        console.log(filtered.category)
-        console.log(filtered.subcategory)
-        console.log(filtered.minPrice)
-        console.log(filtered.maxPrice)
         const fetchData = async () => {
             try {
                 if (filtered.category === "") {
@@ -56,6 +54,8 @@ const Shop = ({match}) => {
         fetchData();
         // eslint-disable-next-line
     }, [removeBreadcrumb, match.url, history.location.search]);
+
+    const memoizedValue = useMemo(() => products.map(({ startingPrice }) => startingPrice),[products]);
 
     const handleGridChange = (e) => {
         setActiveButton(0)
@@ -99,11 +99,13 @@ const Shop = ({match}) => {
             categoryPath = selected.category.toLowerCase();
         if (selected.subcategory !== null)
             subcategoryPath = '/' + selected.subcategory.toLowerCase();
-        history.push('/shop/' + categoryPath + subcategoryPath + '?sort=' + activeParam);
+        history.push('/shop/' + categoryPath + subcategoryPath + '?minPrice=' + activeMinPrice + '&maxPrice=' + activeMaxPrice + '&sort=' + activeParam);
     }
 
     const handlePriceSlide = () => {
         urlParams.minPrice = priceRange.min;
+        setActiveMinPrice(priceRange.min)
+        setActiveMaxPrice(priceRange.max)
         urlParams.maxPrice = priceRange.max;
         history.push({
             search: qs.stringify(urlParams)
@@ -114,7 +116,8 @@ const Shop = ({match}) => {
         <div className="shop-page-wrapper">
             <div className="categories-container">
                 <CategoryList filter={filter} handleClick={handleClick}/>
-                <PriceFilter priceRange={priceRange}
+                <PriceFilter prices={memoizedValue}
+                             priceRange={priceRange}
                              setPriceRange={setPriceRange}
                              handleClick={() => handlePriceSlide()}
                 />

@@ -4,7 +4,7 @@ import './priceFilter.css';
 import "rsuite/dist/rsuite.min.css";
 import {Slider} from "@material-ui/core";
 
-const PriceFilter = ({priceRange, setPriceRange, handleClick}) => {
+const PriceFilter = ({prices, priceRange, setPriceRange, handleClick}) => {
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(400);
     const [avgPrice, setAvgPrice] = useState(0);
@@ -30,9 +30,39 @@ const PriceFilter = ({priceRange, setPriceRange, handleClick}) => {
         handleClick({minPrice: priceRange.min, maxPrice: priceRange.max})
     }
 
+    const handleMinInputBoxChange = (e) => {
+        setPriceRange({
+            min: e.target.value,
+            max: priceRange.max
+        });
+        handleClick({minPrice: priceRange.min, maxPrice: priceRange.max})
+    }
+
+    const handleMaxInputBoxChange = (e) => {
+        setPriceRange({
+            min: priceRange.min,
+            max: e.target.value
+        });
+        handleClick({minPrice: priceRange.min, maxPrice: priceRange.max})
+    }
+
     return (
         <div className="price-filter-container">
             <p className="price-range-filter-title"> Price Range</p>
+
+            <div className="input-box-wrapper">
+                <input className="first-input-box" placeholder={priceRange.min} onChange={handleMinInputBoxChange}/>
+                <input className="second-input-box" placeholder={priceRange.max} onChange={handleMaxInputBoxChange}/>
+            </div>
+            <div className="histogram-container">
+                {prices.map((count, i) => (
+                    <div
+                        key={i}
+                        className="histogram-bar"
+                        style={{ width: 'calc(100% / ' + prices.length + ')', height: count === 0 ? 0 : 'calc(80px / ' + (400 / count) + ')' }}
+                    />
+                ))}
+            </div>
             <Slider
                 min={minPrice}
                 max={maxPrice}
