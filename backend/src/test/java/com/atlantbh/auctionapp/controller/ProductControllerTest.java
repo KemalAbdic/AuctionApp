@@ -88,4 +88,34 @@ public class ProductControllerTest {
                 .andReturn();
     }
 
+    @Test
+    public void getProductsByCategoryAndSubcategory() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/category/?query=fashion&subcategory=pants")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void getAllProductsAndFilterByPrice() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/search/price?query=&subcategory=&minPrice=0&maxPrice=400")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void getCategoriesList() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/product/search/count")
+                .accept(MediaType.APPLICATION_JSON);
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
 }

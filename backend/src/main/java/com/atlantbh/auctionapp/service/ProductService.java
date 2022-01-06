@@ -4,9 +4,7 @@ import com.atlantbh.auctionapp.model.Picture;
 import com.atlantbh.auctionapp.model.Product;
 import com.atlantbh.auctionapp.repository.PictureRepository;
 import com.atlantbh.auctionapp.repository.ProductRepository;
-import com.atlantbh.auctionapp.response.BasicProductResponse;
-import com.atlantbh.auctionapp.response.ProductPageResponse;
-import com.atlantbh.auctionapp.response.ProductResponse;
+import com.atlantbh.auctionapp.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,7 +12,10 @@ import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 
 @Service
 public class ProductService {
@@ -64,7 +65,25 @@ public class ProductService {
         return new ProductPageResponse(allProducts.getContent(), !allProducts.hasNext());
     }
 
-    public ProductPageResponse getItemsByCategory(String query, Integer page, String sort) {
+    public ProductPageResponse findAllProductsAndFilterByPrice(Double minPrice, Double maxPrice, Integer page, String sort) {
+        PageRequest pageRequest;
+        if ("new".equals(sort)) {
+            pageRequest = PageRequest.of(page, 9, Sort.by("auctionStart").ascending());
+        } else if ("new_desc".equals(sort)) {
+            pageRequest = PageRequest.of(page, 9, Sort.by("auctionEnd").descending());
+        } else if ("price".equals(sort)) {
+            pageRequest = PageRequest.of(page, 9, Sort.by("startingPrice").ascending());
+        } else if ("price_desc".equals(sort)) {
+            pageRequest = PageRequest.of(page, 9, Sort.by("startingPrice").descending());
+        } else {
+            pageRequest = PageRequest.of(page, 9, Sort.by("name"));
+        }
+
+        Page<BasicProductResponse> allProducts = productRepository.findAllProductsAndFilterByPrice(minPrice, maxPrice, pageRequest);
+        return new ProductPageResponse(allProducts.getContent(), !allProducts.hasNext());
+    }
+
+    public ProductPageResponse getProductsByCategory(String query, Integer page, String sort) {
         PageRequest pageRequest;
         if ("new".equals(sort)) {
             pageRequest = PageRequest.of(page, 9, Sort.by("auctionStart").ascending());
@@ -82,7 +101,7 @@ public class ProductService {
         return new ProductPageResponse(categoryResult.getContent(), !categoryResult.hasNext());
     }
 
-    public ProductPageResponse getItemsByCategoryAndSubcategory(String query, String subcategory, Integer minPrice, Integer maxPrice, Integer page, String sort) {
+    public ProductPageResponse getProductsByCategoryAndSubcategory(String query, String subcategory, Double minPrice, Double maxPrice, Integer page, String sort) {
         PageRequest pageRequest;
         if ("new".equals(sort)) {
             pageRequest = PageRequest.of(page, 9, Sort.by("auctionStart").ascending());
@@ -99,4 +118,25 @@ public class ProductService {
         Slice<BasicProductResponse> categoryResult = productRepository.findProductsByCategoryAndSubcategory(query.toLowerCase(), subcategory.toLowerCase(), minPrice, maxPrice, pageRequest);
         return new ProductPageResponse(categoryResult.getContent(), !categoryResult.hasNext());
     }
+
+    public List<CategoryResponse> categoriesList() {
+        List<CategoryListResponse> productCount = productRepository.findProductsByCategoryAndSubcategoryCount();
+        List<CategoryResponse> categoryResponse = new ArrayList<>();
+
+        productCount.forEach(product -> {
+            CategoryResponse category = new CategoryResponse(product.getCategoryName(), product.getCount(), new TreeSet<>());
+            int i = categoryResponse.indexOf(category);
+            if (i == -1) {
+                category.addSubcategory(new CountResponse(product.getSubcategoryName(), product.getCount()));
+                categoryResponse.add(category);
+            } else {
+                CategoryResponse oldCategory = categoryResponse.get(i);
+                oldCategory.setCount(oldCategory.getCount() + product.getCount());
+                oldCategory.addSubcategory(new CountResponse(product.getSubcategoryName(), product.getCount()));
+            }
+        });
+        categoryResponse.sort(Comparator.comparing(CategoryResponse::getCount).reversed());
+        return categoryResponse;
+    }
+
 }

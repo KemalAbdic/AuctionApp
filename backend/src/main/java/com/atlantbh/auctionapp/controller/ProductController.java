@@ -1,6 +1,7 @@
 package com.atlantbh.auctionapp.controller;
 
 import com.atlantbh.auctionapp.response.BasicProductResponse;
+import com.atlantbh.auctionapp.response.CategoryResponse;
 import com.atlantbh.auctionapp.response.ProductPageResponse;
 import com.atlantbh.auctionapp.response.ProductResponse;
 import com.atlantbh.auctionapp.service.ProductService;
@@ -47,22 +48,35 @@ public class ProductController {
         return ResponseEntity.ok(productService.findAllProducts(page, sort));
     }
 
+    @GetMapping("/search/price")
+    public ResponseEntity<ProductPageResponse> getAllProducts(@RequestParam(name = "minPrice", defaultValue = "0", required = false) Double minPrice,
+                                                              @RequestParam(name = "maxPrice", defaultValue = "999999", required = false) Double maxPrice,
+                                                              @RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                              @RequestParam(name = "sort", defaultValue = "") String sort) {
+        return ResponseEntity.ok(productService.findAllProductsAndFilterByPrice(minPrice, maxPrice, page, sort));
+    }
+
     @GetMapping("/category/{query}")
     public ResponseEntity<ProductPageResponse> getProductsByCategory(@PathVariable(name = "query", required = false) String query,
                                                                      @RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                      @RequestParam(name = "sort", defaultValue = "") String sort
     ) {
-        return ResponseEntity.ok(productService.getItemsByCategory(query, page, sort));
+        return ResponseEntity.ok(productService.getProductsByCategory(query, page, sort));
     }
 
     @GetMapping("/category/")
     public ResponseEntity<ProductPageResponse> getProductsByCategory(@RequestParam(name = "query", defaultValue = "") String query,
                                                                      @RequestParam(name = "subcategory", defaultValue = "") String subcategory,
-                                                                     @RequestParam(name = "minPrice", defaultValue = "0") Integer minPrice,
-                                                                     @RequestParam(name = "maxPrice", defaultValue = "999999") Integer maxPrice,
+                                                                     @RequestParam(name = "minPrice", defaultValue = "0") Double minPrice,
+                                                                     @RequestParam(name = "maxPrice", defaultValue = "999999") Double maxPrice,
                                                                      @RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                      @RequestParam(name = "sort", defaultValue = "") String sort
     ) {
-        return ResponseEntity.ok(productService.getItemsByCategoryAndSubcategory(query, subcategory, minPrice, maxPrice, page, sort));
+        return ResponseEntity.ok(productService.getProductsByCategoryAndSubcategory(query, subcategory, minPrice, maxPrice, page, sort));
+    }
+
+    @GetMapping("/search/count")
+    public ResponseEntity<List<CategoryResponse>> getCategoriesList() {
+        return ResponseEntity.ok(productService.categoriesList());
     }
 }

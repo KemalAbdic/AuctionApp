@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {getAllProducts, getAllProductsByCategoryAndSubcategory} from "../../services/LandingService";
+import React, {useEffect, useMemo, useState} from 'react';
+import {getAllProductsByCategoryAndSubcategory, getAllProductsByPrice} from "../../services/LandingService";
 import {Button, Form, Image} from "react-bootstrap";
 import "./shop.css"
 import {useHistory} from "react-router-dom";
@@ -7,6 +7,7 @@ import {useBreadcrumbContext} from "../../BreadcrumbContext";
 import {Icon} from "@iconify/react";
 import CategoryList from "../../common/CategoryList";
 import * as qs from 'query-string';
+import PriceFilter from "../../common/PriceFilter";
 
 let page = 0;
 
@@ -19,23 +20,26 @@ const Shop = ({match}) => {
     const [lastPage, setLastPage] = useState(true);
     const urlParams = qs.parse(history.location.search);
     const [activeParam, setActiveParam] = useState("default");
+    const [activeMinPrice, setActiveMinPrice] = useState(0);
+    const [activeMaxPrice, setActiveMaxPrice] = useState(400);
     const url = match.url.split("/");
-    let categoryName = url[2];
-    let subcategoryName = url[3];
     const [filter, setFilter] = useState({category: null, subcategory: null, minPrice: null, maxPrice: null});
+    const [priceRange, setPriceRange] = useState({min: null, max: null});
 
     useEffect(() => {
         page = 0;
         removeBreadcrumb();
         const filtered = {
-            category: categoryName,
-            subcategory: subcategoryName,
+            category: url[2],
+            subcategory: url[3],
+            minPrice: urlParams.minPrice || 0,
+            maxPrice: urlParams.maxPrice || 400
         };
         setFilter(filtered);
         const fetchData = async () => {
             try {
                 if (filtered.category === "") {
-                    const data = await getAllProducts(page, urlParams.sort);
+                    const data = await getAllProductsByPrice(filtered.minPrice, filtered.maxPrice, page, urlParams.sort);
                     setProducts(data.products)
                     setLastPage(data.lastPage)
                 } else {
@@ -50,6 +54,8 @@ const Shop = ({match}) => {
         fetchData();
         // eslint-disable-next-line
     }, [removeBreadcrumb, match.url, history.location.search]);
+
+    const memoizedValue = useMemo(() => products.map(({ startingPrice }) => startingPrice),[products]);
 
     const handleGridChange = (e) => {
         setActiveButton(0)
@@ -70,11 +76,13 @@ const Shop = ({match}) => {
     const handleExploreMore = async () => {
         page++;
         const filtered = {
-            category: categoryName,
-            subcategory: subcategoryName,
+            category: url[2],
+            subcategory: url[3],
+            minPrice: urlParams.minPrice || 0,
+            maxPrice: urlParams.maxPrice || 400
         };
-        if (categoryName === "") {
-            const data = await getAllProducts(page, urlParams.sort);
+        if (filtered.category === "") {
+            const data = await getAllProductsByPrice(filtered.minPrice, filtered.maxPrice, page, urlParams.sort);
             setProducts([...products, ...data.products])
             setLastPage(data.lastPage)
         } else {
@@ -91,22 +99,29 @@ const Shop = ({match}) => {
             categoryPath = selected.category.toLowerCase();
         if (selected.subcategory !== null)
             subcategoryPath = '/' + selected.subcategory.toLowerCase();
-        history.push('/shop/' + categoryPath + subcategoryPath + '?sort=' + activeParam);
+        history.push('/shop/' + categoryPath + subcategoryPath + '?minPrice=' + activeMinPrice + '&maxPrice=' + activeMaxPrice + '&sort=' + activeParam);
+    }
+
+    const handlePriceSlide = () => {
+        urlParams.minPrice = priceRange.min;
+        setActiveMinPrice(priceRange.min)
+        setActiveMaxPrice(priceRange.max)
+        urlParams.maxPrice = priceRange.max;
+        history.push({
+            search: qs.stringify(urlParams)
+        });
     }
 
     return (
         <div className="shop-page-wrapper">
             <div className="categories-container">
-                <CategoryList handleClick={handleClick}/>
-                {/*<PriceFilter minPrice={Math.min.apply(Math, products.map(function (o) {
-                    return o.startingPrice.toFixed(2)
-                }))}
-                             maxPrice={Math.max.apply(Math, products.map(function (o) {
-                                 return o.startingPrice.toFixed(2)
-                             }))}
-                */}
+                <CategoryList filter={filter} handleClick={handleClick}/>
+                <PriceFilter prices={memoizedValue}
+                             priceRange={priceRange}
+                             setPriceRange={setPriceRange}
+                             handleClick={() => handlePriceSlide()}
+                />
             </div>
-
             <div className="shop-product-container">
                 <div className="sorting-grid-list">
                     <div className="shop-sorting-bar">
@@ -140,18 +155,28 @@ const Shop = ({match}) => {
                         {products
                             .map(product => (
                                 <div className="shop-product"
-                                     onClick={() =>
-                                         history
-                                             .push(`/shop/${product.categoryName
-                                                 .toLowerCase()}/${product.subcategoryName
-                                                 .toLowerCase()}/${product.id}`)}>
-                                    <div className="shop-product-item"><Image width="262"
-                                                                              height="196"
-                                                                              src={product.url}
-                                    />
+                                >
+                                    <div className="shop-product-item">
+                                        <Image className="image"
+                                               src={product.url}
+                                        />
+                                        <Button
+                                            className="hidden-button"
+
+                                            onClick={() =>
+                                                history
+                                                    .push(`/shop/${product.categoryName
+                                                        .toLowerCase()}/${product.subcategoryName
+                                                        .toLowerCase()}/${product.id}`)}
+                                        >
+                                            <span className="shop-grid-bid-button-text">Bid </span>
+                                            <Icon icon="ic:outline-gavel" color="#8367d8" width="20" height="20"
+                                                  hFlip={true} inline={true}/>
+                                        </Button>
                                         <h5 className="shop-product-title">{product.name}</h5>
                                         <span className="shop-product-price">Start From
-                                <span style={{color: '#8367D8'}}> ${product.startingPrice}</span></span></div>
+                                <span style={{color: '#8367D8'}}> ${product.startingPrice}</span></span>
+                                    </div>
                                 </div>))}
                     </div>
                     :
@@ -164,15 +189,18 @@ const Shop = ({match}) => {
                                              .toLowerCase()}/${product.subcategoryName
                                              .toLowerCase()}/${product.id}`)}>
                                 <div className="shop-list-item">
-                                    <Image width="306" height="230" src={product.url}/>
+                                    <Image width="306"
+                                           height="230"
+                                           src={product.url}
+                                    />
                                     <div className="shop-list-info">
                                         <h5 className="shop-list-title">{product.name}</h5>
                                         <span className="shop-list-description"> {product.description}</span>
                                         <span className="shop-list-price">Start From
                                 <span style={{color: '#8367D8'}}> ${product.startingPrice}</span>
                                 </span>
-                                        <Button className="shop-list-bid-button"><span
-                                            className="shop-list-bid-button-text">Bid</span>
+                                        <Button className="shop-list-bid-button">
+                                            <span className="shop-list-bid-button-text">Bid</span>
                                             <Icon icon="ic:outline-gavel" color="#c4c4c4" width="24" height="24"
                                                   hFlip={true} inline={true}/>
                                         </Button>

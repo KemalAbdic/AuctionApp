@@ -29,9 +29,17 @@ export const getAllProducts = async (page, sort) => {
     return (await axios.get(host + '/product/search?page=' + page + '&sort=' + sort)).data;
 };
 
+export const getAllProductsByPrice = async (minPrice, maxPrice, page, sort) => {
+    return (await axios.get(host + '/product/search/price?minPrice=' + minPrice + '&maxPrice=' + maxPrice + '&page=' + page + '&sort=' + sort)).data;
+};
+
 export const getAllProductsByCategoryAndSubcategory = async (query, subcategory, minPrice, maxPrice, page, sort) => {
     return (await axios.get(host + '/product/category/', getParams({query, subcategory, minPrice, maxPrice, page, sort}))).data;
 };
 export const categoriesRouting = (history, category) => {
     history.push(`/shop/${category.name.toLowerCase()}`);
 }
+
+export const searchCountProducts = async () => {
+    return (await axios.get(host + '/product/search/count')).data;
+};
