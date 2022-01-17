@@ -19,7 +19,7 @@ import {alertService} from "../../services/AlertService";
 const Login = () => {
     const {setBreadcrumb} = useBreadcrumbContext();
     useEffect(() => {
-        setBreadcrumb("LOGIN", []);
+        setBreadcrumb("Login", []);
         // eslint-disable-next-line
     }, []);
     const history = useHistory();

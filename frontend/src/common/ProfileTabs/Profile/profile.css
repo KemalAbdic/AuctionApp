@@ -1,0 +1,133 @@
+.profile-tab-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    width: 1120px;
+    left: 160px;
+    top: 232px;
+    margin-right: 11.1%;
+    margin-left: 11.1%;
+}
+
+.profile-tab-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px 0 0 32px;
+    position: static;
+    width: 1120px;
+    height: 59px;
+    left: 0;
+    top: 0;
+    background: #FCFCFC;
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 0;
+}
+
+.profile-tab-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 0 60px 24px;
+    position: static;
+    width: 1120px;
+    height: auto;
+    left: 0;
+    top: 83px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 0 24px;
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+}
+
+.profile-tab-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    position: static;
+    width: 354px;
+    height: 437px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 24px 24px 0;
+}
+
+.profile-tab-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: 546px;
+    left: 480px;
+    top: 0;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 88px;
+}
+
+.profile-tab-save-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+    position: static;
+    width: 194px;
+    height: 51px;
+    left: 926px;
+    top: 2237px;
+    border: 3px solid #8367D8;
+    box-sizing: border-box;
+    background: inherit;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 24px 11.1% 24px 72.7%;
+}
+
+.profile-picture {
+    position: absolute;
+    width: 354px;
+    height: 354px;
+    background: #FCFCFC;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+.profile-tab-upload-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+
+    position: static;
+    width: 354px;
+    height: 51px;
+    left: 0;
+    top: 386px;
+    border: 3px solid #8367D8;
+    box-sizing: border-box;
+    background: inherit;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 390px 0 32px;
+}

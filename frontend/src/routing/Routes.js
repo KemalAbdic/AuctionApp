@@ -8,6 +8,7 @@ import ProductPage from "../pages/ProductPage"
 import LandingPage from "../pages/LandingPage";
 import AllCategories from "../pages/AllCategoriesPage"
 import Shop from "../pages/ShopPage"
+import Profile from "../pages/ProfilePage"
 
 
 function Routes() {
@@ -24,6 +25,8 @@ function Routes() {
                 <Route exact path="/login" render={props => <Login {...props} />}/>
                 <Route path="/shop/*/*/:id/" render={props => <ProductPage {...props} />}/>
                 <Route path="/shop/*" render={props => <Shop {...props} />}/>
+                <Route path="/profile/" render={props => <Profile {...props} />}/>
+
             </Switch>
         </div>
     )

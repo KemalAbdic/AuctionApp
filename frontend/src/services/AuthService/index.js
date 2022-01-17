@@ -1,5 +1,6 @@
 import axios from "axios";
 import {host} from "../CommonService";
+import {config} from "../BidService";
 
 export const register = async (person) => {
     return (await axios.post(host + "/auth/register", person)).data;
@@ -29,6 +30,11 @@ export const getPerson = () => {
     else return null;
 }
 
+export const setPerson = (user) => {
+    localStorage.setItem("current-user", JSON.stringify(user));
+};
+
+
 export const loggedIn = () => {
     return getPerson() != null;
 }
@@ -52,4 +58,8 @@ export const removePersonCredentials = () => {
 export const getPersonId = () => {
     const person = localStorage.getItem('current-user');
     return person ? JSON.parse(person).person.id : null;
+};
+
+export const updatePerson = async (user) => {
+    return (await axios.put(host + '/auth/update', user, config())).data;
 };

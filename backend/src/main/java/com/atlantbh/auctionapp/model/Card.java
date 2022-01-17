@@ -8,7 +8,6 @@ import javax.validation.constraints.Size;
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
 
     @ManyToOne(optional = false)
@@ -21,33 +20,38 @@ public class Card {
 
     @Size(min = 8, max = 19)
     @NotNull
-    private Integer cardNumber;
+    private String cardNumber;
 
     @NotNull
-    private String expirationYear;
+    private Integer expirationYear;
 
     @NotNull
-    private String expirationMonth;
+    private Integer expirationMonth;
 
-    @Size(min = 100, max = 9999)
+
     @NotNull
     private Integer cvcNumber;
+
+    private Boolean saved;
 
     public Card() {
     }
 
-    public Card(Person person,
+    public Card(
                 String cardName,
-                Integer cardNumber,
-                String expirationYear,
-                String expirationMonth,
+                String cardNumber,
+                Integer expirationYear,
+                Integer expirationMonth,
                 Integer cvcNumber) {
-        this.person = person;
         this.cardName = cardName;
         this.cardNumber = cardNumber;
         this.expirationYear = expirationYear;
         this.expirationMonth = expirationMonth;
         this.cvcNumber = cvcNumber;
+    }
+
+    public Card(Person person) {
+        this.person = person;
     }
 
     public Integer getCvcNumber() {
@@ -58,27 +62,27 @@ public class Card {
         this.cvcNumber = cvcNumber;
     }
 
-    public String getExpirationMonth() {
+    public Integer getExpirationMonth() {
         return expirationMonth;
     }
 
-    public void setExpirationMonth(String expirationMonth) {
+    public void setExpirationMonth(Integer expirationMonth) {
         this.expirationMonth = expirationMonth;
     }
 
-    public String getExpirationYear() {
+    public Integer getExpirationYear() {
         return expirationYear;
     }
 
-    public void setExpirationYear(String expirationYear) {
+    public void setExpirationYear(Integer expirationYear) {
         this.expirationYear = expirationYear;
     }
 
-    public Integer getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(Integer cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 

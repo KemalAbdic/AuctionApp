@@ -5,17 +5,19 @@ import {AiFillGooglePlusCircle, AiFillTwitterCircle} from "react-icons/all";
 import {Link, useHistory} from "react-router-dom";
 import logo from "../../Images/logo.png"
 import {getPerson, getToken, removeSession} from "../../services/AuthService";
+import {ListGroup} from "react-bootstrap";
 
 let person = getPerson();
 
 function Header() {
     const [loggedIn] = useState(getToken() != null);
     const history = useHistory();
+    const [showDropdown, setShowDropdown] = useState(false);
 
     const logout = () => {
         removeSession();
-        window.location.reload();
         history.push("/login");
+        window.location.reload();
     }
 
     return (
@@ -40,7 +42,11 @@ function Header() {
                         </div>
                         :
                         <div>
-                            <span> {person.person.firstName + ' ' + person.person.lastName}</span>
+                            {person.person !== undefined ?
+                                <span> {person.person.firstName + ' ' + person.person.lastName}</span>
+                                :
+                                <span> {person.firstName + ' ' + person.lastName}</span>
+                            }
                             <Link onClick={logout} to='/'>
                                 Logout
                             </Link>
@@ -54,7 +60,30 @@ function Header() {
                 <div className="links">
                     <Link to="/">HOME</Link>
                     <Link to="/shop/">SHOP</Link>
-                    <Link to="/">MY ACCOUNT</Link>
+                    <Link to="/"
+                          style={{marginRight: 0}}
+                          onMouseEnter={()=> setShowDropdown(true)}
+                          onMouseLeave={()=> setShowDropdown(false)}
+                    >
+                        MY ACCOUNT</Link>
+                    {showDropdown ?
+                        <ListGroup
+                            className="profile-dropdown"
+                            variant="filter"
+                            onMouseEnter={()=> setShowDropdown(true)}
+                            onMouseLeave={() => setShowDropdown(false)}
+                        >
+                            <ListGroup.Item className="dropdown-item"
+                                            style={{paddingTop: 15}}
+                                            onClick={() => loggedIn ? history.push('/profile') : history.push('/register')}>Profile</ListGroup.Item>
+                            <ListGroup.Item className="dropdown-item"
+                                            onClick={() => loggedIn ? history.push('/profile/seller') : history.push('/register')}>Become Seller</ListGroup.Item>
+                            <ListGroup.Item className="dropdown-item"
+                                            onClick={() => loggedIn ? history.push('/profile/bids') : history.push('/register')}>Your Bids</ListGroup.Item>
+                            <ListGroup.Item className="dropdown-item"
+                                            style={{paddingBottom: 24}}
+                                            onClick={() => loggedIn ? history.push('/profile/settings') : history.push('/register')}>Settings</ListGroup.Item>
+                        </ListGroup> : null}
                 </div>
             </div>
         </div>

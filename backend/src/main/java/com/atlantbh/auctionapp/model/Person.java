@@ -48,6 +48,8 @@ public class Person {
     @Size(max = 16)
     private String phoneNumber;
 
+    private String pictureUrl;
+
     public Person(String email,
                   String password,
                   Gender gender,
@@ -59,7 +61,8 @@ public class Person {
                   String city,
                   String state,
                   String country,
-                  String phoneNumber) {
+                  String phoneNumber,
+                  String pictureUrl) {
         this.email = email;
         this.password = password;
         this.gender = gender;
@@ -72,6 +75,7 @@ public class Person {
         this.state = state;
         this.country = country;
         this.phoneNumber = phoneNumber;
+        this.pictureUrl = pictureUrl;
     }
 
     public Person(String firstName, String lastName, String email, String password) {
@@ -186,5 +190,13 @@ public class Person {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String picture) {
+        this.pictureUrl = picture;
     }
 }

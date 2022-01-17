@@ -18,7 +18,7 @@ const Breadcrumbs = () => {
                 {breadcrumbItems.map((item, i, {length}) => (
                     <Breadcrumb.Item active key={item.text}>
                         {length - 1 === i ? (
-                            <div className="purple-text">
+                            <div className="purple-text" style={{paddingRight: 0}}>
                             <span className="icon">
                             <Icon icon="akar-icons:arrow-right" color="#9b9b9b" width="16" height="16"/>
                             </span>

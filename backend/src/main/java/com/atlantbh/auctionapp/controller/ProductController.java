@@ -1,9 +1,6 @@
 package com.atlantbh.auctionapp.controller;
 
-import com.atlantbh.auctionapp.response.BasicProductResponse;
-import com.atlantbh.auctionapp.response.CategoryResponse;
-import com.atlantbh.auctionapp.response.ProductPageResponse;
-import com.atlantbh.auctionapp.response.ProductResponse;
+import com.atlantbh.auctionapp.response.*;
 import com.atlantbh.auctionapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -78,5 +75,15 @@ public class ProductController {
     @GetMapping("/search/count")
     public ResponseEntity<List<CategoryResponse>> getCategoriesList() {
         return ResponseEntity.ok(productService.categoriesList());
+    }
+
+    @GetMapping("/person")
+    public ResponseEntity<List<PersonProductResponse>> getPersonProducts() {
+        return ResponseEntity.ok(productService.getPersonProducts());
+    }
+
+    @GetMapping("/person/bids")
+    public ResponseEntity<List<PersonProductResponse>> getPersonBiddedProducts() {
+        return ResponseEntity.ok(productService.getPersonBiddedProducts());
     }
 }

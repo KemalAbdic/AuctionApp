@@ -2,6 +2,7 @@ package com.atlantbh.auctionapp.controller;
 
 import com.atlantbh.auctionapp.model.Person;
 import com.atlantbh.auctionapp.request.LoginRequest;
+import com.atlantbh.auctionapp.request.PersonUpdateRequest;
 import com.atlantbh.auctionapp.request.RegistrationRequest;
 import com.atlantbh.auctionapp.response.LoginResponse;
 import com.atlantbh.auctionapp.response.RegistrationResponse;
@@ -9,10 +10,7 @@ import com.atlantbh.auctionapp.security.JwtUtils;
 import com.atlantbh.auctionapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -37,4 +35,10 @@ public class PersonController {
         Person person = personService.login(loginRequest);
         return ResponseEntity.ok(new LoginResponse(person, JwtUtils.generateJwtToken(person)));
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Person> update(@RequestBody @Valid PersonUpdateRequest personUpdateRequest) {
+        return ResponseEntity.ok(personService.update(personUpdateRequest));
+    }
+
 }
