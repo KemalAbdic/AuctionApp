@@ -61,7 +61,9 @@ public class PersonService {
         person.setGender(personUpdateRequest.getGender());
         person.setBirthDate(personUpdateRequest.getBirthDate());
         person.setPhoneNumber(personUpdateRequest.getPhoneNumber());
-        person.setPictureUrl(personUpdateRequest.getPictureUrl());
+        if (personUpdateRequest.getPictureUrl() != null) {
+            person.setPictureUrl(personUpdateRequest.getPictureUrl());
+        }
         person.setStreet(personUpdateRequest.getStreet());
         person.setCity(personUpdateRequest.getCity());
         person.setCountry(personUpdateRequest.getCountry());

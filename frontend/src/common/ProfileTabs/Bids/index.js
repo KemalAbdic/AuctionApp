@@ -34,13 +34,11 @@ const Bids = () => {
         <Table className="bid-table-wrapper" responsive>
             <thead>
             <tr className="bid-table-header">
-                <div className="header-sub">
-                    <th style={{marginRight: 130}}>Item</th>
-                    <th style={{marginRight: 97}}>Name</th>
-                    <th style={{marginLeft: 135}}>Time left</th>
-                    <th style={{marginLeft: 99}}>Your Price</th>
-                    <th>No. Bids</th>
-                </div>
+                <th style={{marginRight: 87}}>Item</th>
+                <th style={{marginRight: 210}}>Name</th>
+                <th style={{marginRight: 100}}>Time left</th>
+                <th style={{marginRight: 65}}>Your Price</th>
+                <th style={{marginRight: 50}}>No. Bids</th>
                 <th>Highest Bid</th>
                 <th/>
             </tr>
@@ -48,21 +46,23 @@ const Bids = () => {
             <tbody>
             {products.map(product => (
                 <tr className="bid-table-row" key={product.id}>
-                    <td>
-                        <Image style={{cursor: 'pointer', width: 80, height: 60}}
-                               onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
-                               className="avatar-image-medium" src={product.url}/>
-                    </td>
-                    <td>
-                        <div style={{cursor: 'pointer'}}
-                             onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
-                             className="bid-table-name">
-                            {product.name}
-                            <div className="bid-table-id">
-                                #{product.id}
+                    <div className="bid-item-name">
+                        <td>
+                            <Image
+                                onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
+                                className="product-bid-image" src={product.url}/>
+                        </td>
+                        <td>
+                            <div style={{cursor: 'pointer'}}
+                                 onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
+                                 className="bid-table-name">
+                                {product.name}
+                                <div className="bid-table-id">
+                                    #{product.id}
+                                </div>
                             </div>
-                        </div>
-                    </td>
+                        </td>
+                    </div>
                     <td>
                         {getTimeColumn(product)}
                     </td>

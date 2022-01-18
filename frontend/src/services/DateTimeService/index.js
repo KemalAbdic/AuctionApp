@@ -48,7 +48,7 @@ export const getCurrentMonth = () => {
 }
 
 export const getDifferenceBetweenDates = (date1, date2) => {
-    return moment.duration(date2.diff(date1)).format("D [d] h [h] m [m]", { trim: "all" });
+    return moment.duration(date2.diff(date1)).format("D[d] h[h] m[m]", { trim: "all" });
 }
 
 export const getDate = (day, month, year) => {

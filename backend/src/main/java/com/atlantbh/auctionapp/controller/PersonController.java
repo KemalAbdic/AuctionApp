@@ -37,8 +37,9 @@ public class PersonController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Person> update(@RequestBody @Valid PersonUpdateRequest personUpdateRequest) {
-        return ResponseEntity.ok(personService.update(personUpdateRequest));
+    public ResponseEntity<LoginResponse> update(@RequestBody @Valid PersonUpdateRequest personUpdateRequest) {
+        Person person = personService.update(personUpdateRequest);
+        return ResponseEntity.ok(new LoginResponse(person, JwtUtils.generateJwtToken(person)));
     }
 
 }

@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Button, Form, Image} from "react-bootstrap";
 import "./profile.css";
-import {getPerson, setPerson, updatePerson} from "../../../services/AuthService";
+import {getPerson, setSession, updatePerson} from "../../../services/AuthService";
 import {toBase64, uploadImage} from "../../../services/CommonService";
 import {Formik} from 'formik';
 import * as yup from 'yup';
@@ -58,15 +58,17 @@ const Profile = () => {
             delete personData.card;
     }
     const handleSubmit = async (data) => {
-        setUploading(true);
+        setUploading(false);
         const personData = {...data};
         personData.birthDate = getDate(data.day, data.month, data.year).toISOString();
         deleteProperties(personData);
         try {
+            setUploading(true)
             if (imageFile !== null)
+
                 personData.pictureUrl = await uploadImage(imageFile);
             const newPerson = await updatePerson(personData);
-            setPerson(newPerson);
+            setSession(newPerson, newPerson.token)
             window.scrollTo(0, 0);
             alertService.success('Your profile has been updated successfully!', options)
         } catch (e) {
@@ -90,9 +92,9 @@ const Profile = () => {
         <Formik
             validationSchema={schema}
             initialValues={{
-                ...requiredFormInitialValues(person.person !== undefined ? person.person : person),
+                ...requiredFormInitialValues(person.person),
                 card: cardFormInitialValues(card),
-                ...optionalFormInitialValues(person.person !== undefined ? person.person : person)
+                ...optionalFormInitialValues(person.person)
             }}
             onSubmit={handleSubmit}
         >

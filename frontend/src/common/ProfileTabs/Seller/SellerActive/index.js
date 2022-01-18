@@ -5,6 +5,7 @@ import moment from "moment";
 import {getDifferenceBetweenDates} from "../../../../services/DateTimeService";
 import {Button, Image, Table} from "react-bootstrap";
 import '../seller.css'
+import {Icon} from "@iconify/react";
 
 const SellerActive = () => {
     const [currentProducts, setCurrentProducts] = useState([]);
@@ -27,7 +28,7 @@ const SellerActive = () => {
         return moment().isSameOrAfter(productAuctionEnd) ? 0 : getDifferenceBetweenDates(moment(), productAuctionEnd);
     }
 
-    return (
+    return (currentProducts.length > 0 ?
         <Table className="sell-table-wrapper" responsive>
             <thead>
             <tr className="sell-table-header">
@@ -82,7 +83,28 @@ const SellerActive = () => {
                 </tr>
             ))}
             </tbody>
-        </Table>
+        </Table> : <Table className="sell-table-wrapper" style={{height: "auto", alignItems: "center"}} responsive>
+                <thead>
+                <tr className="sell-table-header">
+                    <div className="header-sub">
+                        <th style={{marginRight: 130}}>Item</th>
+                        <th style={{marginRight: 97}}>Name</th>
+                        <th style={{marginLeft: 135}}>Time left</th>
+                        <th style={{marginLeft: 88}}>Your Price</th>
+                        <th style={{marginLeft: 49}}>No. Bids</th>
+                    </div>
+                    <th>Highest Bid</th>
+                    <th/>
+                </tr>
+                </thead>
+                <tbody style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                <div style={{width: 92, alignItems: "center"}}>
+                    <Icon icon="eva:shopping-cart-outline" color="#8367d8" width="92" height="92"/>
+                </div>
+                <div><span className="sold-tab-text">You do not have any scheduled items for sale.</span></div>
+                <Button className="sold-tab-button">START SELLING</Button>
+                </tbody>
+            </Table>
     )
 }
 
