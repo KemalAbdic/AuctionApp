@@ -65,7 +65,6 @@ const Profile = () => {
         try {
             setUploading(true)
             if (imageFile !== null)
-
                 personData.pictureUrl = await uploadImage(imageFile);
             const newPerson = await updatePerson(personData);
             setSession(newPerson, newPerson.token)

@@ -117,7 +117,7 @@ const CardForm = ({
                                               }}
                                               as="select"
                                               isInvalid={getIn(touched, 'card.expirationMonth') && getIn(errors, 'card.expirationMonth')}
-                                              style={expirationMonth !== "MM" ? {paddingRight: 66} : null}
+                                              style={expirationMonth !== "MM" ? {paddingRight: 24} : null}
                                 >
                                     <option value="">MM</option>
                                     {[...Array(12 - currentMonth).keys()].map(x => (
