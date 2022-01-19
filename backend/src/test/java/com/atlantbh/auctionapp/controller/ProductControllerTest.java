@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.util.NestedServletException;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -116,6 +117,36 @@ public class ProductControllerTest {
         mvc.perform(request)
                 .andExpect(status().isOk())
                 .andReturn();
+    }
+
+    @Test
+    public void getUserBiddedProducts() throws Exception {
+        try {
+            RequestBuilder request = MockMvcRequestBuilders
+                    .get("/product/person/bids")
+                    .accept(MediaType.APPLICATION_JSON);
+            mvc.perform(request)
+                    .andExpect(status().isUnauthorized())
+                    .andReturn();
+        } catch (NestedServletException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void getUserProducts() throws Exception {
+        try {
+            RequestBuilder request = MockMvcRequestBuilders
+                    .get("/product/person/")
+                    .accept(MediaType.APPLICATION_JSON);
+            mvc.perform(request)
+                    .andExpect(status().isUnauthorized())
+                    .andReturn();
+        } catch (NestedServletException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

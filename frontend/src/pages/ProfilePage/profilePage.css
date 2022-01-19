@@ -1,0 +1,25 @@
+.profile-tabs-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: 729px;
+    height: 59px;
+    margin-left: 11.1%;
+    margin-bottom: 64px;
+    margin-top: 40px;
+}
+
+.profile-page-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    position: static;
+    width: 132px;
+    height: 59px;
+    margin-right: 8px;
+    font-size: 16px;
+}

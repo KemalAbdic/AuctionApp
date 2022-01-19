@@ -1,0 +1,133 @@
+.bid-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 32px;
+    width: 1120px;
+    height: auto;
+    left: 0;
+    top: 123px;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 64px 11.1% 22%;
+}
+
+.bid-table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px 0 16px 32px;
+    position: static;
+    width: 1119px;
+    height: 59px;
+    left: 0;
+    top: 0;
+    background: #FCFCFC;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 0 24px;
+}
+
+.bid-table-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    position: static;
+    width: 1056px;
+    height: 82px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 0;
+}
+
+.bid-item-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    position: static;
+    width: 280px;
+    height: 82px;
+    left: 0;
+    top: 0;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 10px;
+}
+
+.product-bid-image {
+    position: static;
+    width: 80px;
+    height: 60px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 22px;
+}
+
+.bid-table-name {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    position: static;
+    width: 184px;
+    height: 82px;
+    left: 96px;
+    top: 0;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 20px 16px 0;
+}
+
+.bid-table-id {
+    position: static;
+    width: 184px;
+    height: 24px;
+    left: 0;
+    top: 58px;
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #8367D8;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 4px 0;
+}
+
+.bid-table-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+    position: static;
+    width: 113px;
+    height: 51px;
+    left: 943px;
+    top: 15.5px;
+    background: inherit;
+    border: 3px solid #D8D8D8;
+    box-sizing: border-box;
+    color: #252525;
+    font-weight: bold;
+    flex: none;
+    order: 5;
+    flex-grow: 0;
+    margin: 0 10px;
+}
+
+.bid-table-button:hover {
+    border: 3px solid #8367D8;
+}

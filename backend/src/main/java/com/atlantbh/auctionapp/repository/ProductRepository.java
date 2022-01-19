@@ -3,6 +3,7 @@ package com.atlantbh.auctionapp.repository;
 import com.atlantbh.auctionapp.model.Product;
 import com.atlantbh.auctionapp.response.BasicProductResponse;
 import com.atlantbh.auctionapp.response.CategoryListResponse;
+import com.atlantbh.auctionapp.response.PersonProductResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -110,5 +111,26 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "ORDER BY (c.name, s.name)",
             nativeQuery = true)
     List<CategoryListResponse> findProductsByCategoryAndSubcategoryCount();
+
+
+    @Query(value = "SELECT pr.id, pr.name, p.url, pr.starting_price AS startingPrice, s.name AS subcategoryName, c.name AS categoryName, " +
+            "pr.auction_start AS auctionStart, pr.auction_end AS auctionEnd, count(b.id) AS bidCount, max(b.bid_amount) AS maxBid " +
+            "FROM product pr LEFT OUTER JOIN picture p ON pr.id = p.product_id LEFT OUTER JOIN bid b ON p.id = b.product_id " +
+            "INNER JOIN subcategory s ON s.id = pr.subcategory_id INNER JOIN category c ON c.id = s.category_id " +
+            "WHERE pr.person_id = :person_id AND (p.featured = TRUE OR p.featured IS NULL) " +
+            "GROUP BY (pr.id, pr.name, pr.starting_price, s.name, c.name, p.url, pr.starting_price, pr.auction_start, pr.auction_end) " +
+            "ORDER BY pr.auction_end ", nativeQuery = true)
+    List<PersonProductResponse> getPersonProducts(@Param("person_id") Long personId);
+
+    @Query(value = "SELECT pr.id, pr.name, p.url, max(b.bid_amount) AS startingPrice, s.name AS subcategoryName, c.name AS categoryName, " +
+            "pr.auction_start AS auctionStart, pr.auction_end AS auctionEnd, (SELECT count(*) FROM bid b2 WHERE b2.product_id = pr.id) bidCount, " +
+            "(SELECT b2.person_id FROM bid b2 WHERE b2.product_id = pr.id ORDER BY b2.bid_amount DESC, b2.bid_time LIMIT 1) personId, " +
+            "(SELECT max(b2.bid_amount) FROM bid b2 WHERE b2.product_id = pr.id) maxBid " +
+            "FROM product pr LEFT OUTER JOIN picture p ON pr.id = p.product_id LEFT OUTER JOIN bid b ON pr.id = b.product_id " +
+            "INNER JOIN subcategory s ON s.id = pr.subcategory_id INNER JOIN category c ON c.id = s.category_id " +
+            "WHERE b.person_id = :person_id AND (p.featured = true OR p.featured IS NULL) " +
+            "GROUP BY (pr.id, pr.name, p.url, s.name, c.name, pr.auction_start, pr.auction_end) " +
+            "ORDER BY pr.auction_end", nativeQuery = true)
+    List<PersonProductResponse> getPersonBidProducts(@Param("person_id") Long personId);
 
 }

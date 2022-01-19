@@ -5,6 +5,7 @@ import com.atlantbh.auctionapp.model.Product;
 import com.atlantbh.auctionapp.repository.PictureRepository;
 import com.atlantbh.auctionapp.repository.ProductRepository;
 import com.atlantbh.auctionapp.response.*;
+import com.atlantbh.auctionapp.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -137,6 +138,16 @@ public class ProductService {
         });
         categoryResponse.sort(Comparator.comparing(CategoryResponse::getCount).reversed());
         return categoryResponse;
+    }
+
+    public List<PersonProductResponse> getPersonProducts() {
+        Long personId = JwtUtils.getRequestPersonId();
+        return productRepository.getPersonProducts(personId);
+    }
+
+    public List<PersonProductResponse> getPersonBiddedProducts() {
+        Long personId = JwtUtils.getRequestPersonId();
+        return productRepository.getPersonBidProducts(personId);
     }
 
 }

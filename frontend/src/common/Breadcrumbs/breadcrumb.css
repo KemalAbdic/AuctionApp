@@ -10,6 +10,8 @@
     justify-content: right;
     font-family: Lato, sans-serif;
     letter-spacing: 0.69px;
+    padding-left: 11.1%;
+    padding-right: 11.1%;
 }
 
 
@@ -27,6 +29,7 @@
 }
 
 .breadcrumb-right {
+    width: auto;
     font-family: Lato, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -35,20 +38,16 @@
     text-align: right;
     letter-spacing: 0.63px;
     color: #9B9B9B;
-    margin-right: 22px;
     text-transform: capitalize;
 }
 
 .purple-text {
-    size: 20px;
     color: #8367D8;
     font-family: Lato, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
-    float: right;
-    padding-right: 230px;
 }
 
 .icon {
@@ -66,5 +65,4 @@
     letter-spacing: 0.63px;
     position: absolute;
     left: 11.1%;
-    margin-right: 130px;
 }
