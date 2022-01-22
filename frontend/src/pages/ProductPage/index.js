@@ -22,7 +22,8 @@ const ProductPage = ({match}) => {
     const [ownProduct, setOwnProduct] = useState(false);
     const highestBid = bids[0] === undefined ? 0 : bids[0].bidAmount;
     const currentHighestBid = highestBid + 1;
-    const placeholderValue = "Enter $" + currentHighestBid + " or higher";
+    const [startingPrice, setStartingPrice] = useState();
+    const placeholderValue = currentHighestBid > 1 ? "Enter $" + currentHighestBid + " or higher" : "Enter $" + startingPrice + " or higher";
     const options = {autoClose: true};
 
     useEffect(() => {
@@ -32,6 +33,7 @@ const ProductPage = ({match}) => {
                 const data = await getProduct(id);
                 const bidData = await getBidsForProduct(id);
                 setProduct(data);
+                setStartingPrice(data.startingPrice)
                 const url = match.url.split("/").slice(1, -1);
                 setBreadcrumb(data.name, [...url.map((breadcrumb, i) => {
                     return {

@@ -13,3 +13,11 @@ export const getPersonBidsForProducts = async () => {
 export const getPersonSellProducts = async () => {
     return (await axios.get(host + '/product/person/', config())).data;
 };
+
+export const addProduct = async (product) => {
+    return (await axios.post(host + '/product/add', {...product}, config())).data;
+};
+
+export const productUrl = (product) => {
+    return `/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`
+}

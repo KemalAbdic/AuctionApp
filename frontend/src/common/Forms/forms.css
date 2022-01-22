@@ -8,9 +8,6 @@
     width: 546px;
     left: 0;
     top: 0;
-
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 0;

@@ -1,0 +1,231 @@
+.step-two-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 32px 0;
+}
+
+.step-two-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 64px;
+    position: static;
+    width: 738px;
+    height: auto;
+    background: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 0;
+}
+
+.step-two-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 23px 301px;
+    position: static;
+    width: 738px;
+    height: 75px;
+    background: #FCFCFC;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 0 48px;
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: 0.84px;
+    color: #000000
+
+}
+
+.step-two-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: 549px;
+    height: 433px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 0;
+}
+
+.step-two-form-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: 548px;
+    height: auto;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 0;
+}
+
+.step-two-form-price-title {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    color: #252525;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 16px 0;
+}
+
+.step-two-form-price-input {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: 548px;
+    height: 65px;
+    box-sizing: border-box;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 16px 0;
+}
+
+.price-input.form-control {
+    border: 1px solid #D8D8D8;
+    width: 486px;
+    height: 64px;
+    background: #FCFCFC;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 0;
+}
+
+.input-group-text {
+    border: 1px solid #D8D8D8;
+    display: flex;
+    width: 64px;
+    height: 64px;
+    background: #FCFCFC;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-two-date-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    width: 549px;
+    height: 107px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 32px 0 0;
+}
+
+.form-auction-start {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: 262px;
+    height: 107px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 24px 0 0;
+}
+
+.auction-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    position: static;
+    width: 262px;
+    height: 64px;
+    background: #FCFCFC;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 16px 0;
+}
+
+.form-auction-end {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: 262px;
+    height: 107px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 24px 0 0;
+}
+
+.auction-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    position: static;
+    width: 262px;
+    height: 64px;
+    background: #FCFCFC;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 16px 0;
+}
+
+.calendar-icon {
+    position: relative;
+    width: 20px;
+    height: 22px;
+    color: #252525;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.seller-bottom-text {
+    display: flex;
+    margin-top: 24px;
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #9B9B9B;
+}

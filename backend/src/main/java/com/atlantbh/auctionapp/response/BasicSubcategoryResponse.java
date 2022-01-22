@@ -5,7 +5,4 @@ public interface BasicSubcategoryResponse {
 
     String getName();
 
-    Long getCategoryId();
-
-    String getCategoryName();
 }

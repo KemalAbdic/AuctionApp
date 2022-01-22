@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
-import {getPersonSellProducts} from "../../../../services/ProductService";
+import {getPersonSellProducts, productUrl} from "../../../../services/ProductService";
 import moment from "moment";
 import {getDifferenceBetweenDates} from "../../../../services/DateTimeService";
 import {Button, Image, Table} from "react-bootstrap";
@@ -48,12 +48,12 @@ const SellerActive = () => {
                 <tr className="sell-table" key={product.id}>
                     <td>
                         <Image style={{cursor: 'pointer', width: 80, height: 60}}
-                               onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
-                               className="avatar-image-medium" src={product.url}/>
+                               onClick={() => history.push(productUrl(product))}
+                               src={product.url}/>
                     </td>
                     <td>
                         <div style={{cursor: 'pointer'}}
-                             onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
+                             onClick={() => history.push(productUrl(product))}
                              className="sell-table-name">
                             {product.name}
                             <div className="sell-table-id">
@@ -75,7 +75,7 @@ const SellerActive = () => {
 
                         <Button
                             className="bid-table-button"
-                            onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
+                            onClick={() => history.push(productUrl(product))}
                         >
                             VIEW
                         </Button>
@@ -102,7 +102,7 @@ const SellerActive = () => {
                     <Icon icon="eva:shopping-cart-outline" color="#8367d8" width="92" height="92"/>
                 </div>
                 <div><span className="sold-tab-text">You do not have any scheduled items for sale.</span></div>
-                <Button className="sold-tab-button">START SELLING</Button>
+                <Button className="sold-tab-button" onClick={() => history.push("/seller/sell")}>START SELLING</Button>
                 </tbody>
             </Table>
     )

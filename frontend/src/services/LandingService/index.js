@@ -43,3 +43,7 @@ export const categoriesRouting = (history, category) => {
 export const searchCountProducts = async () => {
     return (await axios.get(host + '/product/search/count')).data;
 };
+
+export const getSubcategoriesForCategory = async (id) => {
+    return (await axios.get(host + '/subcategories/category', getParams({ id }))).data;
+}

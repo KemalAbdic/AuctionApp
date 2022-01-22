@@ -1,0 +1,38 @@
+.sell-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: auto;
+    height: auto;
+    margin-left: 11.1%;
+    margin-right: 11.1%;
+    margin-bottom: 333px;
+}
+
+.sell-page-stepper-container {
+    width: auto;
+    height: auto;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 32px 0;
+}
+
+.white-circle {
+    position: relative;
+    height: 23px;
+    width: 23px;
+    background-color: #FCFCFC;
+    border-radius: 50%;
+}
+
+.purple-circle {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+}

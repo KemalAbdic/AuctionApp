@@ -1,9 +1,14 @@
 package com.atlantbh.auctionapp.service;
 
+import com.atlantbh.auctionapp.model.Person;
 import com.atlantbh.auctionapp.model.Picture;
 import com.atlantbh.auctionapp.model.Product;
+import com.atlantbh.auctionapp.model.Subcategory;
+import com.atlantbh.auctionapp.repository.PersonRepository;
 import com.atlantbh.auctionapp.repository.PictureRepository;
 import com.atlantbh.auctionapp.repository.ProductRepository;
+import com.atlantbh.auctionapp.repository.SubcategoryRepository;
+import com.atlantbh.auctionapp.request.ProductRequest;
 import com.atlantbh.auctionapp.response.*;
 import com.atlantbh.auctionapp.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +18,29 @@ import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.TreeSet;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
 
     private final ProductRepository productRepository;
     private final PictureRepository pictureRepository;
+    private final SubcategoryRepository subcategoryRepository;
+    private final PersonRepository personRepository;
 
     @Autowired
-    public ProductService(ProductRepository productRepository, PictureRepository pictureRepository) {
+    public ProductService(ProductRepository productRepository, PictureRepository pictureRepository, SubcategoryRepository subcategoryRepository, PersonRepository personRepository) {
         this.productRepository = productRepository;
         this.pictureRepository = pictureRepository;
+        this.subcategoryRepository = subcategoryRepository;
+        this.personRepository = personRepository;
     }
 
     public ProductResponse getProduct(Long id) {
-        Product product = productRepository.findProductById(id);
-        List<Picture> productPictures = pictureRepository.findAllByProductId(id);
+        FullProductResponse product = productRepository.getProduct(id);
+        List<BasicPictureResponse> productPictures = pictureRepository.findAllByProductId(id);
         return new ProductResponse(product, productPictures);
     }
 
@@ -148,6 +156,43 @@ public class ProductService {
     public List<PersonProductResponse> getPersonBiddedProducts() {
         Long personId = JwtUtils.getRequestPersonId();
         return productRepository.getPersonBidProducts(personId);
+    }
+
+    public Long addProduct(ProductRequest productRequest) {
+        Subcategory subcategory = subcategoryRepository.getById(productRequest.getSubcategoryId());
+        Long personId = JwtUtils.getRequestPersonId();
+        if (personId == null) throw new RuntimeException("Invalid JWT");
+        Person person = personRepository.getById(personId);
+        if (productRequest.getAuctionEnd().isBefore(LocalDateTime.now()))
+            throw new RuntimeException("End date can't be before current date");
+        if (!productRequest.getAuctionEnd().isAfter(productRequest.getAuctionStart()))
+            throw new RuntimeException("End date must be after start date");
+
+        Product product = new Product(
+                person,
+                subcategory,
+                productRequest.getName(),
+                productRequest.getStartingPrice(),
+                productRequest.getAuctionStart(),
+                productRequest.getAuctionEnd(),
+                productRequest.getStreet(),
+                productRequest.getCity(),
+                productRequest.getCountry(),
+                productRequest.getZipCode(),
+                productRequest.getPhoneNumber());
+        product.setDescription(productRequest.getDescription());
+        Product savedProduct = productRepository.save(product);
+        savePictures(savedProduct, productRequest.getPictures());
+        return savedProduct.getId();
+
+    }
+
+    private void savePictures(Product product, List<String> pictureUrls) {
+        if (pictureUrls == null || pictureUrls.isEmpty())
+            return;
+        List<Picture> pictures = pictureUrls.stream().map(url -> new Picture(product, url)).collect(Collectors.toList());
+        pictures.get(0).setFeatured(true);
+        pictureRepository.saveAll(pictures);
     }
 
 }

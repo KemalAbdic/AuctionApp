@@ -12,6 +12,7 @@ import {Icon} from "@iconify/react";
 import './landingPage.css'
 import {useHistory} from "react-router-dom";
 import {useBreadcrumbContext} from "../../BreadcrumbContext";
+import {productUrl} from "../../services/ProductService";
 
 
 const LandingPage = () => {
@@ -22,7 +23,6 @@ const LandingPage = () => {
     const [activeTab, setActiveTab] = useState(0);
     const history = useHistory();
     const {removeBreadcrumb} = useBreadcrumbContext();
-
     useEffect(() => {
         removeBreadcrumb();
         const fetchData = async () => {
@@ -79,7 +79,7 @@ const LandingPage = () => {
                             </div>
 
                             <Button className={'bid-now-button'}
-                                    onClick={() => history.push(`/shop/${randomProduct[0].categoryName.toLowerCase()}/${randomProduct[0].subcategoryName.toLowerCase()}/${randomProduct[0].id}`)}>
+                                    onClick={() => history.push(productUrl(randomProduct[0]))}>
                                 <span className="bid-now-text">BID NOW</span>
                                 <Icon icon={chevronRight} color="#252525" width="16" height="16" inline={true}/>
                             </Button>
@@ -111,7 +111,7 @@ const LandingPage = () => {
                 <div className="tab-item-container">
                     {newAndLastProducts.length !== 0 ? newAndLastProducts[activeTab].map(product => (
                         <div className="tab-product"
-                             onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}>
+                             onClick={() => history.push(productUrl(product))}>
                             <Image width="262"
                                    height="196"
                                    src={product.url}

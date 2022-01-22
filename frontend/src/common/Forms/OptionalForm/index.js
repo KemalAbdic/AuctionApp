@@ -60,7 +60,6 @@ const OptionalForm = ({handleChange, touched, errors, values}) => {
                                   maxLength={32}
                                   isInvalid={touched.city && errors.city}
                     >
-
                     </Form.Control>
                     <Form.Control.Feedback type="invalid">
                         {errors.city}

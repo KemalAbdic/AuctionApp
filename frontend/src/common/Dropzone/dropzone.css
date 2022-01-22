@@ -1,0 +1,76 @@
+.dropzone {
+    display: flex;
+    padding: 30px;
+    border: 1px dashed #D8D8D8;
+    outline: none;
+    cursor: pointer;
+    width: 548px;
+    min-height: 392px;
+    background: #FCFCFC;
+    justify-content: center;
+}
+
+.dropzone-active {
+    background-color: inherit;
+    border: 5px solid #8367D8;
+}
+
+.dropzone-content {
+    display: flex;
+    font-size: 18px;
+    align-content: center;
+    align-items: center;
+
+}
+
+.dropzone-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+
+}
+
+.middle-text {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.bottom-text {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #9B9B9B;
+}
+
+.file-list {
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+}
+
+.file-item {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    margin: 10px;
+    cursor: move;
+    transition: all 0.2s linear;
+}
+
+.file-img {
+    width: 100%;
+    height: 100%;
+}
