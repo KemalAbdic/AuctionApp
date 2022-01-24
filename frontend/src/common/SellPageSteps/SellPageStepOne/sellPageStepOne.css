@@ -146,7 +146,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 24px;
+    padding: 8px 24px;
     position: static;
     width: 262px;
     height: 43px;
@@ -171,7 +171,6 @@
     order: 2;
     flex-grow: 0;
     margin: 32px 0;
-
 }
 
 .text-area {
@@ -186,14 +185,13 @@
     order: 0;
     flex-grow: 0;
     margin: 16px 0;
-
 }
 
 .text-area-input {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0;
+    padding: 24px;
     position: static;
     width: 548px;
     height: 369px;

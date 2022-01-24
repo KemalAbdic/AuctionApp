@@ -97,7 +97,8 @@ const SellPageStepThree = ({product, setProduct, setActiveTab, handleDone}) => {
                                 <Form.Group className="step-three-city-country">
                                     <Form.Group style={{marginRight: 24}}>
                                         <Form.Control className="city-country-input"
-                                                      defaultValue={user.city || "Enter City"}
+                                                      defaultValue={user.city}
+                                                      placeholder={"Enter city"}
                                                       name="city"
                                                       onChange={handleChange}
                                                       isInvalid={touched.city && errors.city}

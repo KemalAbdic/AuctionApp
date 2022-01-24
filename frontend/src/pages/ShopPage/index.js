@@ -155,15 +155,13 @@ const Shop = ({match}) => {
                     <div className="shop-grid">
                         {products
                             .map(product => (
-                                <div className="shop-product"
-                                >
+                                <div className="shop-product">
                                     <div className="shop-product-item">
                                         <Image className="image"
                                                src={product.url}
                                         />
                                         <Button
                                             className="hidden-button"
-
                                             onClick={() =>
                                                 history
                                                     .push(productUrl(product))}
