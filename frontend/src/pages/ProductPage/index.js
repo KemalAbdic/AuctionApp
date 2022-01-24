@@ -6,7 +6,7 @@ import "./productPage.css"
 import {getBidsForProduct, postBidForProduct} from "../../services/BidService";
 import {Icon} from "@iconify/react";
 import chevronRight from '@iconify/icons-akar-icons/chevron-right';
-import {getPersonId, getToken} from "../../services/AuthService";
+import {getPersonId} from "../../services/AuthService";
 import {alertService} from "../../services/AlertService";
 import moment from "moment";
 import 'moment-duration-format';
@@ -30,7 +30,6 @@ const ProductPage = ({match}) => {
     const options = {autoClose: true};
     const [relatedProducts, setRelatedProducts] = useState([]);
     const history = useHistory();
-    const [loggedIn] = useState(getToken() != null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,7 +39,7 @@ const ProductPage = ({match}) => {
                 const bidData = await getBidsForProduct(id);
                 setProduct(data);
                 setStartingPrice(data.startingPrice)
-                if (personId === null) {
+                if (personId === null || data.personId !== personId) {
                     setRelatedProducts(await getRelatedProducts(id));
                 }
                 const url = match.url.split("/").slice(1, -1);
@@ -153,7 +152,7 @@ const ProductPage = ({match}) => {
                 </div>
             </div>
 
-            {bids.length > 0 && loggedIn ? (
+            {ownProduct && bids.length > 0 ? (
                 <div className="bidder-table-container">
                     <Table className="bidder-table" responsive style={{marginBottom: 500}}>
                         <thead className="bidder-table-header">
