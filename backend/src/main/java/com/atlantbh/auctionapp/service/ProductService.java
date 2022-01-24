@@ -195,4 +195,9 @@ public class ProductService {
         pictureRepository.saveAll(pictures);
     }
 
+    public List<BasicProductResponse> getRelatedProducts(Long id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Wrong product id"));
+        return productRepository.getRelatedProducts(id, product.getSubcategory().getId(), product.getSubcategory().getCategory().getId());
+    }
+
 }

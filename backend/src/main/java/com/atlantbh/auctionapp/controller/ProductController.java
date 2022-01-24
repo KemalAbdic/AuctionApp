@@ -94,4 +94,9 @@ public class ProductController {
         Long productId = productService.addProduct(productRequest);
         return ResponseEntity.ok(productId);
     }
+
+    @GetMapping("/related")
+    public ResponseEntity<List<BasicProductResponse>> getRelatedProducts(@RequestParam Long id) {
+        return ResponseEntity.ok(productService.getRelatedProducts(id));
+    }
 }

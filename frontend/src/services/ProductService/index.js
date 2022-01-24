@@ -21,3 +21,7 @@ export const addProduct = async (product) => {
 export const productUrl = (product) => {
     return `/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`
 }
+
+export const getRelatedProducts = async (id) => {
+    return (await axios.get(host + '/product/related', getParams({id}))).data;
+};

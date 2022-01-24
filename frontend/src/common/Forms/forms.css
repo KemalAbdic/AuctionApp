@@ -40,7 +40,6 @@
     flex-direction: row;
     align-items: flex-start;
     padding: 18px 42px 18px 24px;
-
     position: static;
     width: 361px;
     height: 63px;
@@ -78,7 +77,7 @@
     align-items: center;
     padding: 18px 24px;
     position: static;
-    width: 185px;
+    width: 185px !important;
     height: 63px;
     left: 361px;
     top: 0;
