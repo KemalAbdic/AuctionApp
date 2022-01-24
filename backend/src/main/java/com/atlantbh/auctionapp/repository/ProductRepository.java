@@ -145,7 +145,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "INNER JOIN subcategory s ON s.id = pr.subcategory_id " +
             "INNER JOIN category c ON c.id = s.category_id " +
             "WHERE (s.id = :subcategory_id OR c.id = :category_id) " +
-            "AND pr.id != :product_id AND (p.featured = true OR p.featured IS NULL) AND auction_start <= now() AND auction_end > now() " +
+            "AND pr.id != :product_id AND p.featured = true AND auction_start <= now() AND auction_end > now() " +
             "ORDER BY s.id = :subcategory_id DESC, RANDOM() LIMIT 3", nativeQuery = true)
     List<BasicProductResponse> getRelatedProducts(@Param("product_id") Long productId,
                                                   @Param("subcategory_id") Long subcategoryId,
