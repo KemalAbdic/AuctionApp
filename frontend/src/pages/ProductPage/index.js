@@ -73,16 +73,15 @@ const ProductPage = ({match}) => {
                 setBidAmount("")
             }
             setLoading(true);
-            if (bids[0] !== undefined) {
+
+            if (bids.length !== 0) {
                 if (personId === bids[0].person.id) {
                     alertService.warning('Warning: You cannot outbid yourself!', options)
                     setBidAmount("")
                     setLoading(false)
-                    return;
+                    return
                 }
-                return
             }
-
             await postBidForProduct(bidAmount, product.id);
             const newBids = await getBidsForProduct(product.id);
             if (personId === newBids[0].person.id) {
@@ -90,14 +89,17 @@ const ProductPage = ({match}) => {
                 setBids(newBids);
                 setBidAmount("")
             }
-        } catch (e) {
+        } catch
+            (e) {
             console.error(e)
         }
         setLoading(false);
     }
     return product != null ? (
         <div className="product-wrapper">
-            <div style={bids.length > 0 || relatedProducts.length > 0 ? {marginBottom: "10%"} : {marginBottom: "33%"}} className="product-container">
+            <div
+                style={bids.length > 0 || relatedProducts.length > 0 ? {marginBottom: "10%"} : {marginBottom: "33%"}}
+                className="product-container">
                 <div className="product-pictures-container">
                     <Image className="product-picture" key={product.pictures[0].id}
                            src={product.pictures[activePhoto].url}/>

@@ -22,7 +22,6 @@ const ProfilePage = () => {
 
     useEffect(() => {
         const urlElements = history.location.pathname.split("/").slice(1);
-        console.log(urlElements)
         if (urlElements.length === 1) {
             setBreadcrumb("My account", [{text: "My account", href: "/profile"}, {text: "Profile"}]);
             setActiveTab(1);
@@ -45,7 +44,6 @@ const ProfilePage = () => {
         }
         // eslint-disable-next-line
     }, [history.location.pathname])
-
 
     return (
         <div>
@@ -85,7 +83,6 @@ const ProfilePage = () => {
             </div>
             {tabs[activeTab]}
         </div>)
-
 }
 
 export default ProfilePage
