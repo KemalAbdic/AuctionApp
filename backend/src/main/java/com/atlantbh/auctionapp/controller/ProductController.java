@@ -1,11 +1,13 @@
 package com.atlantbh.auctionapp.controller;
 
+import com.atlantbh.auctionapp.request.ProductRequest;
 import com.atlantbh.auctionapp.response.*;
 import com.atlantbh.auctionapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -85,5 +87,11 @@ public class ProductController {
     @GetMapping("/person/bids")
     public ResponseEntity<List<PersonProductResponse>> getPersonBiddedProducts() {
         return ResponseEntity.ok(productService.getPersonBiddedProducts());
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<Long> add(@RequestBody @Valid ProductRequest productRequest) {
+        Long productId = productService.addProduct(productRequest);
+        return ResponseEntity.ok(productId);
     }
 }

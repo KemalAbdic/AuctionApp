@@ -8,6 +8,7 @@ import {Icon} from "@iconify/react";
 import CategoryList from "../../common/CategoryList";
 import * as qs from 'query-string';
 import PriceFilter from "../../common/PriceFilter";
+import {productUrl} from "../../services/ProductService";
 
 let page = 0;
 
@@ -55,7 +56,7 @@ const Shop = ({match}) => {
         // eslint-disable-next-line
     }, [removeBreadcrumb, match.url, history.location.search]);
 
-    const memoizedValue = useMemo(() => products.map(({ startingPrice }) => startingPrice),[products]);
+    const memoizedValue = useMemo(() => products.map(({startingPrice}) => startingPrice), [products]);
 
     const handleGridChange = (e) => {
         setActiveButton(0)
@@ -154,20 +155,16 @@ const Shop = ({match}) => {
                     <div className="shop-grid">
                         {products
                             .map(product => (
-                                <div className="shop-product"
-                                >
+                                <div className="shop-product">
                                     <div className="shop-product-item">
                                         <Image className="image"
                                                src={product.url}
                                         />
                                         <Button
                                             className="hidden-button"
-
                                             onClick={() =>
                                                 history
-                                                    .push(`/shop/${product.categoryName
-                                                        .toLowerCase()}/${product.subcategoryName
-                                                        .toLowerCase()}/${product.id}`)}
+                                                    .push(productUrl(product))}
                                         >
                                             <span className="shop-grid-bid-button-text">Bid </span>
                                             <Icon icon="ic:outline-gavel" color="#8367d8" width="20" height="20"
@@ -185,9 +182,7 @@ const Shop = ({match}) => {
                             <div className="shop-list-product"
                                  onClick={() =>
                                      history
-                                         .push(`/shop/${product.categoryName
-                                             .toLowerCase()}/${product.subcategoryName
-                                             .toLowerCase()}/${product.id}`)}>
+                                         .push(productUrl(product))}>
                                 <div className="shop-list-item">
                                     <Image width="306"
                                            height="230"

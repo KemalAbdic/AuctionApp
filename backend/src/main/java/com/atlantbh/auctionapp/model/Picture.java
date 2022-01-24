@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
 
     @ManyToOne(optional = false)

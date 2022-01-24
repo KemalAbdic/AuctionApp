@@ -50,6 +50,7 @@
     flex-grow: 0;
     margin: 0 43px 0 0;
 }
+
 .sell-table {
     display: flex;
     flex-direction: row;
@@ -66,6 +67,7 @@
     flex-grow: 0;
     margin: 10px 0 10px 33px;
 }
+
 .sell-table-row {
     display: flex;
     flex-direction: row;
@@ -226,4 +228,25 @@
 .seller-tab-container {
     display: flex;
     margin-left: 11.1%;
+}
+
+.add-item-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+    position: static;
+    width: 99px;
+    height: 43px;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 0 0 -99px;
+    background: #8367D8;
+    color: #FCFCFC;
+    font-weight: bold;
+    font-size: 13px;
 }

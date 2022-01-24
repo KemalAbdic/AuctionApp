@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
 
     @ManyToOne(optional = false)
@@ -44,7 +43,6 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private Color color;
 
-    @NotNull
     private Boolean shipping = false;
 
     @NotNull
@@ -91,6 +89,20 @@ public class Product {
         this.size = size;
         this.color = color;
         this.shipping = shipping;
+        this.street = street;
+        this.city = city;
+        this.country = country;
+        this.zipCode = zipCode;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Product(Person person, Subcategory subcategory, String name, Double startingPrice, LocalDateTime auctionStart, LocalDateTime auctionEnd, String street, String city, String country, String zipCode, String phoneNumber) {
+        this.person = person;
+        this.subcategory = subcategory;
+        this.name = name;
+        this.startingPrice = startingPrice;
+        this.auctionStart = auctionStart;
+        this.auctionEnd = auctionEnd;
         this.street = street;
         this.city = city;
         this.country = country;

@@ -1,5 +1,6 @@
 package com.atlantbh.auctionapp.repository;
 
+import com.atlantbh.auctionapp.model.Category;
 import com.atlantbh.auctionapp.model.Subcategory;
 import com.atlantbh.auctionapp.response.BasicSubcategoryResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,6 @@ public interface SubcategoryRepository extends JpaRepository<Subcategory, Long> 
 
     @Query(value = "SELECT * FROM subcategory INNER JOIN category c ON c.id = subcategory.category_id", nativeQuery = true)
     List<Subcategory> getAllSubcategories();
+
+    List<BasicSubcategoryResponse> findAllByCategory(Category category);
 }

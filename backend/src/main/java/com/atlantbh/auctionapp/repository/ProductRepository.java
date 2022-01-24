@@ -3,6 +3,7 @@ package com.atlantbh.auctionapp.repository;
 import com.atlantbh.auctionapp.model.Product;
 import com.atlantbh.auctionapp.response.BasicProductResponse;
 import com.atlantbh.auctionapp.response.CategoryListResponse;
+import com.atlantbh.auctionapp.response.FullProductResponse;
 import com.atlantbh.auctionapp.response.PersonProductResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -132,5 +133,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "GROUP BY (pr.id, pr.name, p.url, s.name, c.name, pr.auction_start, pr.auction_end) " +
             "ORDER BY pr.auction_end", nativeQuery = true)
     List<PersonProductResponse> getPersonBidProducts(@Param("person_id") Long personId);
+
+
+    @Query(value = "SELECT p.id, p.person_id personId, p.name, p.description, p.starting_price as startingPrice, " +
+            "p.auction_start as auctionStart, p.auction_end as auctionEnd " +
+            "FROM product p WHERE p.id = :product_id ", nativeQuery = true)
+    FullProductResponse getProduct(@Param("product_id") Long productId);
 
 }

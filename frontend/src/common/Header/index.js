@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./header.css";
 import {FacebookFill, InstagramFill} from "akar-icons";
 import {AiFillGooglePlusCircle, AiFillTwitterCircle} from "react-icons/all";
@@ -6,12 +6,34 @@ import {Link, useHistory} from "react-router-dom";
 import logo from "../../Images/logo.png"
 import {getPerson, getToken, removeSession} from "../../services/AuthService";
 import {ListGroup} from "react-bootstrap";
+import {getPersonSellProducts} from "../../services/ProductService";
+import moment from "moment";
 
 function Header() {
     const [loggedIn] = useState(getToken() != null);
     const history = useHistory();
     const [showDropdown, setShowDropdown] = useState(false);
     let user = getPerson();
+    const [currentProducts, setCurrentProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getPersonSellProducts();
+                setCurrentProducts(
+                    data.filter(
+                        product =>
+                            moment.utc(product.auctionEnd).isAfter(moment()) &&
+                            moment(product.auctionStart).isSameOrBefore(moment())
+                    )
+                );
+            } catch (e) {
+                console.error(e)
+            }
+        }
+        fetchData();
+    }, [])
+
     const logout = () => {
         removeSession();
         history.push("/login");
@@ -68,10 +90,14 @@ function Header() {
                         >
                             <ListGroup.Item className="dropdown-item"
                                             style={{paddingTop: 15}}
-                                            onClick={() => loggedIn ? history.push('/profile') : history.push('/register')}>Profile</ListGroup.Item>
-                            <ListGroup.Item className="dropdown-item"
-                                            onClick={() => loggedIn ? history.push('/profile/seller') : history.push('/register')}>Become
-                                Seller</ListGroup.Item>
+                                            onClick={() => loggedIn ? history.push('/profile') : history.push('/register')}>
+                                Profile</ListGroup.Item>
+                            {currentProducts.length > 0 ? <ListGroup.Item className="dropdown-item"
+                                                                          onClick={() => loggedIn ? history.push('/profile/seller') : history.push('/register')}>
+                                Your Products</ListGroup.Item> : <ListGroup.Item className="dropdown-item"
+                                                                                 onClick={() => loggedIn ? history.push('/profile/seller') : history.push('/register')}>
+                                Become Seller</ListGroup.Item>}
+
                             <ListGroup.Item className="dropdown-item"
                                             onClick={() => loggedIn ? history.push('/profile/bids') : history.push('/register')}>Your
                                 Bids</ListGroup.Item>

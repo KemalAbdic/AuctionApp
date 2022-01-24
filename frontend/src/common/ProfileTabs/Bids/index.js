@@ -4,7 +4,7 @@ import moment from "moment";
 import {useHistory} from "react-router-dom";
 import './bids.css'
 import {getDifferenceBetweenDates} from "../../../services/DateTimeService";
-import {getPersonBidsForProducts} from "../../../services/ProductService";
+import {getPersonBidsForProducts, productUrl} from "../../../services/ProductService";
 
 
 const Bids = () => {
@@ -22,7 +22,6 @@ const Bids = () => {
 
         fetchData();
     }, [])
-    console.log(products)
 
     const getTimeColumn = (product) => {
         const productEndDate = moment.utc(product.auctionEnd);
@@ -49,12 +48,12 @@ const Bids = () => {
                     <div className="bid-item-name">
                         <td>
                             <Image
-                                onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
+                                onClick={() => history.push(productUrl(product))}
                                 className="product-bid-image" src={product.url}/>
                         </td>
                         <td>
                             <div style={{cursor: 'pointer'}}
-                                 onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
+                                 onClick={() => history.push(productUrl(product))}
                                  className="bid-table-name">
                                 {product.name}
                                 <div className="bid-table-id">
@@ -77,7 +76,7 @@ const Bids = () => {
 
                         <Button
                             className="bid-table-button"
-                            onClick={() => history.push(`/shop/${product.categoryName.toLowerCase()}/${product.subcategoryName.toLowerCase()}/${product.id}`)}
+                            onClick={() => history.push(productUrl(product))}
                         >
                             VIEW
                         </Button>

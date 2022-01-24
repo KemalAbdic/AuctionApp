@@ -1,7 +1,5 @@
 package com.atlantbh.auctionapp.response;
 
-import com.atlantbh.auctionapp.model.Picture;
-import com.atlantbh.auctionapp.model.Product;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -10,18 +8,20 @@ public class ProductResponse {
     private String name;
     private String description;
     private Double startingPrice;
+    private LocalDateTime auctionStart;
     private LocalDateTime auctionEnd;
-    private List<Picture> pictures;
+    private List<BasicPictureResponse> pictures;
     private Long personId;
 
-    public ProductResponse(Product product, List<Picture> productPictures) {
+    public ProductResponse(FullProductResponse product, List<BasicPictureResponse> productPictures) {
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
         this.startingPrice = product.getStartingPrice();
+        this.auctionStart = product.getAuctionStart();
         this.auctionEnd = product.getAuctionEnd();
         this.pictures = productPictures;
-        this.personId = product.getPerson().getId();
+        this.personId = product.getPersonId();
     }
 
     public Long getId() {
@@ -56,6 +56,14 @@ public class ProductResponse {
         this.startingPrice = startingPrice;
     }
 
+    public LocalDateTime getAuctionStart() {
+        return auctionStart;
+    }
+
+    public void setAuctionStart(LocalDateTime auctionStart) {
+        this.auctionStart = auctionStart;
+    }
+
     public LocalDateTime getAuctionEnd() {
         return auctionEnd;
     }
@@ -64,11 +72,11 @@ public class ProductResponse {
         this.auctionEnd = auctionEnd;
     }
 
-    public List<Picture> getPictures() {
+    public List<BasicPictureResponse> getPictures() {
         return pictures;
     }
 
-    public void setPictures(List<Picture> pictures) {
+    public void setPictures(List<BasicPictureResponse> pictures) {
         this.pictures = pictures;
     }
 
