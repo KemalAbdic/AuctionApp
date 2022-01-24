@@ -31,3 +31,5 @@ export const toBase64 = file => new Promise((resolve, reject) => {
 });
 
 export const countries = Object.keys(countriesJSON);
+
+export const placeholderPicture = "https://res.cloudinary.com/deye0c3eh/image/upload/gender-neutral-placeholder_ifvixm.png";

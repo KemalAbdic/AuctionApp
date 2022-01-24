@@ -140,4 +140,14 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "FROM product p WHERE p.id = :product_id ", nativeQuery = true)
     FullProductResponse getProduct(@Param("product_id") Long productId);
 
+    @Query(value = "SELECT pr.id, pr.name, pr.starting_price AS startingPrice, pr.description, pr.auction_start as auctionStart, pr.auction_end as auctionEnd, p.url, c.name AS categoryName, s.name AS subcategoryName " +
+            "FROM product pr LEFT OUTER JOIN picture p ON pr.id = p.product_id " +
+            "INNER JOIN subcategory s ON s.id = pr.subcategory_id " +
+            "INNER JOIN category c ON c.id = s.category_id " +
+            "WHERE (s.id = :subcategory_id OR c.id = :category_id) " +
+            "AND pr.id != :product_id AND p.featured = true AND auction_start <= now() AND auction_end > now() " +
+            "ORDER BY s.id = :subcategory_id DESC, RANDOM() LIMIT 3", nativeQuery = true)
+    List<BasicProductResponse> getRelatedProducts(@Param("product_id") Long productId,
+                                                  @Param("subcategory_id") Long subcategoryId,
+                                                  @Param("category_id") Long categoryId);
 }

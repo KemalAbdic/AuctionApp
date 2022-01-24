@@ -3,7 +3,6 @@
     margin-right: 11.1%;
     margin-left: 11.1%;
     font-family: Lato, sans-serif;
-    padding-bottom: 17%;
 }
 
 .product-pictures-container {
@@ -129,6 +128,8 @@ strong {
     font-size: 16px;
     line-height: 24px;
     color: #9B9B9B;
+    word-wrap: break-word;
+    justify-content: space-around;
 }
 
 .bid-button-text {
@@ -151,4 +152,215 @@ strong {
 
 .form-control {
     font-size: 16px;
+}
+
+.related-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    position: static;
+    width: 1116px;
+    height: 621px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 64px 11.1%;
+}
+
+.related-products-title {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.84px;
+    color: #000000;
+}
+
+.related-products-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    position: static;
+    width: 1116px;
+    height: 544px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 32px 0;
+}
+
+.related-product-item {
+    margin-right: 20px;
+}
+
+.related-image {
+    width: 356px;
+    height: 267px;
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.related-product {
+    position: relative;
+    width: 356px;
+    max-width: 356px;
+    margin-right: 24px;
+}
+
+.related-product:before {
+    content: "";
+    position: absolute;
+    width: 356px;
+    height: 267px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.related-product:hover::before {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.related-product img {
+    display: block;
+}
+
+.related-product .related-hidden-button {
+    border-radius: 5%;
+    width: 71px;
+    height: 40px;
+    position: absolute;
+    margin-left: 177px;
+    margin-top: -133px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.related-product:hover .related-hidden-button {
+    opacity: 1;
+    color: #8367D8;
+    border: 2px solid #8367D8;
+    pointer-events: auto;
+}
+
+.bidder-table-container {
+    margin-left: 11.1%;
+    margin-right: 11.1%;
+    margin-bottom: 33.3%;
+}
+
+.bidder-table {
+    padding: 0 0 32px;
+    width: 1120px;
+    height: auto;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    flex: none;
+    flex-grow: 0;
+    margin: 128px 0;
+}
+
+.bidder-table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px 0 16px 32px;
+    position: static;
+    width: 1118px;
+    height: 59px;
+    background: #FCFCFC;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 0;
+}
+
+.header-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 83px 0 0;
+    position: static;
+    width: 1088px;
+    height: 27px;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    margin: 0 0;
+}
+
+.date-bid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    width: 210px;
+    height: 27px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 0;
+}
+
+.bidder-info-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    width: 1056px;
+    height: 64px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 40px 0 10px;
+}
+
+.info-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    width: 1056px;
+    height: 64px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 0;
+}
+
+.bidder-info-picture-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    width: 264px;
+    height: 64px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0 32px;
+}
+
+.bidder-info-date-bid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0 0 0 32px;
+    width: 260px;
+    height: 27px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 0;
 }
