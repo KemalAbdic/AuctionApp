@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DATABASE: postgres
+      DATABASE_URL: jdbc:postgresql://postgres:5432/postgres
+      JDBC_DATABASE_USERNAME: postgres
+      JDBC_DATABASE_PASSWORD: postgres
+      DATABASE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      HIBERNATE_DDL: update
+      JWT_SECRET: JWTSuperSecretKey
+      JWT_EXPIRATION: 86400000
+    depends_on:
+      - postgres
+    networks:
+      - auction-network
+    ports:
+      - "127.0.0.1:8080:8080"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    environment:
+      stdin_open: true
+    networks:
+      - auction-network
+    ports:
+      - "127.0.0.1:3000:3000"
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    container_name: postgres
+    restart: unless-stopped
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks:
+      - auction-network
+
+volumes:
+  database:
+  files:
+
+networks:
+  auction-network:
+    name: auction-network
