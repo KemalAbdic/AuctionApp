@@ -16,7 +16,7 @@ services:
       JDBC_DATABASE_PASSWORD: postgres
       DATABASE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
       HIBERNATE_DDL: update
-      JWT_SECRET: JWTSuperSecretKey
+      JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRATION: 86400000
     depends_on:
       - postgres
@@ -49,7 +49,6 @@ services:
 
 volumes:
   database:
-  files:
 
 networks:
   auction-network:
